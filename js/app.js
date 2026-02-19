@@ -43,47 +43,6 @@
     }
   }
 
-  function initKeyboardNav() {
-    document.documentElement.style.scrollBehavior = 'auto';
-
-    function handleKeyDown(e) {
-      var target = e.target;
-      if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable) return;
-
-      var scrollStep = 80;
-      var pageStep = window.innerHeight * 0.8;
-
-      switch (e.key) {
-        case 'ArrowDown':
-          e.preventDefault();
-          window.scrollBy({ top: scrollStep, behavior: 'auto' });
-          break;
-        case 'ArrowUp':
-          e.preventDefault();
-          window.scrollBy({ top: -scrollStep, behavior: 'auto' });
-          break;
-        case 'PageDown':
-          e.preventDefault();
-          window.scrollBy({ top: pageStep, behavior: 'auto' });
-          break;
-        case 'PageUp':
-          e.preventDefault();
-          window.scrollBy({ top: -pageStep, behavior: 'auto' });
-          break;
-        case 'Home':
-          e.preventDefault();
-          window.scrollTo({ top: 0, behavior: 'auto' });
-          break;
-        case 'End':
-          e.preventDefault();
-          window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
-          break;
-      }
-    }
-
-    document.addEventListener('keydown', handleKeyDown);
-  }
-
   function initCursor() {
     var isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
     var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -118,8 +77,9 @@
   }
 
   function init() {
+    var yearEl = document.getElementById('current-year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
     initAudioConsent();
-    initKeyboardNav();
     initCursor();
   }
 
