@@ -50,7 +50,7 @@ body::before {
   pointer-events: none;
   opacity: 0.25;
   mix-blend-mode: soft-light;
-  background-image: url('/public/grain.svg');
+  background-image: url('../public/grain.svg');
   background-size: 300px 300px;
   z-index: -1;
 }
