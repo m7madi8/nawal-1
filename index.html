@@ -32,6 +32,7 @@
   <link rel="stylesheet" href="css/page-loader.css">
   <link rel="stylesheet" href="css/rtl.css">
   <link rel="stylesheet" href="css/scroll-media.css">
+  <link rel="stylesheet" href="css/workshops-home.css">
   <style>
     .dashboard-section {
       background: linear-gradient(180deg, #f9f6f2 0%, #ffffff 100%);
@@ -522,10 +523,10 @@
           <div class="mx-auto max-w-6xl px-6 sm:px-10 md:px-14 lg:px-20">
             <div class="animate-content mb-12 text-center sm:mb-16">
               <p class="mb-2 text-xs font-medium uppercase tracking-[0.35em] text-[var(--color-accent)]" data-i18n="workshops_label">Workshops</p>
-              <h2 class="font-serif text-2xl font-light text-[var(--color-text)] sm:text-3xl md:text-4xl" data-i18n="workshops_heading">Haifa · Retreat</h2>
+              <h2 class="font-serif text-2xl font-light text-[var(--color-text)] sm:text-3xl md:text-4xl" data-i18n="workshops_heading">Haifa · Retreat · Events</h2>
             </div>
-            <div class="grid gap-6 sm:gap-8 lg:grid-cols-2 lg:gap-8">
-              <article class="workshop-card group">
+            <div class="workshops-cards-grid">
+              <article class="workshop-card group h-full">
                 <div class="workshop-card-inner flex flex-col overflow-hidden">
                   <div class="workshop-card-image-wrap workshop-card-image-wrap--haifa-bg" aria-hidden="true">
                     <div class="workshop-card-bg-image"></div>
@@ -542,7 +543,7 @@
                   </div>
                 </div>
               </article>
-              <article class="workshop-card group">
+              <article class="workshop-card group h-full">
                 <div class="workshop-card-inner flex flex-col overflow-hidden">
                   <div class="workshop-card-image-wrap">
                     <img src="public/media/wadi rum/📷_ @eljackson.jpg" alt="Retreat" class="workshop-card-image" loading="lazy" style="object-position: center 60%;">
@@ -555,6 +556,23 @@
                     <p class="workshop-card-desc" data-i18n="retreat_desc">Step away from the everyday. Multi-day yoga retreats in nature—deep practice, rest and connection with like-minded souls.</p>
                     <div class="workshop-card-footer">
                       <a href="retreats.html" class="workshop-card-cta"><span data-i18n="retreat_cta">Explore retreats</span> <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span></a>
+                    </div>
+                  </div>
+                </div>
+              </article>
+              <article id="events" class="workshop-card group h-full">
+                <div class="workshop-card-inner flex flex-col overflow-hidden">
+                  <div class="workshop-card-image-wrap">
+                    <img src="events/img/IMG-20260707-WA0007.jpg" alt="Events" class="workshop-card-image" data-i18n-attr="alt:events_sh_card_img_alt" loading="lazy">
+                  </div>
+                  <div class="workshop-card-body flex flex-col flex-1">
+                    <div class="workshop-card-header">
+                      <span class="workshop-card-tag" data-i18n="events_section_label">Events</span>
+                      <h3 class="workshop-card-title font-serif" data-i18n="events_section_title">Events</h3>
+                    </div>
+                    <p class="workshop-card-desc" data-i18n="events_sh_card_desc">Friday 17 July · 18:30 · Haifa, Atlit beach — open to everyone.</p>
+                    <div class="workshop-card-footer">
+                      <a href="events.html" class="workshop-card-cta"><span data-i18n="events_card_cta">View event details</span> <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span></a>
                     </div>
                   </div>
                 </div>

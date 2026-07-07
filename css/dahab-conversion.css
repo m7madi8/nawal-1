@@ -146,8 +146,9 @@
   margin: 0;
   font-size: clamp(1rem, 2.5vw, 1.15rem);
   font-weight: 600;
-  line-height: 1.45;
+  line-height: 1.5;
   color: var(--dahab-text);
+  overflow-wrap: break-word;
 }
 
 .dahab-cv-price-tier--sold {
@@ -434,6 +435,8 @@
   color: rgba(62, 47, 43, 0.82);
   white-space: pre-line;
   text-align: start;
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
 .dahab-cv-stars {
@@ -460,15 +463,16 @@
 
 .dahab-cv-includes-sub {
   margin: 0 auto 2rem;
-  max-width: 24rem;
+  max-width: 34rem;
   text-align: center;
   font-size: 0.95rem;
+  line-height: 1.65;
   color: var(--dahab-muted);
 }
 
 .dahab-cv-includes-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1rem;
 }
 
@@ -492,6 +496,8 @@
 .dahab-cv-inc-card:nth-child(4) { animation-delay: 0.24s; }
 .dahab-cv-inc-card:nth-child(5) { animation-delay: 0.32s; }
 .dahab-cv-inc-card:nth-child(6) { animation-delay: 0.4s; }
+.dahab-cv-inc-card:nth-child(7) { animation-delay: 0.48s; }
+.dahab-cv-inc-card:nth-child(8) { animation-delay: 0.56s; }
 
 @keyframes dahabCvCardIn {
   to {
@@ -512,17 +518,22 @@
   color: var(--dahab-accent);
 }
 
+.dahab-cv-inc-card {
+  text-align: center;
+}
+
 .dahab-cv-inc-title {
-  margin: 0 0 0.35rem;
+  margin: 0;
   font-size: 0.9375rem;
   font-weight: 700;
+  line-height: 1.4;
   color: var(--dahab-text);
 }
 
 .dahab-cv-inc-desc {
-  margin: 0;
+  margin: 0.45rem 0 0;
   font-size: 0.8125rem;
-  line-height: 1.55;
+  line-height: 1.6;
   color: var(--dahab-muted);
 }
 
@@ -784,13 +795,27 @@
   }
 
   .dahab-cv-includes-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 640px) {
   .dahab-cv-includes-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .dahab-cv-inc-card {
+    padding: 1rem 0.75rem;
+  }
+
+  .dahab-cv-inc-title {
+    font-size: 0.875rem;
+  }
+
+  .dahab-cv-inc-desc {
+    font-size: 0.75rem;
+    line-height: 1.55;
   }
 
   .dahab-cv-actions {
@@ -799,6 +824,15 @@
 
   .dahab-cv-btn {
     width: 100%;
+  }
+
+  .dahab-cv-countdown {
+    gap: 0.5rem;
+  }
+
+  .dahab-cv-cd-box {
+    min-width: 0;
+    flex: 1 1 auto;
   }
 }
 
@@ -845,4 +879,55 @@ html[dir="rtl"] .dahab-page :is(
   .dahab-soul-nawal-name
 ) {
   font-weight: 700;
+}
+
+/* RTL: reset letter-spacing so Arabic words do not stick together */
+html[dir="rtl"] .dahab-page :is(
+  .dahab-cv-badge,
+  .dahab-cv-hero-dates-meta,
+  .dahab-cv-proof-label,
+  .dahab-cv-cd-label,
+  .dahab-cv-progress-head,
+  .dahab-cv-final-price-label,
+  .dahab-cv-stars,
+  .dahab26-day-chip
+) {
+  letter-spacing: 0;
+  text-transform: none;
+  word-spacing: normal;
+}
+
+html[dir="rtl"] .dahab-page :is(
+  .dahab-cv-subtitle,
+  .dahab-cv-price-tier,
+  .dahab-cv-trust,
+  .dahab-cv-includes-sub,
+  .dahab-cv-inc-desc,
+  .dahab-soul-lead,
+  .dahab-soul-invite,
+  .dahab-soul-spots-label,
+  .dahab-soul-faq-item summary,
+  .dahab-soul-faq-item p,
+  .dahab-soul-cancel-list li,
+  .dahab-soul-cancel-note,
+  .dahab26-place,
+  .dahab26-slot-text,
+  .dahab-cv-proof-quote,
+  .dahab-cv-final-text,
+  .dahab-cv-final-price-note,
+  .dahab-cv-final-list li,
+  .dahab-cv-urgency-note
+) {
+  letter-spacing: 0;
+  word-spacing: normal;
+  overflow-wrap: break-word;
+  word-break: normal;
+  line-height: 1.75;
+}
+
+html[dir="rtl"] .dahab-soul-opening .dahab-soul-spots-label {
+  margin: 0.75rem 0 0 !important;
+  font-family: 'Tajawal', sans-serif !important;
+  font-size: clamp(1rem, 2.8vw, 1.25rem) !important;
+  font-weight: 700 !important;
 }
