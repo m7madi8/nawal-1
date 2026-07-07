@@ -181,6 +181,151 @@
   }
 }
 
+.event-sh-content--readmore {
+  margin-top: 0;
+  border-top: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.event-sh-readmore {
+  margin-top: 0.5rem;
+}
+
+.event-sh-readmore-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  border-radius: 1.2rem;
+  background: var(--esh-card);
+  border: 1px solid rgba(185, 137, 95, 0.24);
+  box-shadow: 0 8px 24px rgba(130, 90, 58, 0.06);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(1rem, 2.4vw, 1.12rem);
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--esh-accent-dark);
+  cursor: pointer;
+  list-style: none;
+  transition: background 180ms ease, border-color 180ms ease;
+}
+
+.event-sh-readmore-summary::-webkit-details-marker {
+  display: none;
+}
+
+.event-sh-readmore-summary::after {
+  content: "+";
+  flex-shrink: 0;
+  width: 1.75rem;
+  height: 1.75rem;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--esh-accent-soft);
+  border: 1px solid rgba(185, 137, 95, 0.28);
+  font-family: Inter, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--esh-accent);
+  transition: transform 200ms ease, background 200ms ease;
+}
+
+.event-sh-readmore[open] .event-sh-readmore-summary {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-color: rgba(185, 137, 95, 0.12);
+}
+
+.event-sh-readmore[open] .event-sh-readmore-summary::after {
+  content: "−";
+  background: rgba(130, 90, 58, 0.14);
+}
+
+.event-sh-readmore[open] .event-sh-content--readmore {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-top: none;
+  box-shadow: 0 12px 36px rgba(130, 90, 58, 0.07);
+}
+
+.event-sh-readmore-summary:hover {
+  background: #fffdf9;
+}
+
+.event-sh-main-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.event-sh-content {
+  padding: 1.5rem 1.35rem 1.6rem;
+  border-radius: 1.2rem;
+  background: var(--esh-card);
+  border: 1px solid rgba(185, 137, 95, 0.22);
+  box-shadow: 0 12px 36px rgba(130, 90, 58, 0.07);
+}
+
+.event-sh-intro p,
+.event-sh-content-section p {
+  margin: 0 0 1rem;
+  font-size: 0.98rem;
+  line-height: 1.85;
+  color: var(--esh-text);
+}
+
+.event-sh-intro p:last-child,
+.event-sh-content-section p:last-child {
+  margin-bottom: 0;
+}
+
+.event-sh-divider {
+  margin: 1.5rem 0;
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(185, 137, 95, 0.35) 20%,
+    rgba(185, 137, 95, 0.35) 80%,
+    transparent
+  );
+}
+
+.event-sh-content-section {
+  margin: 0;
+}
+
+.event-sh-content-title {
+  margin: 0 0 0.85rem;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(1.15rem, 2.6vw, 1.35rem);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--esh-accent-dark);
+}
+
+.event-sh-list {
+  margin: 0.5rem 0 0;
+  padding-inline-start: 1.25rem;
+  list-style: disc;
+}
+
+.event-sh-list li {
+  margin-bottom: 0.55rem;
+  font-size: 0.96rem;
+  line-height: 1.75;
+  color: var(--esh-text);
+}
+
+.event-sh-list li:last-child {
+  margin-bottom: 0;
+}
+
 .event-sh-section-head {
   margin-bottom: 1rem;
   text-align: center;
@@ -402,10 +547,22 @@
 }
 
 .event-sh-register-note {
-  margin: 0 0 1rem;
+  margin: 0 0 0.75rem;
   font-size: 0.92rem;
   font-weight: 600;
   color: var(--esh-text);
+}
+
+.event-sh-booking-notice {
+  margin: 0 0 1rem;
+  padding: 0.7rem 0.85rem;
+  border-radius: 0.75rem;
+  background: var(--esh-accent-soft);
+  border: 1px solid rgba(185, 137, 95, 0.2);
+  font-size: 0.86rem;
+  font-weight: 600;
+  line-height: 1.55;
+  color: var(--esh-accent-dark);
 }
 
 .event-sh-actions {
@@ -498,6 +655,8 @@ html[dir="rtl"] .event-sh-page {
 html[dir="rtl"] .event-sh-page :is(
   .event-sh-title,
   .event-sh-section-title,
+  .event-sh-content-title,
+  .event-sh-readmore-summary,
   .event-sh-price-amount
 ) {
   font-family: 'Amiri', serif;
@@ -516,11 +675,14 @@ html[dir="rtl"] .event-sh-page :is(
 html[dir="rtl"] .event-sh-page :is(
   .event-sh-tagline,
   .event-sh-greeting,
-  .event-sh-about,
+  .event-sh-intro p,
+  .event-sh-content-section p,
+  .event-sh-list li,
   .event-sh-audience p,
   .event-sh-meta-value,
   .event-sh-price-desc,
   .event-sh-register-note,
+  .event-sh-booking-notice,
   .event-sh-gallery-hint
 ) {
   letter-spacing: 0;
