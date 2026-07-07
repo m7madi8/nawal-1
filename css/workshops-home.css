@@ -17,6 +17,12 @@
   .workshops-cards-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+
+  .workshops-cards-grid--two {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 56rem;
+    margin-inline: auto;
+  }
 }
 
 .workshops-cards-grid .workshop-card-footer {
