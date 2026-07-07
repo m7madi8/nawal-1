@@ -30,6 +30,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;600;700&family=Scheherazade+New:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/page-loader.css">
+  <link rel="stylesheet" href="css/hero-mobile.css">
   <link rel="stylesheet" href="css/rtl.css">
   <link rel="stylesheet" href="css/scroll-media.css">
   <link rel="stylesheet" href="css/workshops-home.css">
@@ -293,7 +294,15 @@
     <main class="min-w-0">
       <section class="hero-luxury hero-luxury--fill hero-luxury--await-loader relative overflow-hidden">
         <div class="absolute inset-0 hero-bg-wrap">
-          <img src="public/media/hero.jpg" alt="" class="hero-bg h-full w-full object-cover object-center" loading="eager">
+          <div class="hero-mobile-slideshow" aria-hidden="true">
+            <img src="public/media/IMG-20260707-WA0016.jpg" alt="" class="hero-mobile-slide hero-mobile-slide--1 is-active" loading="eager" decoding="async" width="1200" height="1600">
+            <img src="public/media/IMG-20260707-WA0018.jpg" alt="" class="hero-mobile-slide hero-mobile-slide--2" loading="eager" decoding="async" width="1200" height="1600">
+            <img src="public/media/IMG-20260707-WA0019.jpg" alt="" class="hero-mobile-slide hero-mobile-slide--3" loading="lazy" decoding="async" width="1200" height="1600">
+            <img src="public/media/IMG-20260707-WA0020.jpg" alt="" class="hero-mobile-slide hero-mobile-slide--4" loading="lazy" decoding="async" width="1200" height="1600">
+            <img src="public/media/IMG-20260707-WA0021.jpg" alt="" class="hero-mobile-slide hero-mobile-slide--5" loading="lazy" decoding="async" width="1200" height="1600">
+            <img src="public/media/IMG-20260707-WA0022.jpg" alt="" class="hero-mobile-slide hero-mobile-slide--6" loading="lazy" decoding="async" width="1200" height="1600">
+          </div>
+          <img src="public/media/hero.jpg" alt="" class="hero-bg hero-bg--desktop h-full w-full object-cover object-center" loading="eager">
           <div class="absolute inset-0 bg-[var(--color-secondary)]/60 hero-overlay"></div>
           <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-[var(--color-secondary)]/85"></div>
           <div class="hero-vignette absolute inset-0"></div>
@@ -627,6 +636,7 @@
   <script src="js/count-up.js"></script>
   <script src="js/video.js"></script>
   <script src="js/gallery.js"></script>
+  <script src="js/hero-mobile.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

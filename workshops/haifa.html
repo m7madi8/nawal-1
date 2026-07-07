@@ -16,8 +16,9 @@
   <link rel="stylesheet" href="../css/rtl.css">
   <link rel="stylesheet" href="../css/scroll-media.css">
   <link rel="stylesheet" href="../css/jiva-page.css">
+  <link rel="stylesheet" href="../css/haifa-premium.css">
 </head>
-<body class="antialiased">
+<body class="haifa-page antialiased">
   <header class="site-header" role="banner">
     <div class="site-header-bar">
       <a href="../index.html" class="site-header-brand">
@@ -123,142 +124,164 @@
       </div>
     </div>
 
-  <div id="app-root" class="min-h-screen min-w-0 bg-[var(--bg-body)] text-[var(--text-main)]">
+  <div id="app-root" class="min-h-screen min-w-0 text-[var(--text-main)]">
     <div id="custom-cursor" class="pointer-events-none fixed left-0 top-0 z-[60] hidden md:block" style="display:none" aria-hidden="true">
       <div class="h-7 w-7 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/70 bg-white/10 shadow-soft backdrop-blur-md transition-transform duration-200 will-change-transform"></div>
     </div>
 
-    <main class="workshop-page jiva-page min-w-0">
-      <div class="jiva-page-wrap">
-      <section class="jiva-hero animate-section jiva-section">
-        <div class="jiva-section-inner min-w-0">
-          <div class="jiva-hero-top">
-            <a href="../index.html#workshops" class="jiva-back" aria-label="Back">
-              <svg class="h-4 w-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-              <span data-i18n="back">Back</span>
-            </a>
-          </div>
-          <div class="animate-content jiva-hero-panel jiva-panel">
-            <p class="jiva-eyebrow" data-i18n="jiva_page_label">Haifa Yoga</p>
-            <h1 class="jiva-page-title" data-i18n="jiva_page_title">Haifa Yoga</h1>
-            <p class="jiva-lead" data-i18n="jiva_page_body">Vinyasa yoga is a dynamic practice that connects movement and breath, so each shape flows into the next with rhythm and awareness.</p>
-            <p class="jiva-lead" data-i18n="jiva_page_body_2">This style strengthens the body, builds flexibility, calms the mind, and deepens breath–body coordination—making class a grounded experience of presence and inner balance.</p>
-            <p class="jiva-lead jiva-lead--whatsapp" data-i18n="jiva_page_whatsapp">Join the Haifa Yoga community on WhatsApp for class updates, inspiration, and connection with fellow practitioners.</p>
-          </div>
-        </div>
-      </section>
+    <main class="haifa-main">
+      <section class="haifa-hero animate-section">
+        <div class="haifa-hero-inner">
+          <a href="../index.html#workshops" class="haifa-back top-back-link" aria-label="Back">
+            <svg class="h-4 w-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            <span data-i18n="back">Back</span>
+          </a>
 
-      <section class="jiva-moments animate-section jiva-section" aria-labelledby="jiva-moments-title">
-        <div class="jiva-section-inner min-w-0">
-          <div class="animate-content jiva-block-head">
-            <p class="jiva-eyebrow jiva-eyebrow--left" data-i18n="jiva_moments_kicker">Reels & photos</p>
-            <h2 id="jiva-moments-title" class="jiva-subtitle jiva-subtitle--tight" data-i18n="jiva_moments_title">From the mat &amp; the sea</h2>
-          </div>
-          <div class="animate-content jiva-moments-shell jiva-panel">
-            <p class="jiva-moments-swipe-hint" data-i18n="jiva_moments_swipe_hint">Swipe sideways to see more.</p>
-            <div class="jiva-moments-reels" data-i18n-attr="aria-label:jiva_moments_reels_label">
-              <div class="jiva-reel jiva-reel-player video-frame">
-                <video class="jiva-reel-video" src="../public/media/vid1.mp4" poster="../public/media/7.jpg" muted playsinline loop preload="metadata" data-i18n-attr="aria-label:jiva_reel_aria_1" aria-label="Haifa yoga reel"></video>
-                <button type="button" class="jiva-reel-playbtn" data-i18n-attr="aria-label:jiva_reel_play">
-                  <span class="jiva-reel-playbtn__ring" aria-hidden="true"></span>
-                  <svg class="jiva-reel-playbtn__icon" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-                </button>
+          <div class="haifa-hero-grid animate-content">
+            <div class="haifa-hero-copy">
+              <span class="haifa-badge" data-i18n="jiva_page_label">Haifa Yoga</span>
+              <h1 class="haifa-title" data-i18n="jiva_page_title">Haifa Yoga</h1>
+              <p class="haifa-lead" data-i18n="jiva_page_body">Vinyasa yoga is a dynamic practice that connects movement and breath, so each shape flows into the next with rhythm and awareness.</p>
+              <p class="haifa-lead" data-i18n="jiva_page_body_2">This style strengthens the body, builds flexibility, calms the mind, and deepens breath–body coordination—making class a grounded experience of presence and inner balance.</p>
+
+              <div class="haifa-hero-meta">
+                <div class="haifa-meta-card">
+                  <span class="haifa-meta-label" data-i18n="jiva_class_power_day">Tuesday</span>
+                  <span class="haifa-meta-value" data-i18n="jiva_schedule_slot1">Tuesday · Power Yoga · Naeem Studio · 19:20</span>
+                </div>
+                <div class="haifa-meta-card">
+                  <span class="haifa-meta-label" data-i18n="jiva_class_saturday_day">Saturday</span>
+                  <span class="haifa-meta-value" data-i18n="jiva_schedule_slot2">Saturday · Calm & breath · by the sea · 18:30</span>
+                </div>
               </div>
-              <div class="jiva-reel jiva-reel-player video-frame">
-                <video class="jiva-reel-video" src="../public/media/vid2.mp4" poster="../public/media/14.jpg" muted playsinline loop preload="metadata" data-i18n-attr="aria-label:jiva_reel_aria_2" aria-label="Haifa yoga reel"></video>
-                <button type="button" class="jiva-reel-playbtn" data-i18n-attr="aria-label:jiva_reel_play">
-                  <span class="jiva-reel-playbtn__ring" aria-hidden="true"></span>
-                  <svg class="jiva-reel-playbtn__icon" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-                </button>
-              </div>
+
+              <p class="haifa-lead haifa-lead--whatsapp" data-i18n="jiva_page_whatsapp">Join the Haifa Yoga community on WhatsApp for class updates, inspiration, and connection with fellow practitioners.</p>
             </div>
-            <div class="jiva-moments-photos">
-              <figure class="jiva-moment-photo"><img src="../public/media/7.jpg" alt="" width="1200" height="900" loading="lazy" decoding="async" data-i18n-attr="alt:jiva_photo_alt_1"></figure>
-              <figure class="jiva-moment-photo"><img src="../public/media/14.jpg" alt="" width="1200" height="900" loading="lazy" decoding="async" data-i18n-attr="alt:jiva_photo_alt_2"></figure>
-            </div>
+
+            <figure class="haifa-hero-visual">
+              <img src="../public/media/7.jpg" alt="" width="640" height="800" loading="eager" decoding="async" data-i18n-attr="alt:jiva_hero_img_alt">
+            </figure>
           </div>
         </div>
       </section>
 
-      <section class="jiva-offers animate-section jiva-section">
-        <div class="jiva-section-inner min-w-0">
-          <div class="animate-content jiva-shell jiva-panel jiva-shell--studio">
-            <header class="jiva-shell-header">
-              <div class="jiva-shell-header__ornament" aria-hidden="true"></div>
-              <h3 class="jiva-shell-greeting" data-i18n="jiva_pricing_greeting">سلامات اصدقائي</h3>
-            </header>
-
-            <div class="jiva-pricing-block">
-              <div class="jiva-pricing-block__head">
-                <span class="jiva-pricing-block__hairline" aria-hidden="true"></span>
-                <p class="jiva-eyebrow jiva-pricing-block__label" data-i18n="jiva_pricing_title">الأسعار</p>
-                <span class="jiva-pricing-block__hairline" aria-hidden="true"></span>
-              </div>
-              <div class="jiva-plans">
-              <article class="jiva-plan-card">
-                <p class="jiva-plan-card__title" data-i18n="jiva_card_trial_title">الدرس التجريبي</p>
-                <p class="jiva-plan-card__price" data-i18n="jiva_price_trial">65 شيكل</p>
-                <button type="button" class="jiva-btn jiva-btn--primary" data-register-btn data-package-key="trial"><span data-i18n="jiva_card_register">سجلي الآن</span><span aria-hidden="true">→</span></button>
+      <div class="haifa-body">
+        <div class="haifa-body-inner">
+          <section class="haifa-section animate-section" aria-labelledby="haifa-classes-title">
+            <div class="haifa-section-head animate-content">
+              <p class="haifa-kicker" data-i18n="jiva_classes_kicker">Our classes</p>
+              <h2 id="haifa-classes-title" class="haifa-section-title" data-i18n="jiva_classes_title">Two rhythms, one practice</h2>
+            </div>
+            <div class="haifa-class-grid haifa-panel animate-content">
+              <article class="haifa-class-card haifa-class-card--power">
+                <div class="haifa-power-layout">
+                  <div class="haifa-power-gallery" data-i18n-attr="aria-label:jiva_power_gallery_label">
+                    <figure class="haifa-power-gallery__main">
+                      <img src="../public/media/14.jpg" alt="" width="900" height="1100" loading="lazy" decoding="async" data-i18n-attr="alt:jiva_power_photo_alt1">
+                    </figure>
+                    <figure class="haifa-power-gallery__side">
+                      <img src="../public/media/home/9.jpg" alt="" width="700" height="700" loading="lazy" decoding="async" data-i18n-attr="alt:jiva_power_photo_alt2">
+                    </figure>
+                    <figure class="haifa-power-gallery__side">
+                      <img src="../public/media/7.jpg" alt="" width="700" height="700" loading="lazy" decoding="async" data-i18n-attr="alt:jiva_power_photo_alt3">
+                    </figure>
+                  </div>
+                  <div class="haifa-class-body haifa-class-body--power">
+                    <span class="haifa-class-day" data-i18n="jiva_class_power_day">Tuesday</span>
+                    <h3 class="haifa-class-name" data-i18n="jiva_class_power_title">Power Yoga</h3>
+                    <p class="haifa-class-desc" data-i18n="jiva_class_power_desc">Power Yoga aims to strengthen the body, build flexibility and endurance, and learn advanced poses gradually and safely.</p>
+                  </div>
+                </div>
               </article>
-              <article class="jiva-plan-card">
-                <p class="jiva-plan-card__title" data-i18n="jiva_card_pack4_title">باقة 4 دروس</p>
-                <p class="jiva-plan-card__price" data-i18n="jiva_price_pack4">260 شيكل</p>
-                <button type="button" class="jiva-btn jiva-btn--primary" data-register-btn data-package-key="pack4"><span data-i18n="jiva_card_register">سجلي الآن</span><span aria-hidden="true">→</span></button>
+              <article class="haifa-class-card haifa-class-card--calm">
+                <div class="haifa-class-body haifa-class-body--calm">
+                  <span class="haifa-class-day haifa-class-day--calm" data-i18n="jiva_class_saturday_day">Saturday</span>
+                  <h3 class="haifa-class-name" data-i18n="jiva_class_saturday_title">Calm &amp; deep rest</h3>
+                  <p class="haifa-class-desc" data-i18n="jiva_class_saturday_desc">Saturday class focuses on calming, deep breathing, and relaxing the nervous system.</p>
+                </div>
               </article>
-              <article class="jiva-plan-card">
-                <p class="jiva-plan-card__title" data-i18n="jiva_card_single_title">درس واحد</p>
-                <p class="jiva-plan-card__price" data-i18n="jiva_price_single">75 شيكل</p>
-                <button type="button" class="jiva-btn jiva-btn--primary" data-register-btn data-package-key="single"><span data-i18n="jiva_card_register">سجلي الآن</span><span aria-hidden="true">→</span></button>
-              </article>
-              </div>
+            </div>
+          </section>
+
+          <section class="haifa-section haifa-pricing-section animate-section" aria-labelledby="haifa-pricing-title">
+            <div class="haifa-section-head animate-content">
+              <p class="haifa-kicker" data-i18n="jiva_pricing_title">Pricing</p>
+              <h2 id="haifa-pricing-title" class="haifa-section-title" data-i18n="jiva_pricing_greeting">Hello friends</h2>
             </div>
 
-            <div class="jiva-gift jiva-gift--studio">
-              <span class="jiva-gift-badge" data-i18n="jiva_private_gift_badge">بطاقة هدية</span>
-              <p class="jiva-gift-title" data-i18n="jiva_private_title">درس خصوصي لصبية واحدة أو صبيتين</p>
-              <p class="jiva-gift-sub" data-i18n="jiva_private_subtitle">يوغا مع تأمل موجه</p>
-              <div class="jiva-gift-prices">
-                <p data-i18n="jiva_private_price_1">صبية واحدة: 200 شيكل</p>
-                <p data-i18n="jiva_private_price_2">صبيتين: 300 شيكل</p>
-              </div>
-              <p class="jiva-gift-note" data-i18n="jiva_private_gift_note">متاح كبطاقة هدية — اطلبي التاريخ والتفاصيل عبر واتساب.</p>
-              <div class="jiva-gift-actions">
-                <button type="button" class="jiva-btn jiva-btn--primary" data-register-btn data-package-key="private1"><span data-i18n="jiva_private_btn_1">سجلي — صبية واحدة (200)</span><span aria-hidden="true">→</span></button>
-                <button type="button" class="jiva-btn jiva-btn--primary" data-register-btn data-package-key="private2"><span data-i18n="jiva_private_btn_2">سجلي — صبيتين (300)</span><span aria-hidden="true">→</span></button>
-                <button type="button" class="jiva-btn jiva-btn--ghost" data-register-btn data-package-key="gift"><span data-i18n="jiva_private_btn_gift">بطاقة هدية</span><span aria-hidden="true">→</span></button>
-              </div>
-            </div>
+            <div class="haifa-pricing-layout animate-content">
+              <div class="haifa-pricing-main">
+                <div class="haifa-plans">
+                  <article class="haifa-plan">
+                    <p class="haifa-plan__title" data-i18n="jiva_card_trial_title">Trial class</p>
+                    <p class="haifa-plan__price" data-i18n="jiva_price_trial">65 ILS</p>
+                    <button type="button" class="haifa-btn haifa-btn--primary" data-register-btn data-package-key="trial"><span data-i18n="jiva_card_register">Register now</span><span aria-hidden="true">→</span></button>
+                  </article>
+                  <article class="haifa-plan haifa-plan--featured">
+                    <p class="haifa-plan__title" data-i18n="jiva_card_pack4_title">4-class package</p>
+                    <p class="haifa-plan__price" data-i18n="jiva_price_pack4">260 ILS</p>
+                    <p class="haifa-plan__note" data-i18n="jiva_pack4_notice">Note: package valid for one month only</p>
+                    <button type="button" class="haifa-btn haifa-btn--primary" data-register-btn data-package-key="pack4"><span data-i18n="jiva_card_register">Register now</span><span aria-hidden="true">→</span></button>
+                  </article>
+                  <article class="haifa-plan">
+                    <p class="haifa-plan__title" data-i18n="jiva_card_single_title">Single class</p>
+                    <p class="haifa-plan__price" data-i18n="jiva_price_single">75 ILS</p>
+                    <button type="button" class="haifa-btn haifa-btn--primary" data-register-btn data-package-key="single"><span data-i18n="jiva_card_register">Register now</span><span aria-hidden="true">→</span></button>
+                  </article>
+                </div>
 
-            <div class="jiva-details-flow">
-              <div class="jiva-meta jiva-meta--studio">
-                <div class="jiva-meta-tile"><h4 data-i18n="jiva_payment_title">الدفع</h4><p data-i18n="jiva_payment_methods">🎟️ الدفع عن طريق Bit أو העברה בנקאית</p></div>
-                <div class="jiva-meta-tile"><h4 data-i18n="jiva_policy_title">سياسة الإلغاء</h4><p data-i18n="jiva_cancel_rule">إلغاء درس قبل ب ١٢ ساعة فقط</p></div>
+                <div class="haifa-gift">
+                  <div class="haifa-gift-head">
+                    <span class="haifa-gift-badge" data-i18n="jiva_private_gift_badge">Gift card</span>
+                    <div class="haifa-gift-copy">
+                      <p class="haifa-gift-title" data-i18n="jiva_private_title">Private lesson for one or two girls</p>
+                      <p class="haifa-gift-sub" data-i18n="jiva_private_subtitle">Yoga with guided meditation</p>
+                    </div>
+                  </div>
+                  <div class="haifa-gift-prices">
+                    <p class="haifa-gift-price" data-i18n="jiva_private_price_1">One girl: 200 ILS</p>
+                    <p class="haifa-gift-price" data-i18n="jiva_private_price_2">Two girls: 300 ILS</p>
+                  </div>
+                  <p class="haifa-gift-note" data-i18n="jiva_private_gift_note">Available as a gift certificate — message us on WhatsApp for date &amp; details.</p>
+                  <div class="haifa-gift-actions">
+                    <button type="button" class="haifa-btn haifa-btn--primary" data-register-btn data-package-key="private1"><span data-i18n="jiva_private_btn_1">Register — 1 girl (200)</span><span aria-hidden="true">→</span></button>
+                    <button type="button" class="haifa-btn haifa-btn--primary" data-register-btn data-package-key="private2"><span data-i18n="jiva_private_btn_2">Register — 2 girls (300)</span><span aria-hidden="true">→</span></button>
+                    <button type="button" class="haifa-btn haifa-btn--ghost" data-register-btn data-package-key="gift"><span data-i18n="jiva_private_btn_gift">Gift card</span><span aria-hidden="true">→</span></button>
+                  </div>
+                </div>
               </div>
-              <div class="jiva-schedule jiva-schedule--studio">
-                <h4 data-i18n="jiva_meeting_title">موعد الحصة</h4>
-                <ol class="jiva-schedule-list" role="list">
-                  <li class="jiva-schedule-item"><p class="jiva-schedule-line" data-i18n="jiva_schedule_slot1">Tuesday · Naeem Studio · 19:20</p></li>
-                  <li class="jiva-schedule-item"><p class="jiva-schedule-line" data-i18n="jiva_schedule_slot2">Saturday · by the sea · 18:30</p></li>
-                </ol>
-              </div>
-            </div>
 
-            <div class="jiva-shell-join">
-              <p class="jiva-eyebrow" data-i18n="jiva_join_eyebrow">Community</p>
-              <h3 class="jiva-subtitle jiva-subtitle--tight" data-i18n="jiva_join_title">Join the Haifa Yoga group</h3>
-              <p class="jiva-lead jiva-lead--compact" data-i18n="jiva_join_text">Get schedules, updates, and connect with others in the Haifa Yoga community on WhatsApp.</p>
-              <a href="https://chat.whatsapp.com/GoHoJCDBm2vAs5SdcqUfta" target="_blank" rel="noopener noreferrer" class="jiva-btn jiva-btn--primary jiva-btn--join">
-                <svg class="h-5 w-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                <span data-i18n="jiva_join_btn">Join Haifa Yoga WhatsApp group</span>
-                <span aria-hidden="true">→</span>
-              </a>
+              <aside class="haifa-pricing-aside">
+                <div class="haifa-info-tile">
+                  <h4 data-i18n="jiva_payment_title">Payment</h4>
+                  <p data-i18n="jiva_payment_methods">🎟️ Payment via Bit or העברה בנקאית</p>
+                </div>
+                <div class="haifa-info-tile">
+                  <h4 data-i18n="jiva_policy_title">Cancellation policy</h4>
+                  <p data-i18n="jiva_cancel_rule">No refund for cancellations made less than 8 hours before class.</p>
+                </div>
+                <div class="haifa-schedule">
+                  <h4 data-i18n="jiva_meeting_title">Class time</h4>
+                  <ol class="haifa-schedule-list" role="list">
+                    <li class="haifa-schedule-item" data-i18n="jiva_schedule_slot1">Tuesday · Power Yoga · Naeem Studio · 19:20</li>
+                    <li class="haifa-schedule-item" data-i18n="jiva_schedule_slot2">Saturday · Calm &amp; breath · by the sea · 18:30</li>
+                  </ol>
+                </div>
+                <div class="haifa-join">
+                  <p class="haifa-kicker" data-i18n="jiva_join_eyebrow">Community</p>
+                  <p class="haifa-section-title" data-i18n="jiva_join_title">Join the Haifa Yoga group</p>
+                  <p class="haifa-join-text" data-i18n="jiva_join_text">Get schedules, updates, and connect with others in the Haifa Yoga community on WhatsApp.</p>
+                  <a href="https://chat.whatsapp.com/GoHoJCDBm2vAs5SdcqUfta" target="_blank" rel="noopener noreferrer" class="haifa-btn haifa-btn--primary">
+                    <svg class="h-5 w-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    <span data-i18n="jiva_join_btn">Join Haifa Yoga WhatsApp group</span>
+                  </a>
+                </div>
+              </aside>
             </div>
-          </div>
+          </section>
         </div>
-      </section>
       </div>
     </main>
-
     <div id="haifa-register-modal" class="haifa-register-modal" hidden>
       <div class="haifa-register-card" role="dialog" aria-modal="true" aria-labelledby="haifa-register-title">
         <div class="haifa-register-head">
@@ -271,7 +294,7 @@
           <input id="haifa-register-name" name="fullName" class="haifa-field-input" required>
           <label class="haifa-field-label" for="haifa-register-phone" data-i18n="haifa_register_phone">Phone (WhatsApp preferred)</label>
           <input id="haifa-register-phone" name="phone" class="haifa-field-input" required>
-          <button type="submit" class="jiva-btn jiva-btn--primary haifa-submit-btn">
+          <button type="submit" class="haifa-btn haifa-btn--primary haifa-submit-btn">
             <span data-i18n="haifa_register_confirm">Confirm registration</span>
           </button>
         </form>
@@ -311,7 +334,6 @@
 
   <script src="../js/i18n.js"></script>
   <script src="../js/reveal.js"></script>
-  <script src="../js/jiva-reels.js"></script>
   <script src="../js/haifa-registration.js"></script>
   <script src="../js/app.js"></script>
 </body>
