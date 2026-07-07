@@ -246,19 +246,23 @@
 
 .haifa-power-gallery {
   display: grid;
-  grid-template-columns: 1.35fr 1fr;
-  grid-template-rows: repeat(2, minmax(0, 1fr));
-  gap: 0.45rem;
-  min-height: 14.5rem;
-  padding: 0.65rem;
-  background: linear-gradient(165deg, #faf6f1 0%, #f3ebe3 100%);
+  grid-template-columns: 1fr;
+  gap: 0.35rem;
+  padding: 0;
+  background: none;
   border-bottom: 1px solid rgba(185, 137, 95, 0.12);
+}
+
+@media (min-width: 640px) {
+  .haifa-power-gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+    gap: 0.35rem;
+  }
 }
 
 @media (min-width: 768px) {
   .haifa-power-gallery {
-    min-height: 18rem;
-    padding: 0.75rem;
     border-bottom: none;
     border-inline-end: 1px solid rgba(185, 137, 95, 0.12);
   }
@@ -266,28 +270,9 @@
 
 .haifa-power-gallery__main,
 .haifa-power-gallery__side {
-  margin: 0;
-  overflow: hidden;
-  border-radius: 0.8rem;
-  border: 1px solid rgba(255, 255, 255, 0.65);
-  box-shadow: 0 8px 22px rgba(130, 90, 58, 0.12);
-}
-
-.haifa-power-gallery__main {
-  grid-row: 1 / -1;
-}
-
-.haifa-power-gallery__main img,
-.haifa-power-gallery__side img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   display: block;
-  transition: transform 500ms ease;
-}
-
-.haifa-class-card--power:hover .haifa-power-gallery__main img {
-  transform: scale(1.03);
 }
 
 .haifa-class-body--power {
