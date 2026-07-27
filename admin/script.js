@@ -34,7 +34,7 @@
   function requireAuthForDashboard() {
     var session = getSession();
     if (!session || !session.isLoggedIn) {
-      window.location.href = "admin.html";
+      window.location.href = "index.html";
     }
   }
 
@@ -515,7 +515,7 @@
     if (logoutBtn) {
       logoutBtn.addEventListener("click", function () {
         clearSession();
-        window.location.href = "admin.html";
+        window.location.href = "index.html";
       });
     }
     if (modalCloseBtn) {

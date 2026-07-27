@@ -347,7 +347,7 @@ body::before {
 .workshop-card-image-wrap--haifa-bg .workshop-card-bg-image {
   position: absolute;
   inset: 0;
-  background-image: url('../public/media/7.jpg');
+  background-image: url('../public/media/haifa/hero.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

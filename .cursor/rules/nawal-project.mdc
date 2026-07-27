@@ -6,8 +6,44 @@ alwaysApply: true
 # Nawal Yoga Project
 
 ## Stack
-- Static site: plain HTML, CSS (Tailwind-built style.css), vanilla JS. No framework or build step.
-- Pages: `index.html`, `Zanzibar.html`, `nawal.html`, `workshops/al-tira.html`, `workshops/haifa.html`.
+- Static site: plain HTML, CSS (Tailwind-built `css/style.css`), vanilla JS. No framework or build step.
+
+## Pages
+| Path | Role |
+|------|------|
+| `index.html` | Homepage |
+| `events.html` | Events hub |
+| `retreats.html` | Retreats hub |
+| `nawal.html` | Personal landing |
+| `workshops/haifa.html` | Haifa Yoga |
+| `workshops/al-tira.html` | Al-Tira workshop |
+| `workshops/jiva.html` | Redirect → `haifa.html` |
+| `events/sound-healing.html` | Sound Healing event |
+| `retreats/dahab.html` | Dahab retreat |
+| `retreats/zanzibar.html` | Zanzibar retreat |
+| `retreats/wadi-rum.html` | Wadi Rum retreat |
+| `register/mountain-voice.html` | Mountain Voice form |
+| `register/wadi-rum.html` | Wadi Rum form |
+| `admin/index.html` | Admin login |
+| `admin/dashboard.html` | Admin dashboard |
+
+Root stubs (`retreat-dahab.html`, `Zanzibar.html`, etc.) redirect to the canonical paths above — keep them for old links.
+
+## Media (`public/media/`)
+| Folder | Contents |
+|--------|----------|
+| `brand/` | Logo, avatar |
+| `home/` | Hero, moments, trainer, video |
+| `haifa/` | Haifa workshop photos |
+| `altira/` | Al-Tira cover |
+| `events/` | Event photos (sound healing) |
+| `dahab/` | Dahab retreat |
+| `zanzibar/` | Zanzibar retreat |
+| `wadi-rum/` | Wadi Rum retreat |
+| `shared/` | Shared CSS/decoration assets |
+| `_archive/` | Unused originals (do not link) |
+
+Use clean lowercase folder names and URL-safe filenames (no spaces/emojis).
 
 ## Language (i18n)
 - **EN / AR** via `js/i18n.js`. Stored in `localStorage` key `nawal-lang`.
@@ -21,7 +57,8 @@ alwaysApply: true
 - Workshop names in Arabic: **الطيرة** (Al-Tira), **حيفا** (Jiva/Haifa), **ريتريت** (Retreat). Use these exact terms in Arabic translations.
 
 ## Paths
-- Root pages use `css/`, `js/`, `public/`. Subpages under `workshops/` use `../css/`, `../js/`, `../public/` and `../index.html`, `../Zanzibar.html` for links.
+- Root pages use `css/`, `js/`, `public/`.
+- Subpages (`workshops/`, `events/`, `retreats/`, `register/`, `admin/`) use `../css/`, `../js/`, `../public/` and `../index.html` for home links.
 
 ## UI
-- Language switcher: `.lang-switcher` with `data-lang-set="en"` and `data-lang-set="ar"`. Include it and `js/i18n.js` on every page. RTL positioning for the switcher is in `rtl.css`.
+- Language switcher: `.lang-switcher` with `data-lang-set="en"` and `data-lang-set="ar"`. Include it and `js/i18n.js` on every public page. RTL positioning for the switcher is in `rtl.css`.

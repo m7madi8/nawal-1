@@ -843,14 +843,14 @@
   background-size: cover;
   background-position: center;
   opacity: 0.95;
-  background-image: url("../public/media/hero.jpg");
+  background-image: url("../public/media/home/hero.jpg");
 }
 
-#retreat-included.rp-experience-list .retreat-bullets > li:nth-child(1)::before { background-image: url("../public/media/hero.jpg"); }
-#retreat-included.rp-experience-list .retreat-bullets > li:nth-child(2)::before { background-image: url("../public/media/1.jpg"); }
-#retreat-included.rp-experience-list .retreat-bullets > li:nth-child(3)::before { background-image: url("../public/media/4.jpg"); }
-#retreat-included.rp-experience-list .retreat-bullets > li:nth-child(4)::before { background-image: url("../public/media/5.jpg"); }
-#retreat-included.rp-experience-list .retreat-bullets > li:nth-child(5)::before { background-image: url("../public/media/6.jpg"); }
+#retreat-included.rp-experience-list .retreat-bullets > li:nth-child(1)::before { background-image: url("../public/media/home/hero.jpg"); }
+#retreat-included.rp-experience-list .retreat-bullets > li:nth-child(2)::before { background-image: url("../public/media/shared/1.jpg"); }
+#retreat-included.rp-experience-list .retreat-bullets > li:nth-child(3)::before { background-image: url("../public/media/shared/4.jpg"); }
+#retreat-included.rp-experience-list .retreat-bullets > li:nth-child(4)::before { background-image: url("../public/media/shared/5.jpg"); }
+#retreat-included.rp-experience-list .retreat-bullets > li:nth-child(5)::before { background-image: url("../public/media/shared/6.jpg"); }
 
 #retreat-included.rp-experience-list .retreat-nested-bullets {
   margin-top: 0.55rem;

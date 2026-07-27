@@ -91,7 +91,7 @@
     var ogImg = document.getElementById('og-image');
     if (ogImg) {
       try {
-        ogImg.setAttribute('content', new URL('public/media/hero.jpg', clean).href);
+        ogImg.setAttribute('content', new URL('public/media/home/hero.jpg', clean).href);
       } catch (e1) {}
     }
   }
@@ -111,8 +111,8 @@
     var imgPerson;
     var imgHero;
     try {
-      imgPerson = new URL('public/media/10.jpg', clean).href;
-      imgHero = new URL('public/media/hero.jpg', clean).href;
+      imgPerson = new URL('public/media/home/trainer.jpg', clean).href;
+      imgHero = new URL('public/media/home/hero.jpg', clean).href;
     } catch (e2) {
       return;
     }

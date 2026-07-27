@@ -663,7 +663,7 @@
       rgba(255, 248, 240, 0.78) 42%,
       rgba(58, 48, 40, 0.38) 100%
     ),
-    url("../public/media/14.jpg");
+    url("../public/media/shared/14.jpg");
   background-size: cover;
   background-position: center 32%;
   background-repeat: no-repeat;
