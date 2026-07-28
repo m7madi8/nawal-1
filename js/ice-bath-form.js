@@ -20,13 +20,30 @@
   var signatureCanvas = document.getElementById("ib-signature-canvas");
   var clearSign = document.getElementById("ib-clear-sign");
   var signModeButtons = document.querySelectorAll("[data-ib-sign-mode]");
-  var storageKey = "ice-bath-health-draft";
+  var storageKey = "ice-bath-health-draft-v2";
 
   var currentStep = 1;
   var signMode = "type";
   var drawing = false;
   var hasDrawn = false;
   var canDraw = false;
+
+  var SCREENING_QUESTIONS = [
+    "Heart disease / arrhythmia / chest pain / catheterization / heart surgery / previous clot",
+    "Uncontrolled high or low blood pressure",
+    "Fainting (especially during exercise, breathing, heat, or cold)",
+    "Epilepsy / seizures / stroke / aneurysm / neurological injury",
+    "Uncontrolled asthma / lung disease / shortness of breath / recent respiratory attack",
+    "Raynaud’s / poor circulation / neuropathy / reduced extremity sensation",
+    "Pregnant / possibly pregnant / early postpartum",
+    "Diabetes / kidney disease / thyroid disorder / temperature regulation issue",
+    "Recent surgery / open wound / infection / fever / acute illness",
+    "Medication affecting heart, BP, alertness, clotting, or temperature regulation",
+    "Alcohol or sedative in the last few hours",
+    "Severe panic attacks / trauma / difficult water or choking experience",
+    "Slept, eaten, and hydrated appropriately today",
+    "Any reason unsure about safety of participation"
+  ];
 
   function getLang() {
     return document.documentElement.lang === "ar" ? "ar" : "en";
@@ -42,6 +59,29 @@
     return fallback || key;
   }
 
+  function fieldValue(name) {
+    var el = form.elements[name];
+    if (!el) return "";
+    return String(el.value || "").trim();
+  }
+
+  function yesNo(name) {
+    var checked = form.querySelector('input[name="' + name + '"]:checked');
+    return checked ? checked.value : "";
+  }
+
+  function buildScreeningNoteLines() {
+    var lines = [];
+    SCREENING_QUESTIONS.forEach(function (label, index) {
+      var n = index + 1;
+      var answer = yesNo("sq" + n) || "-";
+      var details = fieldValue("sq" + n + "Details") || "-";
+      lines.push("Q" + n + " (" + label + "): " + answer);
+      lines.push("Q" + n + " Details: " + details);
+    });
+    return lines;
+  }
+
   async function submitToSupabase() {
     var supabaseUrl = (form.getAttribute("data-supabase-url") || "").trim().replace(/\/+$/, "");
     var supabaseKey = (form.getAttribute("data-supabase-anon-key") || "").trim();
@@ -49,46 +89,39 @@
     if (!supabaseUrl || !supabaseKey || !table) return false;
 
     var now = new Date();
-    var yesNo = function (name) {
-      var checked = form.querySelector('input[name="' + name + '"]:checked');
-      return checked ? checked.value : "";
-    };
+    var yesFlags = SCREENING_QUESTIONS.map(function (_label, index) {
+      return yesNo("sq" + (index + 1));
+    }).filter(function (v) {
+      return v === "yes";
+    }).length;
 
     var payload = {
       id: "ice-" + now.getTime(),
       source: "ice-bath-health",
       retreatType: "Ice Bath Health Declaration",
       submittedAt: now.toISOString(),
-      fullName: ((form.fullName && form.fullName.value) || "").trim(),
-      phone: ((form.phone && form.phone.value) || "").trim(),
+      fullName: fieldValue("fullName"),
+      phone: fieldValue("phone"),
       age: "",
       city: "",
-      reason: ((form.notes && form.notes.value) || "").trim(),
+      reason: "",
       expectation: "",
       yogaExperience: "",
-      healthStatus: yesNo("heartIssues"),
-      healthDetails: ((form.otherConditions && form.otherConditions.value) || "").trim(),
+      healthStatus: yesFlags > 0 ? "yes" : "no",
+      healthDetails: yesFlags + " yes answer(s) in screening",
       activities: [],
       freeNote: [
-        "ID: " + ((form.idNumber && form.idNumber.value) || "-"),
-        "Birth Date: " + ((form.birthDate && form.birthDate.value) || "-"),
-        "Emergency: " +
-          ((form.emergencyName && form.emergencyName.value) || "-") +
-          " / " +
-          ((form.emergencyPhone && form.emergencyPhone.value) || "-") +
-          " / " +
-          ((form.relation && form.relation.value) || "-"),
-        "Heart / BP: " + yesNo("heartIssues"),
-        "Circulation / Raynaud: " + yesNo("circulation"),
-        "Pregnancy: " + yesNo("pregnancy"),
-        "Epilepsy / Seizures: " + yesNo("epilepsy"),
-        "Breathing issues: " + yesNo("breathing"),
-        "Allergy: " + ((form.allergy && form.allergy.value) || "-"),
-        "Medications: " + ((form.medications && form.medications.value) || "-"),
-        "Other conditions: " + ((form.otherConditions && form.otherConditions.value) || "-"),
-        "Signature Mode: " + signMode,
-        "Typed Signature: " + ((typedSignature && typedSignature.value.trim()) || "-")
-      ].join("\n"),
+        "Birth Date: " + (fieldValue("birthDate") || "-"),
+        "Emergency Contact: " + (fieldValue("emergencyContact") || "-"),
+        "Form Date: " + (fieldValue("formDate") || "-"),
+        "Declaration Confirmed: " + (form.consentDeclaration && form.consentDeclaration.checked ? "yes" : "no")
+      ]
+        .concat(buildScreeningNoteLines())
+        .concat([
+          "Signature Mode: " + signMode,
+          "Typed Signature: " + ((typedSignature && typedSignature.value.trim()) || "-")
+        ])
+        .join("\n"),
       status: "pending",
       createdAt: now.toISOString()
     };
@@ -414,6 +447,9 @@
   });
 
   loadDraft();
+  if (form.formDate && !form.formDate.value) {
+    form.formDate.value = new Date().toISOString().slice(0, 10);
+  }
   setSignMode(signMode);
   updateProgress();
   updateButtons();

@@ -502,8 +502,14 @@
 
     function parseIceBathFreeNote(text) {
       var parsed = {
-        idNumber: "-",
         birthDate: "-",
+        emergencyContact: "-",
+        formDate: "-",
+        declarationConfirmed: "-",
+        signatureMode: "-",
+        typedSignature: "-",
+        // legacy keys (older submissions)
+        idNumber: "-",
         emergencyName: "-",
         emergencyPhone: "-",
         relation: "-",
@@ -515,8 +521,7 @@
         allergy: "-",
         medications: "-",
         otherConditions: "-",
-        signatureMode: "-",
-        typedSignature: "-"
+        screening: []
       };
       if (!text) return parsed;
       String(text).split("\n").forEach(function (line) {
@@ -524,13 +529,22 @@
         if (idx === -1) return;
         var key = line.slice(0, idx).trim();
         var value = line.slice(idx + 1).trim() || "-";
-        if (key === "ID") parsed.idNumber = value;
-        else if (key === "Birth Date") parsed.birthDate = value;
+        if (key === "Birth Date") parsed.birthDate = value;
+        else if (key === "Emergency Contact") parsed.emergencyContact = value;
+        else if (key === "Form Date") parsed.formDate = value;
+        else if (key === "Declaration Confirmed") parsed.declarationConfirmed = value;
+        else if (key === "Signature Mode") parsed.signatureMode = value;
+        else if (key === "Typed Signature") parsed.typedSignature = value;
+        else if (/^Q\d+/.test(key)) parsed.screening.push([key, value]);
+        else if (key === "ID") parsed.idNumber = value;
         else if (key === "Emergency") {
           var parts = value.split("/").map(function (v) { return v.trim(); });
           parsed.emergencyName = parts[0] || "-";
           parsed.emergencyPhone = parts[1] || "-";
           parsed.relation = parts[2] || "-";
+          if (parsed.emergencyContact === "-") {
+            parsed.emergencyContact = parts.filter(Boolean).join(" / ") || "-";
+          }
         } else if (key === "Heart / BP") parsed.heartBp = value;
         else if (key === "Circulation / Raynaud") parsed.circulation = value;
         else if (key === "Pregnancy") parsed.pregnancy = value;
@@ -539,8 +553,6 @@
         else if (key === "Allergy") parsed.allergy = value;
         else if (key === "Medications") parsed.medications = value;
         else if (key === "Other conditions") parsed.otherConditions = value;
-        else if (key === "Signature Mode") parsed.signatureMode = value;
-        else if (key === "Typed Signature") parsed.typedSignature = value;
       });
       return parsed;
     }
@@ -868,25 +880,37 @@
           ["Full Name", retreat.fullName],
           ["Request Type", retreat.retreatType],
           ["Phone", retreat.phone],
-          ["ID Number", ice.idNumber],
           ["Birth Date", ice.birthDate],
-          ["Submitted At", retreat.date],
-          ["Emergency Contact Name", ice.emergencyName],
-          ["Emergency Contact Phone", ice.emergencyPhone],
-          ["Emergency Relationship", ice.relation],
-          ["Heart / Blood Pressure Issues", ice.heartBp],
-          ["Circulation / Raynaud", ice.circulation],
-          ["Pregnancy", ice.pregnancy],
-          ["Epilepsy / Seizures", ice.epilepsy],
-          ["Breathing Issues", ice.breathing],
-          ["Allergy", ice.allergy],
-          ["Medications", ice.medications],
-          ["Other Conditions", ice.otherConditions !== "-" ? ice.otherConditions : (retreat.healthDetails || "-")],
-          ["Additional Notes", retreat.reason || "-"],
+          ["Emergency Contact", ice.emergencyContact],
+          ["Form Date", ice.formDate],
+          ["Declaration Confirmed", ice.declarationConfirmed],
+          ["Submitted At", retreat.date]
+        ];
+        if (ice.screening.length) {
+          ice.screening.forEach(function (pair) {
+            fields.push(pair);
+          });
+        } else {
+          fields = fields.concat([
+            ["ID Number", ice.idNumber],
+            ["Emergency Contact Name", ice.emergencyName],
+            ["Emergency Contact Phone", ice.emergencyPhone],
+            ["Emergency Relationship", ice.relation],
+            ["Heart / Blood Pressure Issues", ice.heartBp],
+            ["Circulation / Raynaud", ice.circulation],
+            ["Pregnancy", ice.pregnancy],
+            ["Epilepsy / Seizures", ice.epilepsy],
+            ["Breathing Issues", ice.breathing],
+            ["Allergy", ice.allergy],
+            ["Medications", ice.medications],
+            ["Other Conditions", ice.otherConditions !== "-" ? ice.otherConditions : (retreat.healthDetails || "-")]
+          ]);
+        }
+        fields = fields.concat([
           ["Signature Method", ice.signatureMode],
           ["Typed Signature", ice.typedSignature],
           ["Status", statusLabel(retreat.status)]
-        ];
+        ]);
       } else if (retreat.source === "zanzibar-retreat-reserve" || retreat.source === "dahab-retreat-reserve") {
         fields = [
           ["Full Name", retreat.fullName],

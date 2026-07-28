@@ -242,6 +242,10 @@
   gap: 0.65rem;
 }
 
+.ib-radio-group.ib-radio-inline {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .ib-radio-group label,
 .ib-checks label {
   border: 1px solid #d5e2e5;
@@ -256,6 +260,52 @@
   cursor: pointer;
   font-size: 0.92rem;
   line-height: 1.4;
+}
+
+.ib-declaration {
+  display: grid;
+  gap: 0.9rem;
+  margin-bottom: 1rem;
+  padding: 1rem 1.05rem;
+  border: 1px solid #d5e2e5;
+  border-radius: 0.95rem;
+  background: #f7fbfc;
+}
+
+.ib-declaration p {
+  margin: 0;
+  color: #2f4b52;
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+.ib-chapter-label {
+  margin: 0 0 0.35rem;
+  color: #3d7a88;
+  font-size: 0.9rem;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+.ib-screen-q {
+  display: grid;
+  gap: 0.65rem;
+  padding: 0.85rem 0.9rem;
+  border: 1px solid #e0eaec;
+  border-radius: 0.9rem;
+  background: #fffdf9;
+}
+
+.ib-screen-q-text {
+  margin: 0;
+  color: #2f4b52;
+  font-size: 0.94rem;
+  font-weight: 600;
+  line-height: 1.55;
+}
+
+.ib-screen-q-num {
+  color: #3d7a88;
 }
 
 .ib-field .error,
