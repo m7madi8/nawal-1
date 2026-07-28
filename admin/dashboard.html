@@ -5,58 +5,65 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Yoga Admin Dashboard</title>
   <link rel="icon" type="image/png" href="../public/media/brand/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="dashboard-body">
   <div class="dashboard-layout">
-    <aside class="sidebar" id="dashboardSidebar">
-      <button id="sidebarCloseBtn" class="sidebar-close" type="button" aria-label="Close menu">&times;</button>
-      <h1 class="sidebar-title">nawal omar</h1>
-      <p class="sidebar-subtitle">Calm operations panel</p>
-      <nav class="sidebar-nav" aria-label="Main Navigation">
-        <button class="nav-link active" data-section="form">Mountain Voice Health</button>
-        <button class="nav-link" data-section="icebath">Ice Bath Health</button>
-        <button class="nav-link" data-section="retreats">Retreat Requests</button>
-        <button class="nav-link" data-section="yoga">Yoga Classes Requests</button>
-      </nav>
-      <button id="logoutBtn" class="btn btn-ghost">Logout</button>
+    <aside class="sidebar" id="dashboardSidebar" aria-label="Operations navigation">
+      <div class="sidebar-drawer-head">
+        <div class="sidebar-brand">
+          <h1 class="sidebar-title">Nawal Omar</h1>
+          <p class="sidebar-subtitle">Calm operations panel</p>
+        </div>
+        <button id="sidebarCloseBtn" class="sidebar-close mobile-icon-btn" type="button" aria-label="Close menu">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+            <path d="M6 6l12 12M18 6L6 18"/>
+          </svg>
+        </button>
+      </div>
+      <nav class="sidebar-nav" id="sidebarNav" aria-label="Request categories"></nav>
+      <button id="logoutBtn" class="btn btn-ghost sidebar-logout" type="button">Logout</button>
     </aside>
     <div id="sidebarOverlay" class="sidebar-overlay" hidden></div>
 
     <main class="main-content">
-      <div class="mobile-dashboard-bar">
-        <button id="sidebarMenuToggle" class="sidebar-menu-toggle" type="button" aria-expanded="false" aria-controls="dashboardSidebar">☰ Menu</button>
-      </div>
-      <header class="summary-grid" aria-label="Dashboard Summary">
-        <article class="summary-card">
-          <p>Total Requests</p>
-          <strong id="totalCount">0</strong>
-        </article>
-        <article class="summary-card">
-          <p>Mountain Voice Health</p>
-          <strong id="formCount">0</strong>
-        </article>
-        <article class="summary-card">
-          <p>Ice Bath Health</p>
-          <strong id="iceBathCount">0</strong>
-        </article>
-        <article class="summary-card">
-          <p>Retreat Requests</p>
-          <strong id="retreatsCount">0</strong>
-        </article>
-        <article class="summary-card">
-          <p>Yoga Classes Requests</p>
-          <strong id="yogaCount">0</strong>
-        </article>
+      <header class="mobile-topbar" id="mobileTopbar">
+        <button
+          id="sidebarMenuToggle"
+          class="mobile-icon-btn"
+          type="button"
+          aria-expanded="false"
+          aria-controls="dashboardSidebar"
+          aria-label="Open menu"
+        >
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+            <path d="M4 7h16M4 12h16M4 17h16"/>
+          </svg>
+        </button>
+        <div class="mobile-topbar-brand">
+          <p class="mobile-topbar-wordmark">Nawal Omar</p>
+          <p class="mobile-topbar-section" id="mobileSectionLabel">Mountain Voice Health</p>
+        </div>
+        <button id="refreshBtn" class="mobile-icon-btn" type="button" aria-label="Refresh requests">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 12a8 8 0 1 1-2.2-5.5"/>
+            <path d="M20 4v5h-5"/>
+          </svg>
+        </button>
       </header>
 
-      <section class="panel-card">
+      <header class="summary-grid" id="summaryGrid" aria-label="Dashboard Summary"></header>
+
+      <section class="panel-card" id="requestsPanel">
         <div class="panel-top">
           <h2 id="sectionTitle">Mountain Voice Health</h2>
           <div class="filters" role="group" aria-label="Filter Requests">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="pending">Pending</button>
-            <button class="filter-btn" data-filter="completed">Completed</button>
+            <button class="filter-btn active" data-filter="all" type="button">All</button>
+            <button class="filter-btn" data-filter="pending" type="button">Pending</button>
+            <button class="filter-btn" data-filter="completed" type="button">Completed</button>
           </div>
         </div>
 

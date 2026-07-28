@@ -8,6 +8,69 @@
   var SUPABASE_TABLE = String(DASHBOARD_CONFIG.supabaseTable || "retreat_requests").trim();
   var USERNAME = "nawal";
   var PASSWORD = "nawalll";
+  var TREND_DAYS = 7;
+
+  /**
+   * Single source of truth for request categories.
+   * Adding a category = add an entry here (+ form that writes matching `source` values).
+   */
+  var CATEGORIES = [
+    {
+      id: "all",
+      label: "Total Requests",
+      sources: null,
+      icon: "total",
+      inSidebar: false,
+      isHero: true
+    },
+    {
+      id: "form",
+      label: "Mountain Voice Health",
+      sources: ["mountain-voice-registration"],
+      icon: "mountain",
+      inSidebar: true
+    },
+    {
+      id: "icebath",
+      label: "Ice Bath Health",
+      sources: ["ice-bath-health"],
+      icon: "ice",
+      inSidebar: true
+    },
+    {
+      id: "retreats",
+      label: "Retreat Requests",
+      sources: ["wadi-rum-registration", "zanzibar-retreat-reserve", "dahab-retreat-reserve"],
+      icon: "calendar",
+      inSidebar: true
+    },
+    {
+      id: "yoga",
+      label: "Yoga Classes Requests",
+      sources: ["yoga-class-registration", "yoga-class-request"],
+      icon: "yoga",
+      inSidebar: true,
+      legacyKey: LEGACY_CLASS_KEY
+    }
+  ];
+
+  var CATEGORY_BY_ID = CATEGORIES.reduce(function (map, cat) {
+    map[cat.id] = cat;
+    return map;
+  }, {});
+
+  var ICON_PATHS = {
+    total:
+      '<path d="M4 19V5"/><path d="M4 19h16"/><path d="M8 15v-4"/><path d="M12 15V8"/><path d="M16 15v-6"/>',
+    mountain:
+      '<path d="m8 18 4-8 3 5 2-3 3 6H8z"/><path d="M4 18h16"/>',
+    ice:
+      '<path d="M12 2v20"/><path d="m4.93 4.93 14.14 14.14"/><path d="M2 12h20"/><path d="m4.93 19.07 14.14-14.14"/>',
+    calendar:
+      '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/>',
+    yoga:
+      '<circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><path d="m8 21 4-6 4 6"/><path d="m6 11 6 2 6-2"/>'
+  };
 
   function getPage() {
     var path = window.location.pathname.toLowerCase();
@@ -66,6 +129,14 @@
     return [];
   }
 
+  function escapeHtml(value) {
+    return String(value == null ? "" : value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
   function initLogin() {
     redirectLoggedInFromLogin();
     var form = document.getElementById("loginForm");
@@ -95,47 +166,115 @@
       filter: "all"
     };
 
+    var cache = {
+      rows: null,
+      loading: null
+    };
+
     var sectionTitle = document.getElementById("sectionTitle");
+    var mobileSectionLabel = document.getElementById("mobileSectionLabel");
+    var mobileTopbar = document.getElementById("mobileTopbar");
     var requestsContainer = document.getElementById("requestsContainer");
     var emptyState = document.getElementById("emptyState");
-    var totalCount = document.getElementById("totalCount");
-    var formCount = document.getElementById("formCount");
-    var iceBathCount = document.getElementById("iceBathCount");
-    var retreatsCount = document.getElementById("retreatsCount");
-    var yogaCount = document.getElementById("yogaCount");
+    var summaryGrid = document.getElementById("summaryGrid");
+    var sidebarNav = document.getElementById("sidebarNav");
+    var requestsPanel = document.getElementById("requestsPanel");
     var requestModal = document.getElementById("requestModal");
     var modalBody = document.getElementById("modalBody");
     var modalCloseBtn = document.getElementById("modalCloseBtn");
 
-    var navButtons = Array.prototype.slice.call(document.querySelectorAll(".nav-link"));
     var filterButtons = Array.prototype.slice.call(document.querySelectorAll(".filter-btn"));
     var logoutBtn = document.getElementById("logoutBtn");
     var sidebar = document.getElementById("dashboardSidebar");
     var sidebarOverlay = document.getElementById("sidebarOverlay");
     var sidebarMenuToggle = document.getElementById("sidebarMenuToggle");
     var sidebarCloseBtn = document.getElementById("sidebarCloseBtn");
+    var refreshBtn = document.getElementById("refreshBtn");
     var mobileSidebarQuery = window.matchMedia("(max-width: 980px)");
+    var previouslyFocused = null;
+    var drawerFocusHandler = null;
+
+    function getDrawerFocusable() {
+      if (!sidebar) return [];
+      return Array.prototype.slice
+        .call(
+          sidebar.querySelectorAll(
+            'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+          )
+        )
+        .filter(function (el) {
+          return !el.hasAttribute("hidden") && el.getAttribute("aria-hidden") !== "true";
+        });
+    }
+
+    function trapDrawerFocus(e) {
+      if (!sidebar || !sidebar.classList.contains("is-open") || e.key !== "Tab") return;
+      var focusables = getDrawerFocusable();
+      if (!focusables.length) return;
+      var first = focusables[0];
+      var last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
 
     function openSidebarMenu() {
       if (!sidebar || !sidebarOverlay || !sidebarMenuToggle) return;
+      if (!mobileSidebarQuery.matches) return;
+      previouslyFocused = document.activeElement;
       sidebar.classList.add("is-open");
+      sidebar.setAttribute("role", "dialog");
+      sidebar.setAttribute("aria-modal", "true");
       sidebarOverlay.hidden = false;
       sidebarOverlay.classList.add("is-open");
       sidebarMenuToggle.setAttribute("aria-expanded", "true");
+      sidebarMenuToggle.setAttribute("aria-label", "Close menu");
       document.body.classList.add("dashboard-menu-open");
+      if (!drawerFocusHandler) {
+        drawerFocusHandler = trapDrawerFocus;
+        document.addEventListener("keydown", drawerFocusHandler);
+      }
+      window.setTimeout(function () {
+        var focusables = getDrawerFocusable();
+        if (focusables.length) focusables[0].focus();
+      }, 30);
     }
 
     function closeSidebarMenu() {
       if (!sidebar || !sidebarOverlay || !sidebarMenuToggle) return;
       sidebar.classList.remove("is-open");
+      sidebar.removeAttribute("role");
+      sidebar.removeAttribute("aria-modal");
       sidebarOverlay.classList.remove("is-open");
       sidebarMenuToggle.setAttribute("aria-expanded", "false");
+      sidebarMenuToggle.setAttribute("aria-label", "Open menu");
       document.body.classList.remove("dashboard-menu-open");
+      if (drawerFocusHandler) {
+        document.removeEventListener("keydown", drawerFocusHandler);
+        drawerFocusHandler = null;
+      }
       window.setTimeout(function () {
         if (!sidebarOverlay.classList.contains("is-open")) {
           sidebarOverlay.hidden = true;
         }
       }, 280);
+      if (previouslyFocused && typeof previouslyFocused.focus === "function") {
+        previouslyFocused.focus();
+        previouslyFocused = null;
+      }
+    }
+
+    function updateTopbarScrollState() {
+      if (!mobileTopbar) return;
+      mobileTopbar.classList.toggle("is-scrolled", window.scrollY > 4);
+    }
+
+    function updateMobileSectionLabel(title) {
+      if (mobileSectionLabel) mobileSectionLabel.textContent = title;
     }
 
     function normalizeRequest(item) {
@@ -172,24 +311,148 @@
       };
     }
 
+    function getCategory(sectionId) {
+      return CATEGORY_BY_ID[sectionId] || CATEGORY_BY_ID.form;
+    }
+
     function sectionSources(section) {
-      if (section === "form") return ["mountain-voice-registration"];
-      if (section === "icebath") return ["ice-bath-health"];
-      if (section === "retreats") return ["wadi-rum-registration", "zanzibar-retreat-reserve", "dahab-retreat-reserve"];
-      if (section === "yoga") return ["yoga-class-registration", "yoga-class-request"];
-      return [];
+      var cat = getCategory(section);
+      return cat && cat.sources ? cat.sources.slice() : [];
     }
 
     function sectionLabel(section) {
-      if (section === "form") return "Mountain Voice Health";
-      if (section === "icebath") return "Ice Bath Health";
-      if (section === "retreats") return "Retreat Requests";
-      if (section === "yoga") return "Yoga Classes Requests";
-      return "Requests";
+      var cat = getCategory(section);
+      return cat ? cat.label : "Requests";
     }
 
     function statusLabel(status) {
       return status === "completed" ? "Completed" : "Pending";
+    }
+
+    function parseSubmittedAt(value) {
+      if (!value || value === "-") return null;
+      var d = new Date(value);
+      return isNaN(d.getTime()) ? null : d;
+    }
+
+    function formatDisplayDate(value) {
+      var d = parseSubmittedAt(value);
+      if (!d) return "-";
+      return d.toLocaleDateString(undefined, {
+        year: "numeric",
+        month: "short",
+        day: "numeric"
+      });
+    }
+
+    function startOfDay(date) {
+      var d = new Date(date);
+      d.setHours(0, 0, 0, 0);
+      return d;
+    }
+
+    function dayKey(date) {
+      return (
+        date.getFullYear() +
+        "-" +
+        String(date.getMonth() + 1).padStart(2, "0") +
+        "-" +
+        String(date.getDate()).padStart(2, "0")
+      );
+    }
+
+    function buildSparklineSeries(rows, days) {
+      var today = startOfDay(new Date());
+      var buckets = {};
+      var series = [];
+      var i;
+
+      for (i = days - 1; i >= 0; i -= 1) {
+        var day = new Date(today);
+        day.setDate(today.getDate() - i);
+        buckets[dayKey(day)] = 0;
+        series.push({ key: dayKey(day), count: 0, date: day });
+      }
+
+      rows.forEach(function (row) {
+        var submitted = parseSubmittedAt(row.date);
+        if (!submitted) return;
+        var key = dayKey(startOfDay(submitted));
+        if (Object.prototype.hasOwnProperty.call(buckets, key)) {
+          buckets[key] += 1;
+        }
+      });
+
+      return series.map(function (point) {
+        return {
+          key: point.key,
+          date: point.date,
+          count: buckets[point.key] || 0
+        };
+      });
+    }
+
+    function sparklineSvg(series) {
+      var width = 88;
+      var height = 28;
+      var padY = 3;
+      var counts = series.map(function (p) {
+        return p.count;
+      });
+      var max = Math.max.apply(null, counts.concat([1]));
+      var step = series.length > 1 ? width / (series.length - 1) : width;
+      var points = series
+        .map(function (point, index) {
+          var x = index * step;
+          var y = height - padY - (point.count / max) * (height - padY * 2);
+          return x.toFixed(1) + "," + y.toFixed(1);
+        })
+        .join(" ");
+      var areaPoints =
+        "0," +
+        height +
+        " " +
+        points +
+        " " +
+        width +
+        "," +
+        height;
+
+      return (
+        '<svg class="summary-sparkline" viewBox="0 0 ' +
+        width +
+        " " +
+        height +
+        '" width="' +
+        width +
+        '" height="' +
+        height +
+        '" aria-hidden="true" focusable="false">' +
+        '<polygon class="summary-sparkline-area" points="' +
+        areaPoints +
+        '"></polygon>' +
+        '<polyline class="summary-sparkline-line" fill="none" points="' +
+        points +
+        '"></polyline>' +
+        "</svg>"
+      );
+    }
+
+    function weekTrendLabel(series) {
+      var total = series.reduce(function (sum, point) {
+        return sum + point.count;
+      }, 0);
+      if (total === 0) return "No new this week";
+      return "+" + total + " this week";
+    }
+
+    function iconSvg(name) {
+      var paths = ICON_PATHS[name] || ICON_PATHS.total;
+      return (
+        '<svg class="summary-icon-svg" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">' +
+        paths +
+        "</svg>"
+      );
     }
 
     function parseHealthFormFreeNote(text) {
@@ -289,6 +552,11 @@
       });
     }
 
+    function invalidateCache() {
+      cache.rows = null;
+      cache.loading = null;
+    }
+
     async function fetchAllRequestsFromSupabase() {
       if (!SUPABASE_URL || !SUPABASE_ANON_KEY || !SUPABASE_TABLE) {
         return [];
@@ -302,9 +570,9 @@
       var res = await fetch(url, {
         method: "GET",
         headers: {
-          "Accept": "application/json",
-          "apikey": SUPABASE_ANON_KEY,
-          "Authorization": "Bearer " + SUPABASE_ANON_KEY
+          Accept: "application/json",
+          apikey: SUPABASE_ANON_KEY,
+          Authorization: "Bearer " + SUPABASE_ANON_KEY
         }
       });
       if (!res.ok) throw new Error("Failed loading Supabase data");
@@ -312,17 +580,51 @@
       return (Array.isArray(list) ? list : []).map(normalizeRequest);
     }
 
+    async function getCachedRequests(forceRefresh) {
+      if (!forceRefresh && cache.rows) return cache.rows;
+      if (!forceRefresh && cache.loading) return cache.loading;
+
+      cache.loading = fetchAllRequestsFromSupabase()
+        .then(function (rows) {
+          var yogaCat = CATEGORY_BY_ID.yoga;
+          var yogaSources = yogaCat ? yogaCat.sources : [];
+          var yogaInSupabase = rows.filter(function (row) {
+            return yogaSources.indexOf(String(row.source || "")) !== -1;
+          });
+
+          if (!yogaInSupabase.length && yogaCat && yogaCat.legacyKey) {
+            var legacy = readLegacyRequests(yogaCat.legacyKey).map(normalizeRequest);
+            cache.rows = rows.concat(legacy);
+          } else {
+            cache.rows = rows;
+          }
+          cache.loading = null;
+          return cache.rows;
+        })
+        .catch(function (err) {
+          cache.loading = null;
+          throw err;
+        });
+
+      return cache.loading;
+    }
+
     async function updateStatusInSupabase(item, nextStatus) {
       if (!SUPABASE_URL || !SUPABASE_ANON_KEY || !SUPABASE_TABLE) return false;
-      var url = SUPABASE_URL + "/rest/v1/" + encodeURIComponent(SUPABASE_TABLE) + "?id=eq." + encodeURIComponent(item.id);
+      var url =
+        SUPABASE_URL +
+        "/rest/v1/" +
+        encodeURIComponent(SUPABASE_TABLE) +
+        "?id=eq." +
+        encodeURIComponent(item.id);
       var res = await fetch(url, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
-          "Accept": "application/json",
-          "apikey": SUPABASE_ANON_KEY,
-          "Authorization": "Bearer " + SUPABASE_ANON_KEY,
-          "Prefer": "return=minimal"
+          Accept: "application/json",
+          apikey: SUPABASE_ANON_KEY,
+          Authorization: "Bearer " + SUPABASE_ANON_KEY,
+          Prefer: "return=minimal"
         },
         body: JSON.stringify({ status: nextStatus })
       });
@@ -331,71 +633,201 @@
 
     async function deleteInSupabase(item) {
       if (!SUPABASE_URL || !SUPABASE_ANON_KEY || !SUPABASE_TABLE) return false;
-      var url = SUPABASE_URL + "/rest/v1/" + encodeURIComponent(SUPABASE_TABLE) + "?id=eq." + encodeURIComponent(item.id);
+      var url =
+        SUPABASE_URL +
+        "/rest/v1/" +
+        encodeURIComponent(SUPABASE_TABLE) +
+        "?id=eq." +
+        encodeURIComponent(item.id);
       var res = await fetch(url, {
         method: "DELETE",
         headers: {
-          "Accept": "application/json",
-          "apikey": SUPABASE_ANON_KEY,
-          "Authorization": "Bearer " + SUPABASE_ANON_KEY,
-          "Prefer": "return=minimal"
+          Accept: "application/json",
+          apikey: SUPABASE_ANON_KEY,
+          Authorization: "Bearer " + SUPABASE_ANON_KEY,
+          Prefer: "return=minimal"
         }
       });
       return res.ok;
     }
 
-    async function fetchSectionData(section) {
-      if (section === "yoga") {
-        var allYoga = await fetchAllRequestsFromSupabase();
-        var yogaFromSupabase = allYoga.filter(function (row) {
-          return sectionSources("yoga").indexOf(String(row.source || "")) !== -1;
-        });
-        if (yogaFromSupabase.length) return yogaFromSupabase;
-        return readLegacyRequests(LEGACY_CLASS_KEY).map(normalizeRequest);
-      }
-      var all = await fetchAllRequestsFromSupabase();
-      var sources = sectionSources(section);
-      return all.filter(function (row) {
-        return sources.indexOf(String(row.source || "")) !== -1;
+    function filterByCategory(allRows, categoryId) {
+      var cat = getCategory(categoryId);
+      if (!cat || !cat.sources) return allRows.slice();
+      return allRows.filter(function (row) {
+        return cat.sources.indexOf(String(row.source || "")) !== -1;
       });
     }
 
-    async function fetchSummaryCounts() {
-      var all = await fetchAllRequestsFromSupabase();
-      var form = all.filter(function (row) { return row.source === "mountain-voice-registration"; }).length;
-      var icebath = all.filter(function (row) { return row.source === "ice-bath-health"; }).length;
-      var retreats = all.filter(function (row) { return row.source === "wadi-rum-registration" || row.source === "zanzibar-retreat-reserve" || row.source === "dahab-retreat-reserve"; }).length;
-      var yoga = all.filter(function (row) { return sectionSources("yoga").indexOf(String(row.source || "")) !== -1; }).length;
-      if (!yoga) {
-        yoga = readLegacyRequests(LEGACY_CLASS_KEY).length;
-      }
-      var yogaInSupabase = all.filter(function (row) {
-        return sectionSources("yoga").indexOf(String(row.source || "")) !== -1;
-      }).length;
-      return {
-        all: all.length + (yogaInSupabase ? 0 : yoga),
-        form: form,
-        icebath: icebath,
-        retreats: retreats,
-        yoga: yoga
-      };
+    async function fetchSectionData(section) {
+      var all = await getCachedRequests(false);
+      return filterByCategory(all, section);
     }
 
-    async function renderSummary() {
-      try {
-        var counts = await fetchSummaryCounts();
-        totalCount.textContent = String(counts.all);
-        if (formCount) formCount.textContent = String(counts.form);
-        if (iceBathCount) iceBathCount.textContent = String(counts.icebath);
-        if (retreatsCount) retreatsCount.textContent = String(counts.retreats);
-        if (yogaCount) yogaCount.textContent = String(counts.yoga);
-      } catch (_err) {
-        totalCount.textContent = "0";
-        if (formCount) formCount.textContent = "0";
-        if (iceBathCount) iceBathCount.textContent = "0";
-        if (retreatsCount) retreatsCount.textContent = "0";
-        if (yogaCount) yogaCount.textContent = "0";
+    function buildCategoryStats(allRows) {
+      return CATEGORIES.map(function (cat) {
+        var rows = filterByCategory(allRows, cat.id);
+        var pending = 0;
+        var completed = 0;
+        rows.forEach(function (row) {
+          if (row.status === "completed") completed += 1;
+          else pending += 1;
+        });
+        var series = buildSparklineSeries(rows, TREND_DAYS);
+        return {
+          cat: cat,
+          total: rows.length,
+          pending: pending,
+          completed: completed,
+          series: series,
+          trendLabel: weekTrendLabel(series)
+        };
+      });
+    }
+
+    function sidebarCategories() {
+      return CATEGORIES.filter(function (cat) {
+        return cat.inSidebar;
+      });
+    }
+
+    function buildSidebar() {
+      if (!sidebarNav) return;
+      sidebarNav.innerHTML = "";
+      sidebarCategories().forEach(function (cat) {
+        var btn = document.createElement("button");
+        btn.className = "nav-link";
+        btn.type = "button";
+        btn.dataset.section = cat.id;
+        btn.setAttribute("aria-current", "false");
+
+        var label = document.createElement("span");
+        label.className = "nav-link-label";
+        label.textContent = cat.label;
+
+        var badge = document.createElement("span");
+        badge.className = "nav-badge nav-badge--empty";
+        badge.dataset.badgeFor = cat.id;
+        badge.hidden = true;
+        badge.setAttribute("aria-hidden", "true");
+
+        btn.appendChild(label);
+        btn.appendChild(badge);
+        btn.addEventListener("click", function () {
+          selectSection(cat.id);
+          if (mobileSidebarQuery.matches) closeSidebarMenu();
+        });
+        sidebarNav.appendChild(btn);
+      });
+      syncSidebar(null);
+    }
+
+    /** Active state + pending badges from cached rows. Driven by CATEGORIES / state.section. */
+    function syncSidebar(allRows) {
+      if (!sidebarNav) return;
+
+      var pendingById = {};
+      if (allRows) {
+        buildCategoryStats(allRows).forEach(function (stat) {
+          pendingById[stat.cat.id] = stat.pending;
+        });
       }
+
+      Array.prototype.slice.call(sidebarNav.querySelectorAll(".nav-link")).forEach(function (btn) {
+        var sectionId = btn.dataset.section;
+        var isActive = sectionId === state.section;
+        btn.classList.toggle("active", isActive);
+        btn.setAttribute("aria-current", isActive ? "page" : "false");
+
+        var badge = btn.querySelector(".nav-badge");
+        if (!badge) return;
+
+        var pending = pendingById[sectionId];
+        if (typeof pending !== "number") return;
+
+        badge.textContent = String(pending);
+        badge.setAttribute("aria-label", pending + " pending");
+        if (pending > 0) {
+          badge.hidden = false;
+          badge.classList.remove("nav-badge--empty");
+          badge.setAttribute("aria-hidden", "false");
+        } else {
+          badge.hidden = true;
+          badge.classList.add("nav-badge--empty");
+          badge.setAttribute("aria-hidden", "true");
+        }
+      });
+    }
+
+    function selectSection(sectionId) {
+      state.section = sectionId;
+      render();
+      if (requestsPanel && typeof requestsPanel.scrollIntoView === "function") {
+        requestsPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+
+    function renderSummary(allRows) {
+      if (!summaryGrid) return;
+      var stats = buildCategoryStats(allRows);
+      summaryGrid.innerHTML = "";
+
+      stats.forEach(function (stat) {
+        var cat = stat.cat;
+        var card = document.createElement("button");
+        card.type = "button";
+        card.className =
+          "summary-card" +
+          (cat.isHero ? " summary-card--hero" : "") +
+          (state.section === cat.id ? " is-active" : "");
+        card.dataset.section = cat.id;
+        card.setAttribute(
+          "aria-label",
+          cat.label +
+            ": " +
+            stat.total +
+            " requests, " +
+            stat.pending +
+            " pending, " +
+            stat.completed +
+            " completed. " +
+            stat.trendLabel
+        );
+
+        card.innerHTML =
+          '<div class="summary-card-top">' +
+          '<span class="summary-icon" aria-hidden="true">' +
+          iconSvg(cat.icon) +
+          "</span>" +
+          '<span class="summary-trend">' +
+          escapeHtml(stat.trendLabel) +
+          "</span>" +
+          "</div>" +
+          '<p class="summary-label">' +
+          escapeHtml(cat.label) +
+          "</p>" +
+          '<strong class="summary-count">' +
+          escapeHtml(String(stat.total)) +
+          "</strong>" +
+          '<div class="summary-card-foot">' +
+          '<p class="summary-breakdown">' +
+          '<span class="summary-breakdown-pending">' +
+          escapeHtml(String(stat.pending)) +
+          " pending</span>" +
+          '<span class="summary-breakdown-sep" aria-hidden="true"> · </span>' +
+          '<span class="summary-breakdown-completed">' +
+          escapeHtml(String(stat.completed)) +
+          " completed</span>" +
+          "</p>" +
+          sparklineSvg(stat.series) +
+          "</div>";
+
+        card.addEventListener("click", function () {
+          selectSection(cat.id);
+        });
+
+        summaryGrid.appendChild(card);
+      });
     }
 
     function openModal(item) {
@@ -499,7 +931,7 @@
       fields.forEach(function (pair) {
         var row = document.createElement("div");
         row.className = "modal-item";
-        row.innerHTML = "<strong>" + pair[0] + ":</strong> " + (pair[1] || "-");
+        row.innerHTML = "<strong>" + escapeHtml(pair[0]) + ":</strong> " + escapeHtml(pair[1] || "-");
         modalBody.appendChild(row);
       });
       requestModal.hidden = false;
@@ -514,19 +946,47 @@
 
     function createRequestCard(item) {
       var request = normalizeRequest(item);
-      var row = document.createElement("article");
-      row.className = "retreat-row";
+      var isCompleted = request.status === "completed";
+
+      var card = document.createElement("article");
+      card.className = "request-card";
+
+      var top = document.createElement("div");
+      top.className = "request-top";
 
       var name = document.createElement("div");
-      name.className = "retreat-row-name";
+      name.className = "request-name";
       name.textContent = request.fullName;
 
-      var type = document.createElement("div");
-      type.className = "retreat-row-type";
-      type.textContent = request.retreatType;
+      var status = document.createElement("span");
+      status.className = "status-pill " + (isCompleted ? "status-completed" : "status-pending");
+      status.textContent = statusLabel(request.status);
+
+      top.appendChild(name);
+      top.appendChild(status);
+
+      var meta = document.createElement("div");
+      meta.className = "request-meta";
+
+      var typeLine = document.createElement("div");
+      typeLine.textContent = request.retreatType || "Request";
+
+      var phoneLine = document.createElement("div");
+      phoneLine.textContent = "Phone: " + (request.phone || "-");
+
+      var dateLine = document.createElement("div");
+      dateLine.textContent = "Submitted: " + formatDisplayDate(request.date);
+
+      meta.appendChild(typeLine);
+      meta.appendChild(phoneLine);
+      meta.appendChild(dateLine);
+
+      var actions = document.createElement("div");
+      actions.className = "request-actions";
 
       var detailsBtn = document.createElement("button");
       detailsBtn.className = "action-btn";
+      detailsBtn.type = "button";
       detailsBtn.textContent = "View Full Answers";
       detailsBtn.addEventListener("click", function () {
         openModal(request);
@@ -534,66 +994,80 @@
 
       var completeBtn = document.createElement("button");
       completeBtn.className = "action-btn complete";
-      completeBtn.textContent = request.status === "completed" ? "Mark Pending" : "Mark Completed";
+      completeBtn.type = "button";
+      completeBtn.textContent = isCompleted ? "Mark Pending" : "Mark Completed";
       completeBtn.addEventListener("click", async function () {
-        var nextStatus = request.status === "completed" ? "pending" : "completed";
-        await updateStatusInSupabase(request, nextStatus);
-        render();
+        var nextStatus = isCompleted ? "pending" : "completed";
+        var ok = await updateStatusInSupabase(request, nextStatus);
+        if (ok) {
+          invalidateCache();
+          render(true);
+        }
       });
 
       var deleteBtn = document.createElement("button");
       deleteBtn.className = "action-btn delete";
+      deleteBtn.type = "button";
       deleteBtn.textContent = "Delete";
       deleteBtn.addEventListener("click", async function () {
-        await deleteInSupabase(request);
-        render();
+        var ok = await deleteInSupabase(request);
+        if (ok) {
+          invalidateCache();
+          render(true);
+        }
       });
 
-      row.appendChild(name);
-      row.appendChild(type);
-      row.appendChild(detailsBtn);
-      row.appendChild(completeBtn);
-      row.appendChild(deleteBtn);
-      return row;
+      actions.appendChild(detailsBtn);
+      actions.appendChild(completeBtn);
+      actions.appendChild(deleteBtn);
+
+      card.appendChild(top);
+      card.appendChild(meta);
+      card.appendChild(actions);
+      return card;
     }
 
-    async function render() {
+    async function render(forceRefresh) {
       var title = sectionLabel(state.section);
+      if (state.section === "all") title = "All Requests";
       sectionTitle.textContent = title;
+      updateMobileSectionLabel(title);
 
-      navButtons.forEach(function (btn) {
-        btn.classList.toggle("active", btn.dataset.section === state.section);
-      });
       filterButtons.forEach(function (btn) {
         btn.classList.toggle("active", btn.dataset.filter === state.filter);
       });
 
-      requestsContainer.innerHTML = "";
-      var currentData = await fetchSectionData(state.section);
-      var filtered = applyFilter(currentData);
-      if (!filtered.length) {
+      try {
+        var allRows = await getCachedRequests(!!forceRefresh);
+        renderSummary(allRows);
+        syncSidebar(allRows);
+
+        requestsContainer.innerHTML = "";
+        var currentData = filterByCategory(allRows, state.section);
+        var filtered = applyFilter(currentData);
+
+        if (!filtered.length) {
+          emptyState.hidden = false;
+        } else {
+          emptyState.hidden = true;
+          filtered.forEach(function (item) {
+            requestsContainer.appendChild(createRequestCard(item));
+          });
+        }
+      } catch (_err) {
+        renderSummary([]);
+        syncSidebar([]);
+        requestsContainer.innerHTML = "";
         emptyState.hidden = false;
-      } else {
-        emptyState.hidden = true;
-        filtered.forEach(function (item) {
-          requestsContainer.appendChild(createRequestCard(item));
-        });
       }
-      await renderSummary();
     }
 
-    navButtons.forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        state.section = btn.dataset.section;
-        if (mobileSidebarQuery.matches) closeSidebarMenu();
-        render();
-      });
-    });
+    buildSidebar();
 
     filterButtons.forEach(function (btn) {
       btn.addEventListener("click", function () {
         state.filter = btn.dataset.filter;
-        render();
+        render(false);
       });
     });
 
@@ -618,6 +1092,18 @@
     if (sidebarOverlay) {
       sidebarOverlay.addEventListener("click", closeSidebarMenu);
     }
+    if (refreshBtn) {
+      refreshBtn.addEventListener("click", async function () {
+        refreshBtn.classList.add("is-busy");
+        refreshBtn.setAttribute("aria-busy", "true");
+        try {
+          await render(true);
+        } finally {
+          refreshBtn.classList.remove("is-busy");
+          refreshBtn.removeAttribute("aria-busy");
+        }
+      });
+    }
     if (requestModal) {
       requestModal.addEventListener("click", function (e) {
         if (e.target === requestModal) closeModal();
@@ -632,7 +1118,10 @@
     mobileSidebarQuery.addEventListener("change", function (e) {
       if (!e.matches) closeSidebarMenu();
     });
-    render();
+    window.addEventListener("scroll", updateTopbarScrollState, { passive: true });
+    updateTopbarScrollState();
+
+    render(true);
   }
 
   var page = getPage();
