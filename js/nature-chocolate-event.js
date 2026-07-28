@@ -23,55 +23,41 @@
 
   /* ── 1. Hero ── */
   function initHero(gsap) {
-    var panel = document.querySelector('.nc-hero__panel');
     var badge = document.querySelector('.nc-hero__badge');
     var title = document.querySelector('.nc-hero__title');
     var divider = document.querySelector('.nc-hero__divider');
     var meta = document.querySelector('.nc-hero__meta');
     var cta = document.querySelector('.nc-hero__cta');
-
-    if (!panel) return;
-
     var parts = [badge, title, divider, meta, cta].filter(Boolean);
 
-    gsap.set(panel, { autoAlpha: 0, y: 22 });
-    if (parts.length) gsap.set(parts, { autoAlpha: 0, y: 16 });
+    if (!parts.length) return;
 
-    var tl = gsap.timeline({
-      defaults: { ease: 'power2.out' },
-      onComplete: function () {
-        panel.classList.add('is-settled');
-        if (cta) cta.classList.add('nc-cta--glow');
-      }
-    });
+    gsap.set(parts, { autoAlpha: 0, y: 20 });
 
-    tl.to(panel, { autoAlpha: 1, y: 0, duration: 0.95 }, 0.12);
-
-    if (parts.length) {
-      tl.to(
-        parts,
-        {
-          autoAlpha: 1,
-          y: 0,
-          duration: 0.75,
-          stagger: 0.1
-        },
-        0.28
-      );
-    }
+    gsap
+      .timeline({
+        defaults: { ease: 'power2.out' },
+        onComplete: function () {
+          if (cta) cta.classList.add('nc-cta--glow');
+        }
+      })
+      .to(parts, {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.85,
+        stagger: 0.11
+      }, 0.18);
   }
 
   function initReduced() {
-    var panel = document.querySelector('.nc-hero__panel');
     var cta = document.querySelector('.nc-hero__cta');
-    if (panel) panel.classList.add('is-settled');
     if (!window.gsap) return;
 
     var gsap = window.gsap;
     gsap.fromTo(
-      '.nc-hero__panel',
+      '.nc-hero__badge, .nc-hero__title, .nc-hero__divider, .nc-hero__meta, .nc-hero__cta',
       { autoAlpha: 0 },
-      { autoAlpha: 1, duration: 0.4, ease: 'power1.out' }
+      { autoAlpha: 1, duration: 0.4, ease: 'power1.out', stagger: 0.05 }
     );
   }
 
