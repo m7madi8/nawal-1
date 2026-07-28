@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Ice Bath Health Declaration</title>
+  <meta name="description" content="Ice Bath health declaration form with Nawal Omar." data-i18n-attr="content:events_ib_form_meta">
+  <link rel="icon" type="image/png" href="../public/media/brand/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;600;700&family=Scheherazade+New:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/rtl.css">
+  <link rel="stylesheet" href="../css/scroll-media.css">
+  <link rel="stylesheet" href="../css/ice-bath.css">
+</head>
+<body class="ib-form-page antialiased">
+  <header class="site-header" role="banner">
+    <div class="site-header-bar">
+      <a href="../index.html" class="site-header-brand">
+        <img src="../public/media/brand/logo.png" alt="Nawal Omar Yoga" class="site-header-logo-img" width="140" height="48" decoding="async">
+      </a>
+      <div class="site-mobile-lang">
+        <button type="button" id="mobile-lang-toggle" class="mobile-lang-toggle" data-i18n-attr="aria-label:lang_toggle" aria-label="Change language">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="M3 12h18"></path>
+            <path d="M12 3a15.3 15.3 0 0 1 0 18"></path>
+            <path d="M12 3a15.3 15.3 0 0 0 0 18"></path>
+          </svg>
+        </button>
+        <button type="button" id="menu-toggle" class="site-menu-toggle menu-launcher" aria-expanded="false" aria-controls="menu-panel" data-i18n-attr="aria-label:menu_label">
+          <span class="menu-launcher-icon" aria-hidden="true">
+            <span class="menu-launcher-bar bar1"></span>
+            <span class="menu-launcher-bar bar2"></span>
+            <span class="menu-launcher-bar bar3"></span>
+          </span>
+        </button>
+      </div>
+      <nav class="site-nav-desktop" aria-label="Main">
+        <a href="../index.html" data-i18n="nav_home">Home</a>
+        <a href="../index.html#about" data-i18n="nav_about">About</a>
+        <a href="../index.html#video" data-i18n="nav_video">Video</a>
+        <a href="../index.html#programs" data-i18n="nav_workshops">Workshops</a>
+        <a href="../workshops/haifa.html" data-i18n="nav_jiva">Haifa Yoga</a>
+        <a href="../index.html#retreats" data-i18n="nav_retreat">Retreat</a>
+        <div class="site-header-lang">
+          <nav class="lang-switcher lang-switcher--bar" aria-label="Language">
+            <button type="button" class="lang-btn" data-lang-set="en"><span class="lang-toggle-text"><span class="lang-toggle-text-en">En</span><span class="lang-toggle-text-ar">En</span></span></button>
+            <button type="button" class="lang-btn" data-lang-set="ar"><span class="lang-toggle-text"><span class="lang-toggle-text-en">Ar</span><span class="lang-toggle-text-ar">Ar</span></span></button>
+          </nav>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div id="menu-panel" class="site-menu-overlay" aria-hidden="true">
+    <div class="site-menu-sheet">
+      <div class="site-menu-head site-menu-animate">
+        <p class="site-menu-title" data-i18n="menu_label">Menu</p>
+        <button type="button" class="site-menu-close" data-menu-close data-i18n-attr="aria-label:menu_close" aria-label="Close menu">&times;</button>
+      </div>
+      <nav class="site-nav-mobile" aria-label="Main">
+        <a href="../index.html" class="site-menu-animate" data-i18n="nav_home">Home</a>
+        <a href="../events.html" class="site-menu-animate" data-i18n="events_page_title">Events</a>
+        <a href="../events/ice-bath.html" class="site-menu-animate" data-i18n="events_ib_title">Day Retreat | Between Calm & Strength</a>
+        <a href="../index.html#retreats" class="site-menu-animate" data-i18n="nav_retreat">Retreat</a>
+      </nav>
+      <div class="site-menu-foot">
+        <div class="site-menu-lang site-menu-animate">
+          <p class="site-menu-lang-label" data-i18n="lang_toggle">Change language</p>
+          <nav class="lang-switcher lang-switcher--bar" aria-label="Language">
+            <button type="button" class="lang-btn" data-lang-set="en"><span class="lang-toggle-text"><span class="lang-toggle-text-en">En</span><span class="lang-toggle-text-ar">En</span></span></button>
+            <button type="button" class="lang-btn" data-lang-set="ar"><span class="lang-toggle-text"><span class="lang-toggle-text-en">Ar</span><span class="lang-toggle-text-ar">Ar</span></span></button>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="ice-bath-form-shell ib-form-page-shell">
+    <div class="ib-form-top">
+      <a class="ib-back-link" href="../events/ice-bath.html" data-i18n="events_ib_back_events">← Back to event</a>
+    </div>
+
+    <p id="ib-draft-status" class="ib-draft-status" data-i18n="events_ib_draft_idle">Auto-save enabled</p>
+
+    <div class="ice-bath-form-card">
+      <header class="ice-bath-form-header">
+        <h1 id="ice-bath-form-heading" data-i18n="events_ib_form_title">Ice Bath Health Declaration</h1>
+        <p data-i18n="events_ib_form_subtitle">A short health form so we can hold the experience safely — one step at a time.</p>
+      </header>
+
+      <div class="ib-progress-wrap">
+        <div class="ib-progress-row">
+          <strong id="ib-progress-text">Step 1 of 6</strong>
+          <span id="ib-progress-percent">17%</span>
+        </div>
+        <div class="ib-progress-bar"><div id="ib-progress-fill" class="ib-progress-fill"></div></div>
+      </div>
+
+      <form id="iceBathForm" novalidate
+        data-supabase-url="https://xzxyskufrqansbhsbdkt.supabase.co"
+        data-supabase-anon-key="sb_publishable_V9_4QWGDFv6Vm-4DQifYGA_1xdoKkph"
+        data-supabase-table="retreat_requests">
+        <div class="ib-step-viewport">
+          <section class="ib-step-panel active" data-step="1">
+            <h2 class="ib-step-title" data-i18n="events_ib_step1_title">1) Personal information</h2>
+            <div class="ib-grid two">
+              <div class="ib-field">
+                <label for="ib-fullName" data-i18n="events_ib_full_name">Full name</label>
+                <input id="ib-fullName" name="fullName" required autocomplete="name">
+              </div>
+              <div class="ib-field">
+                <label for="ib-idNumber" data-i18n="events_ib_id_number">ID number</label>
+                <input id="ib-idNumber" name="idNumber" required>
+              </div>
+              <div class="ib-field">
+                <label for="ib-birthDate" data-i18n="events_ib_birth_date">Date of birth</label>
+                <input id="ib-birthDate" name="birthDate" type="date" required>
+              </div>
+              <div class="ib-field">
+                <label for="ib-phone" data-i18n="events_ib_phone">Phone</label>
+                <input id="ib-phone" name="phone" type="tel" required autocomplete="tel">
+              </div>
+            </div>
+          </section>
+
+          <section class="ib-step-panel" data-step="2">
+            <h2 class="ib-step-title" data-i18n="events_ib_step2_title">2) Emergency contact</h2>
+            <div class="ib-grid">
+              <div class="ib-field">
+                <label for="ib-emergencyName" data-i18n="events_ib_emergency_name">Name</label>
+                <input id="ib-emergencyName" name="emergencyName" required>
+              </div>
+              <div class="ib-field">
+                <label for="ib-emergencyPhone" data-i18n="events_ib_phone">Phone</label>
+                <input id="ib-emergencyPhone" name="emergencyPhone" type="tel" required>
+              </div>
+              <div class="ib-field">
+                <label for="ib-relation" data-i18n="events_ib_relationship">Relationship</label>
+                <input id="ib-relation" name="relation" required>
+              </div>
+            </div>
+          </section>
+
+          <section class="ib-step-panel" data-step="3">
+            <h2 class="ib-step-title" data-i18n="events_ib_step3_title">3) Cold-exposure screening</h2>
+            <div class="ib-grid">
+              <div class="ib-field">
+                <label data-i18n="events_ib_q_heart">Heart disease, high blood pressure, or circulatory issues?</label>
+                <div class="ib-radio-group">
+                  <label><input type="radio" name="heartIssues" value="no" required> <span data-i18n="events_ib_no">No</span></label>
+                  <label><input type="radio" name="heartIssues" value="yes" required> <span data-i18n="events_ib_yes">Yes</span></label>
+                </div>
+              </div>
+              <div class="ib-field">
+                <label data-i18n="events_ib_q_circulation">Raynaud’s syndrome or known sensitivity to cold?</label>
+                <div class="ib-radio-group">
+                  <label><input type="radio" name="circulation" value="no" required> <span data-i18n="events_ib_no">No</span></label>
+                  <label><input type="radio" name="circulation" value="yes" required> <span data-i18n="events_ib_yes">Yes</span></label>
+                </div>
+              </div>
+              <div class="ib-field">
+                <label data-i18n="events_ib_q_pregnancy">Are you currently pregnant?</label>
+                <div class="ib-radio-group">
+                  <label><input type="radio" name="pregnancy" value="no" required> <span data-i18n="events_ib_no">No</span></label>
+                  <label><input type="radio" name="pregnancy" value="yes" required> <span data-i18n="events_ib_yes">Yes</span></label>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="ib-step-panel" data-step="4">
+            <h2 class="ib-step-title" data-i18n="events_ib_step4_title">4) Additional health</h2>
+            <div class="ib-grid">
+              <div class="ib-field">
+                <label data-i18n="events_ib_q_epilepsy">Epilepsy, seizures, or fainting history?</label>
+                <div class="ib-radio-group">
+                  <label><input type="radio" name="epilepsy" value="no" required> <span data-i18n="events_ib_no">No</span></label>
+                  <label><input type="radio" name="epilepsy" value="yes" required> <span data-i18n="events_ib_yes">Yes</span></label>
+                </div>
+              </div>
+              <div class="ib-field">
+                <label data-i18n="events_ib_q_breathing">Breathing issues, asthma, or dizziness?</label>
+                <div class="ib-radio-group">
+                  <label><input type="radio" name="breathing" value="no" required> <span data-i18n="events_ib_no">No</span></label>
+                  <label><input type="radio" name="breathing" value="yes" required> <span data-i18n="events_ib_yes">Yes</span></label>
+                </div>
+              </div>
+              <div class="ib-field">
+                <label for="ib-allergy" data-i18n="events_ib_allergy">Allergies</label>
+                <input id="ib-allergy" name="allergy" required>
+              </div>
+              <div class="ib-field">
+                <label for="ib-medications" data-i18n="events_ib_medications">Current medications</label>
+                <input id="ib-medications" name="medications" required>
+              </div>
+              <div class="ib-field">
+                <label for="ib-otherConditions" data-i18n="events_ib_other_conditions">Other conditions we should know about</label>
+                <textarea id="ib-otherConditions" name="otherConditions"></textarea>
+              </div>
+            </div>
+          </section>
+
+          <section class="ib-step-panel" data-step="5">
+            <h2 class="ib-step-title" data-i18n="events_ib_step5_title">5) Notes + consent</h2>
+            <div class="ib-grid">
+              <div class="ib-field">
+                <label for="ib-notes" data-i18n="events_ib_notes">Additional notes</label>
+                <textarea id="ib-notes" name="notes"></textarea>
+              </div>
+              <div class="ib-checks">
+                <label><input type="checkbox" name="consentInfo" required> <span data-i18n="events_ib_consent_info">I confirm the information above is accurate</span></label>
+                <label><input type="checkbox" name="consentCold" required> <span data-i18n="events_ib_consent_cold">I understand ice bath / cold exposure involves physical stress and I participate at my own responsibility</span></label>
+                <label><input type="checkbox" name="consentFirstAid" required> <span data-i18n="events_ib_consent_first_aid">I consent to first aid if needed</span></label>
+                <label><input type="checkbox" name="consentPhotos" required> <span data-i18n="events_ib_consent_photos">I agree to photos/video during the session</span></label>
+              </div>
+            </div>
+          </section>
+
+          <section class="ib-step-panel" data-step="6">
+            <h2 class="ib-step-title" data-i18n="events_ib_step6_title">6) Signature</h2>
+            <div class="ib-grid">
+              <div class="ib-field">
+                <label data-i18n="events_ib_signature_method">Signature method</label>
+                <div class="ib-signature-tools">
+                  <button type="button" class="ib-chip" data-ib-sign-mode="draw" data-i18n="events_ib_draw">Draw</button>
+                  <button type="button" class="ib-chip active" data-ib-sign-mode="type" data-i18n="events_ib_type">Type</button>
+                </div>
+                <div id="ib-draw-wrap" class="ib-signature-canvas-wrap" style="display:none;">
+                  <canvas id="ib-signature-canvas"></canvas>
+                  <div class="ib-hint" data-i18n="events_ib_draw_hint">Draw your signature inside the box.</div>
+                  <button id="ib-clear-sign" type="button" class="ib-chip" style="margin-top:8px;" data-i18n="events_ib_clear_signature">Clear signature</button>
+                </div>
+                <div id="ib-type-wrap">
+                  <input id="ib-typed-signature" name="typedSignature" data-i18n-attr="placeholder:events_ib_typed_placeholder" placeholder="Type your signature">
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div class="ib-actions">
+          <button id="ib-prev-btn" type="button" class="ib-btn secondary" data-i18n="events_ib_prev">Back</button>
+          <button id="ib-next-btn" type="button" class="ib-btn primary" data-i18n="events_ib_next">Next</button>
+          <button id="ib-submit-btn" type="submit" class="ib-btn primary" style="display:none;" data-i18n="events_ib_submit">Submit</button>
+        </div>
+      </form>
+
+      <div id="ib-success-state" class="ib-success-state" role="status" aria-live="polite">
+        <div class="ib-checkmark">✓</div>
+        <h2 data-i18n="events_ib_success_title">Health form submitted</h2>
+        <p data-i18n="events_ib_success_text">Thank you. Your declaration has been saved and we will contact you if needed.</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/i18n.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/ice-bath-form.js"></script>
+</body>
+</html>

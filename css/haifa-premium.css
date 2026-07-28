@@ -130,6 +130,27 @@
   color: var(--hf-text);
 }
 
+.haifa-waze-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.45rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--hf-accent);
+  text-decoration: none;
+  transition: color 160ms ease, opacity 160ms ease;
+}
+
+.haifa-waze-link:hover {
+  color: var(--hf-text);
+  opacity: 0.9;
+}
+
+.haifa-waze-link svg {
+  flex-shrink: 0;
+}
+
 .haifa-hero-visual {
   margin: 0;
   overflow: hidden;
@@ -189,15 +210,7 @@
 /* Classes */
 .haifa-class-grid {
   display: grid;
-  gap: 1rem;
-}
-
-@media (min-width: 720px) {
-  .haifa-class-grid {
-    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
-    gap: 1.15rem;
-    align-items: stretch;
-  }
+  gap: 1.25rem;
 }
 
 .haifa-class-card {
@@ -210,9 +223,21 @@
   overflow: hidden;
 }
 
+@media (min-width: 900px) {
+  .haifa-class-card--power {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  }
+
+  .haifa-class-card--power .haifa-power-gallery {
+    border-bottom: none;
+    border-inline-end: 1px solid var(--hf-line);
+    height: 100%;
+  }
+}
+
 .haifa-class-card--calm {
-  justify-content: center;
-  background: var(--hf-warm);
+  background: linear-gradient(160deg, var(--hf-warm) 0%, var(--hf-surface) 100%);
 }
 
 /* Power Yoga — 5-photo mosaic */
@@ -256,12 +281,15 @@
 }
 
 .haifa-class-body {
-  padding: 1.15rem 1.2rem 1.3rem;
+  padding: 1.25rem 1.25rem 1.4rem;
   text-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .haifa-class-card--calm .haifa-class-body {
-  padding: 1.5rem 1.35rem;
+  padding: 1.5rem 1.4rem 1.6rem;
 }
 
 .haifa-class-day {
@@ -277,16 +305,110 @@
 .haifa-class-name {
   margin: 0 0 0.55rem;
   font-family: "Playfair Display", Georgia, serif;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: var(--hf-ink);
 }
 
 .haifa-class-desc {
-  margin: 0;
-  font-size: 0.92rem;
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
   line-height: 1.7;
   color: var(--hf-muted);
+}
+
+.haifa-class-benefit-title {
+  margin: 0 0 0.55rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--hf-accent-dark);
+}
+
+.haifa-class-benefits {
+  margin: 0 0 1.1rem;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.haifa-class-benefits li {
+  position: relative;
+  padding-inline-start: 1.1rem;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--hf-text);
+}
+
+.haifa-class-benefits li::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0.55em;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: var(--hf-accent);
+}
+
+.haifa-class-meta {
+  margin: 0;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--hf-line);
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--hf-accent-dark);
+}
+
+.haifa-section-lead {
+  margin: 0.55rem 0 0;
+  max-width: 36rem;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--hf-muted);
+}
+
+/* Feedback */
+.haifa-feedback-section .haifa-section-head {
+  margin-bottom: 1.25rem;
+}
+
+.haifa-feedback-grid {
+  display: grid;
+  gap: 0.85rem;
+}
+
+@media (min-width: 768px) {
+  .haifa-feedback-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+.haifa-feedback {
+  margin: 0;
+  padding: 1.15rem 1.2rem 1.25rem;
+  background: var(--hf-surface);
+  border: 1px solid var(--hf-line);
+  border-radius: 0.5rem;
+  border-inline-start: 3px solid var(--hf-accent);
+}
+
+.haifa-feedback-quote {
+  margin: 0 0 0.85rem;
+  font-size: 0.94rem;
+  line-height: 1.7;
+  color: var(--hf-text);
+  font-style: italic;
+}
+
+.haifa-feedback-author {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--hf-accent-dark);
 }
 
 /* Pricing */
@@ -575,7 +697,7 @@
 
 .haifa-schedule-item {
   position: relative;
-  margin-top: 0.65rem;
+  margin-top: 0.85rem;
   padding-inline-start: 0;
   font-size: 0.9rem;
   line-height: 1.6;
@@ -585,6 +707,10 @@
 
 .haifa-schedule-item:first-child {
   margin-top: 0;
+}
+
+.haifa-schedule-item .haifa-waze-link {
+  display: flex;
 }
 
 .haifa-schedule-item::before {
@@ -653,6 +779,11 @@ html[dir="rtl"] .haifa-page :is(
 html[dir="rtl"] .haifa-page :is(
   .haifa-lead,
   .haifa-class-desc,
+  .haifa-class-benefits li,
+  .haifa-class-meta,
+  .haifa-section-lead,
+  .haifa-feedback-quote,
+  .haifa-feedback-author,
   .haifa-meta-value,
   .haifa-info-tile p,
   .haifa-schedule-item,
@@ -662,6 +793,18 @@ html[dir="rtl"] .haifa-page :is(
 ) {
   letter-spacing: 0;
   line-height: 1.8;
+}
+
+html[dir="rtl"] .haifa-feedback-quote {
+  font-style: normal;
+}
+
+html[dir="rtl"] .haifa-page :is(
+  .haifa-class-benefit-title,
+  .haifa-feedback-author
+) {
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 html[dir="rtl"] .haifa-back svg {

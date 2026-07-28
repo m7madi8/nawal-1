@@ -19,10 +19,13 @@ alwaysApply: true
 | `workshops/al-tira.html` | Al-Tira workshop |
 | `workshops/jiva.html` | Redirect → `haifa.html` |
 | `events/sound-healing.html` | Sound Healing event |
+| `events/nature-chocolate.html` | يوم بين الطبيعة والشوكولاته |
+| `events/ice-bath.html` | Day retreat Ice Bath |
 | `retreats/dahab.html` | Dahab retreat |
 | `retreats/zanzibar.html` | Zanzibar retreat |
 | `retreats/wadi-rum.html` | Wadi Rum retreat |
 | `register/mountain-voice.html` | Mountain Voice form |
+| `register/ice-bath.html` | Ice Bath health form |
 | `register/wadi-rum.html` | Wadi Rum form |
 | `admin/index.html` | Admin login |
 | `admin/dashboard.html` | Admin dashboard |

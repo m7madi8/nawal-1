@@ -322,6 +322,32 @@
     update();
   }
 
+  function initWaPrefill() {
+    var WA_BASE = 'https://wa.me/972522496366';
+
+    function apply() {
+      var links = document.querySelectorAll('a[data-wa-msg]');
+      if (!links.length) return;
+
+      var i18n = window.nawalI18n;
+      var lang = (i18n && i18n.getLang && i18n.getLang()) || 'ar';
+
+      links.forEach(function (link) {
+        var key = link.getAttribute('data-wa-msg');
+        if (!key) return;
+        var msg =
+          i18n && i18n.t
+            ? i18n.t(lang, key)
+            : link.getAttribute('data-wa-fallback') || '';
+        if (!msg || msg === key) return;
+        link.href = WA_BASE + '?text=' + encodeURIComponent(msg);
+      });
+    }
+
+    apply();
+    window.addEventListener('nawal-lang-change', apply);
+  }
+
   function init() {
     var yearEl = document.getElementById('current-year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -332,6 +358,7 @@
     initCursor();
     initMobileLangToggle();
     initMenu();
+    initWaPrefill();
   }
 
   if (document.readyState === 'loading') {
