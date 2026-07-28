@@ -114,6 +114,7 @@
               <div class="workshop-card-body flex flex-col flex-1">
                 <div class="workshop-card-header">
                   <span class="workshop-card-tag" data-i18n="events_card_tag">Event</span>
+                  <span class="workshop-card-tag workshop-card-tag--sold" data-i18n="events_nc_sold_out">Sold out</span>
                   <h2 class="workshop-card-title font-serif" data-i18n="events_nc_title">يوم بين الطبيعة والشوكولاته</h2>
                 </div>
                 <p class="workshop-card-desc" data-i18n="events_nc_card_desc">8.8 · 10:00–18:00 · البقيعة — يوغا، برنش، شوكولاتة وموسيقى.</p>
@@ -146,11 +147,19 @@
               </div>
             </div>
           </article>
-          <!-- TEMP: Ice Bath + Health form cards hidden until build is complete — remove hidden to restore -->
-          <article class="workshop-card group h-full animate-content" hidden aria-hidden="true">
+          <article class="workshop-card group h-full animate-content">
             <div class="workshop-card-inner flex flex-col overflow-hidden">
-              <div class="workshop-card-image-wrap workshop-card-image-wrap--ice">
-                <div class="ice-card-visual" aria-hidden="true"></div>
+              <div class="workshop-card-image-wrap">
+                <img
+                  src="public/media/events/ice-bath/hero.jpg"
+                  alt="Day Retreat Between Calm & Strength — ice bath cover"
+                  class="workshop-card-image"
+                  width="1600"
+                  height="1067"
+                  loading="lazy"
+                  decoding="async"
+                  data-i18n-attr="alt:events_ib_card_img_alt"
+                >
               </div>
               <div class="workshop-card-body flex flex-col flex-1">
                 <div class="workshop-card-header">
@@ -159,7 +168,7 @@
                 </div>
                 <p class="workshop-card-desc" data-i18n="events_ib_card_desc">29.08.2026 · Sat · 09:30–16:00 · Hofit</p>
                 <div class="workshop-card-footer">
-                  <a href="events/ice-bath.html" class="workshop-card-cta" tabindex="-1">
+                  <a href="events/ice-bath.html" class="workshop-card-cta">
                     <span data-i18n="events_ib_card_cta">View details</span>
                     <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
                   </a>
@@ -167,10 +176,19 @@
               </div>
             </div>
           </article>
-          <article class="workshop-card group h-full animate-content" hidden aria-hidden="true">
+          <article class="workshop-card group h-full animate-content">
             <div class="workshop-card-inner flex flex-col overflow-hidden">
-              <div class="workshop-card-image-wrap workshop-card-image-wrap--health">
-                <div class="health-card-visual" aria-hidden="true"></div>
+              <div class="workshop-card-image-wrap">
+                <img
+                  src="public/media/events/ice-bath/health-form.jpg"
+                  alt="Health declaration form for Ice Bath day retreat"
+                  class="workshop-card-image"
+                  width="1600"
+                  height="1200"
+                  loading="lazy"
+                  decoding="async"
+                  data-i18n-attr="alt:events_hf_card_img_alt"
+                >
               </div>
               <div class="workshop-card-body flex flex-col flex-1">
                 <div class="workshop-card-header">
@@ -179,7 +197,7 @@
                 </div>
                 <p class="workshop-card-desc" data-i18n="events_hf_card_desc">Required health form before joining the Ice Bath day retreat.</p>
                 <div class="workshop-card-footer">
-                  <a href="register/ice-bath.html" class="workshop-card-cta" tabindex="-1">
+                  <a href="register/ice-bath.html" class="workshop-card-cta">
                     <span data-i18n="events_hf_card_cta">Open form</span>
                     <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
                   </a>

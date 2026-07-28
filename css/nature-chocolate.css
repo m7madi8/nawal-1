@@ -128,7 +128,7 @@
 
 .nc-hero__badge {
   display: inline-block;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
   padding: 0;
   border: none;
   background: transparent;
@@ -137,6 +137,59 @@
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: rgba(240, 226, 208, 0.9);
+}
+
+.nc-hero__labels {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.nc-hero__sold {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.28rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 253, 249, 0.35);
+  background: rgba(90, 70, 50, 0.45);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fffdf9;
+}
+
+.nc-sold-note {
+  margin: 0 auto 1rem;
+  max-width: 22rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: rgba(255, 253, 249, 0.82);
+}
+
+.nc-sold-note--on-dark {
+  color: rgba(255, 253, 249, 0.78);
+}
+
+.nc-hero__cta.nc-cta--disabled,
+.nc-cta__btn.nc-cta--disabled,
+button.nc-hero__cta:disabled,
+button.nc-cta__btn:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.72;
+  filter: grayscale(0.35);
+  transform: none !important;
+  animation: none !important;
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  background: linear-gradient(180deg, #e8ddd0 0%, #cbb9a4 100%);
+  border-color: rgba(180, 160, 140, 0.45);
+  color: rgba(90, 70, 50, 0.75);
 }
 
 .nc-hero__title {
@@ -992,7 +1045,7 @@ html[dir="rtl"] .nc-page :is(
   font-weight: 700;
 }
 
-html[dir="rtl"] .nc-page :is(.nc-hero__badge, .nc-kicker) {
+html[dir="rtl"] .nc-page :is(.nc-hero__badge, .nc-hero__sold, .nc-kicker) {
   letter-spacing: 0;
   text-transform: none;
 }

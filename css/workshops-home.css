@@ -76,3 +76,20 @@
 .workshops-cards-grid .workshop-card-footer {
   margin-top: auto;
 }
+
+.workshop-card-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.55rem;
+}
+
+.workshop-card-header .workshop-card-title {
+  width: 100%;
+}
+
+.workshop-card-tag--sold {
+  color: #7a5340;
+  background: rgba(166, 124, 82, 0.22);
+  border: 1px solid rgba(166, 124, 82, 0.35);
+}

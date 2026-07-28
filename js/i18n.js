@@ -224,16 +224,24 @@
       events_nc_cta_text: '8.8 · 📍 Al-Buqei\'a · 🕙 10:00 AM – 6:00 PM',
       events_nc_wa_msg:
         'Hi Nawal! I\'d like to book a spot for «A Day Between Nature & Chocolate» on 8.8 in Al-Buqei\'a (10:00–18:00). Please confirm availability 🙏',
+      events_nc_sold_out: 'Sold out',
+      events_nc_sold_out_cta: 'Sold out',
+      events_nc_sold_out_note: 'All spots for this day are fully booked.',
+      events_nc_sold_out_aria: 'This event is sold out — booking is closed',
       events_ib_title: 'Day Retreat | Between Calm & Strength',
       events_ib_kicker: 'Cold exposure',
       events_ib_meta_desc:
         'Day Retreat | Between Calm & Strength — 29.08.2026 · Sat · 09:30–16:00 · Hofit. Yoga, breathwork, ice bath, sauna, lunch, and a flower crown workshop.',
       events_ib_card_desc: '29.08.2026 · Sat · 09:30–16:00 · Hofit',
       events_ib_card_cta: 'View details',
+      events_ib_card_img_alt:
+        'Day Retreat Between Calm & Strength — outdoor ice baths and wooden sauna among olive trees',
       events_hf_card_tag: 'Form',
       events_hf_card_title: 'Health Declaration Form',
       events_hf_card_desc: 'Required health form before joining the Ice Bath day retreat.',
       events_hf_card_cta: 'Open form',
+      events_hf_card_img_alt:
+        'Calm cold water and soft ice — cover for the Ice Bath health declaration form',
       events_ib_date: '29.08.2026 | Saturday',
       events_ib_time: '09:30 – 16:00',
       events_ib_location: 'Hofit complex, Emek Hefer',
@@ -324,6 +332,9 @@
       events_ib_not_note:
         'If you have any health condition or take ongoing medication, please consult your doctor before registering.',
       events_ib_health_form_link: 'Health declaration form',
+      events_ib_health_cta: 'Fill the health form',
+      events_ib_health_cta_aria: 'Open the Ice Bath health declaration form',
+      events_ib_health_hint: 'Required before joining the ice bath experience.',
       events_ib_why_kicker: 'Why',
       events_ib_why_title: 'Why this day is worth giving yourself',
       events_ib_why_1_title: 'You’ll leave with tools that stay with you',
@@ -1414,16 +1425,24 @@ This retreat is not only a trip to a beautiful place; it is a real invitation to
       events_nc_cta_text: '8.8 · 📍 البقيعة · 🕙 10:00 صباحًا – 18:00 مساءً',
       events_nc_wa_msg:
         'مرحبا نوال! بدي أحجز مكان في «يوم بين الطبيعة والشوكولاته» بتاريخ 8.8 في البقيعة (10:00–18:00). ممكن تأكيد التوفّر؟ 🙏',
+      events_nc_sold_out: 'مكتمل الحجز',
+      events_nc_sold_out_cta: 'مكتمل الحجز',
+      events_nc_sold_out_note: 'جميع الأماكن لهذا اليوم محجوزة بالكامل.',
+      events_nc_sold_out_aria: 'هذه الفعالية مكتملة الحجز — التسجيل مغلق',
       events_ib_title: 'ريتريت يوم | بين الهدوء والقوة',
       events_ib_kicker: 'تعرّض للبرد',
       events_ib_meta_desc:
         'ريتريت يوم | بين الهدوء والقوة — 29.08.2026 · السبت · 09:30–16:00 · حوفيت. يوغا، تنفّس، حمام ثلج، ساونا، غداء، وورشة طوق ورد.',
       events_ib_card_desc: '29.08.2026 · السبت · 09:30–16:00 · حوفيت',
       events_ib_card_cta: 'عرض التفاصيل',
+      events_ib_card_img_alt:
+        'ريتريت يوم بين الهدوء والقوة — حمامات ثلج وساونا خشبية بين أشجار الزيتون',
       events_hf_card_tag: 'استمارة',
       events_hf_card_title: 'استمارة صحية',
       events_hf_card_desc: 'استمارة صحية مطلوبة قبل المشاركة في ريتريت يوم حمام الثلج.',
       events_hf_card_cta: 'افتحي الاستمارة',
+      events_hf_card_img_alt:
+        'ماء بارد هادئ وجليد ناعم — غلاف استمارة التصريح الصحي لحمام الثلج',
       events_ib_date: '29.08.2026 | السبت',
       events_ib_time: '09:30 – 16:00',
       events_ib_location: 'مجمع حوفيت، وادي حيفر',
@@ -1514,6 +1533,9 @@ This retreat is not only a trip to a beautiful place; it is a real invitation to
       events_ib_not_note:
         'إذا كان لديك أي حالة صحية أو تتناولين أدوية بشكل دائم، ننصح باستشارة طبيبك قبل التسجيل.',
       events_ib_health_form_link: 'الاستمارة الصحية',
+      events_ib_health_cta: 'عبّئي الاستمارة الصحية',
+      events_ib_health_cta_aria: 'افتحي استمارة التصريح الصحي لحمام الثلج',
+      events_ib_health_hint: 'مطلوبة قبل المشاركة في تجربة حمام الثلج.',
       events_ib_why_kicker: 'لماذا',
       events_ib_why_title: 'لماذا يستحق هذا اليوم أن تمنحيه لنفسك؟',
       events_ib_why_1_title: 'ستخرجين بأدوات ترافقك بعد انتهاء الريتريت',

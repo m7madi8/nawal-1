@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="../css/scroll-media.css">
   <link rel="stylesheet" href="../css/nature-chocolate.css">
 </head>
-<body class="nc-page antialiased">
+<body class="nc-page nc-page--sold-out antialiased">
   <header class="site-header" role="banner">
     <div class="site-header-bar">
       <a href="../index.html" class="site-header-brand">
@@ -95,7 +95,10 @@
 
       <div class="nc-hero__inner">
         <div class="nc-hero__panel nc-hero__fade nc-hero__fade--1">
-          <span class="nc-hero__badge" data-i18n="events_card_tag">Event</span>
+          <div class="nc-hero__labels">
+            <span class="nc-hero__badge" data-i18n="events_card_tag">Event</span>
+            <span class="nc-hero__sold" data-i18n="events_nc_sold_out">Sold out</span>
+          </div>
           <h1 id="nc-hero-title" class="nc-hero__title" data-i18n="events_nc_title">يوم بين الطبيعة والشوكولاته</h1>
           <div class="nc-hero__divider" aria-hidden="true"></div>
           <div class="nc-hero__meta">
@@ -103,9 +106,10 @@
             <p class="nc-hero__meta-row" data-i18n="events_nc_time">🕙 10:00 صباحًا – 18:00 مساءً</p>
             <p class="nc-hero__meta-row" data-i18n="events_nc_location">📍 البقيعة</p>
           </div>
-          <a href="https://wa.me/972522496366" target="_blank" rel="noopener noreferrer" class="nc-hero__cta" data-wa-msg="events_nc_wa_msg" data-i18n-attr="aria-label:events_nc_cta_aria">
-            <span data-i18n="events_nc_cta">احجزي مكانك الآن</span>
-          </a>
+          <p class="nc-sold-note" data-i18n="events_nc_sold_out_note">All spots for this day are fully booked.</p>
+          <button type="button" class="nc-hero__cta nc-cta--disabled" disabled aria-disabled="true" data-i18n-attr="aria-label:events_nc_sold_out_aria">
+            <span data-i18n="events_nc_sold_out_cta">Sold out</span>
+          </button>
         </div>
       </div>
     </section>
@@ -292,9 +296,10 @@
       <div class="nc-cta__inner animate-content">
         <h2 id="nc-cta-title" class="nc-cta__title" data-i18n="events_nc_title">يوم بين الطبيعة والشوكولاته</h2>
         <p class="nc-cta__text" data-i18n="events_nc_cta_text">8.8 · 📍 البقيعة · 🕙 10:00 صباحًا – 18:00 مساءً</p>
-        <a href="https://wa.me/972522496366" target="_blank" rel="noopener noreferrer" class="nc-cta__btn" data-wa-msg="events_nc_wa_msg" data-i18n-attr="aria-label:events_nc_cta_aria">
-          <span data-i18n="events_nc_cta">احجزي مكانك الآن</span>
-        </a>
+        <p class="nc-sold-note nc-sold-note--on-dark" data-i18n="events_nc_sold_out_note">All spots for this day are fully booked.</p>
+        <button type="button" class="nc-cta__btn nc-cta--disabled" disabled aria-disabled="true" data-i18n-attr="aria-label:events_nc_sold_out_aria">
+          <span data-i18n="events_nc_sold_out_cta">Sold out</span>
+        </button>
       </div>
     </section>
   </main>

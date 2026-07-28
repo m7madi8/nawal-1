@@ -24,11 +24,14 @@
   /* ── 1. Hero ── */
   function initHero(gsap) {
     var badge = document.querySelector('.nc-hero__badge');
+    var sold = document.querySelector('.nc-hero__sold');
     var title = document.querySelector('.nc-hero__title');
     var divider = document.querySelector('.nc-hero__divider');
     var meta = document.querySelector('.nc-hero__meta');
+    var note = document.querySelector('.nc-hero .nc-sold-note');
     var cta = document.querySelector('.nc-hero__cta');
-    var parts = [badge, title, divider, meta, cta].filter(Boolean);
+    var parts = [badge, sold, title, divider, meta, note, cta].filter(Boolean);
+    var soldOut = document.body.classList.contains('nc-page--sold-out');
 
     if (!parts.length) return;
 
@@ -38,7 +41,7 @@
       .timeline({
         defaults: { ease: 'power2.out' },
         onComplete: function () {
-          if (cta) cta.classList.add('nc-cta--glow');
+          if (cta && !soldOut) cta.classList.add('nc-cta--glow');
         }
       })
       .to(parts, {
@@ -55,7 +58,7 @@
 
     var gsap = window.gsap;
     gsap.fromTo(
-      '.nc-hero__badge, .nc-hero__title, .nc-hero__divider, .nc-hero__meta, .nc-hero__cta',
+      '.nc-hero__labels, .nc-hero__title, .nc-hero__divider, .nc-hero__meta, .nc-hero .nc-sold-note, .nc-hero__cta',
       { autoAlpha: 0 },
       { autoAlpha: 1, duration: 0.4, ease: 'power1.out', stagger: 0.05 }
     );

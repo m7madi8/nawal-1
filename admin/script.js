@@ -100,6 +100,7 @@
     var emptyState = document.getElementById("emptyState");
     var totalCount = document.getElementById("totalCount");
     var formCount = document.getElementById("formCount");
+    var iceBathCount = document.getElementById("iceBathCount");
     var retreatsCount = document.getElementById("retreatsCount");
     var yogaCount = document.getElementById("yogaCount");
     var requestModal = document.getElementById("requestModal");
@@ -173,13 +174,15 @@
 
     function sectionSources(section) {
       if (section === "form") return ["mountain-voice-registration"];
+      if (section === "icebath") return ["ice-bath-health"];
       if (section === "retreats") return ["wadi-rum-registration", "zanzibar-retreat-reserve", "dahab-retreat-reserve"];
       if (section === "yoga") return ["yoga-class-registration", "yoga-class-request"];
       return [];
     }
 
     function sectionLabel(section) {
-      if (section === "form") return "Health Form Requests";
+      if (section === "form") return "Mountain Voice Health";
+      if (section === "icebath") return "Ice Bath Health";
       if (section === "retreats") return "Retreat Requests";
       if (section === "yoga") return "Yoga Classes Requests";
       return "Requests";
@@ -228,6 +231,51 @@
         else if (key === "Pain Zones") parsed.painZones = value;
         else if (key === "Heart Issues") parsed.heartIssues = value;
         else if (key === "Breathing / Dizziness") parsed.breathingDizziness = value;
+        else if (key === "Signature Mode") parsed.signatureMode = value;
+        else if (key === "Typed Signature") parsed.typedSignature = value;
+      });
+      return parsed;
+    }
+
+    function parseIceBathFreeNote(text) {
+      var parsed = {
+        idNumber: "-",
+        birthDate: "-",
+        emergencyName: "-",
+        emergencyPhone: "-",
+        relation: "-",
+        heartBp: "-",
+        circulation: "-",
+        pregnancy: "-",
+        epilepsy: "-",
+        breathing: "-",
+        allergy: "-",
+        medications: "-",
+        otherConditions: "-",
+        signatureMode: "-",
+        typedSignature: "-"
+      };
+      if (!text) return parsed;
+      String(text).split("\n").forEach(function (line) {
+        var idx = line.indexOf(":");
+        if (idx === -1) return;
+        var key = line.slice(0, idx).trim();
+        var value = line.slice(idx + 1).trim() || "-";
+        if (key === "ID") parsed.idNumber = value;
+        else if (key === "Birth Date") parsed.birthDate = value;
+        else if (key === "Emergency") {
+          var parts = value.split("/").map(function (v) { return v.trim(); });
+          parsed.emergencyName = parts[0] || "-";
+          parsed.emergencyPhone = parts[1] || "-";
+          parsed.relation = parts[2] || "-";
+        } else if (key === "Heart / BP") parsed.heartBp = value;
+        else if (key === "Circulation / Raynaud") parsed.circulation = value;
+        else if (key === "Pregnancy") parsed.pregnancy = value;
+        else if (key === "Epilepsy / Seizures") parsed.epilepsy = value;
+        else if (key === "Breathing issues") parsed.breathing = value;
+        else if (key === "Allergy") parsed.allergy = value;
+        else if (key === "Medications") parsed.medications = value;
+        else if (key === "Other conditions") parsed.otherConditions = value;
         else if (key === "Signature Mode") parsed.signatureMode = value;
         else if (key === "Typed Signature") parsed.typedSignature = value;
       });
@@ -315,12 +363,22 @@
     async function fetchSummaryCounts() {
       var all = await fetchAllRequestsFromSupabase();
       var form = all.filter(function (row) { return row.source === "mountain-voice-registration"; }).length;
+      var icebath = all.filter(function (row) { return row.source === "ice-bath-health"; }).length;
       var retreats = all.filter(function (row) { return row.source === "wadi-rum-registration" || row.source === "zanzibar-retreat-reserve" || row.source === "dahab-retreat-reserve"; }).length;
       var yoga = all.filter(function (row) { return sectionSources("yoga").indexOf(String(row.source || "")) !== -1; }).length;
       if (!yoga) {
         yoga = readLegacyRequests(LEGACY_CLASS_KEY).length;
       }
-      return { all: all.length + (yoga && all.filter(function (row) { return sectionSources("yoga").indexOf(String(row.source || "")) !== -1; }).length ? 0 : yoga), form: form, retreats: retreats, yoga: yoga };
+      var yogaInSupabase = all.filter(function (row) {
+        return sectionSources("yoga").indexOf(String(row.source || "")) !== -1;
+      }).length;
+      return {
+        all: all.length + (yogaInSupabase ? 0 : yoga),
+        form: form,
+        icebath: icebath,
+        retreats: retreats,
+        yoga: yoga
+      };
     }
 
     async function renderSummary() {
@@ -328,11 +386,13 @@
         var counts = await fetchSummaryCounts();
         totalCount.textContent = String(counts.all);
         if (formCount) formCount.textContent = String(counts.form);
+        if (iceBathCount) iceBathCount.textContent = String(counts.icebath);
         if (retreatsCount) retreatsCount.textContent = String(counts.retreats);
         if (yogaCount) yogaCount.textContent = String(counts.yoga);
       } catch (_err) {
         totalCount.textContent = "0";
         if (formCount) formCount.textContent = "0";
+        if (iceBathCount) iceBathCount.textContent = "0";
         if (retreatsCount) retreatsCount.textContent = "0";
         if (yogaCount) yogaCount.textContent = "0";
       }
@@ -368,6 +428,31 @@
           ["Additional Notes", retreat.reason || "-"],
           ["Signature Method", extra.signatureMode],
           ["Typed Signature", extra.typedSignature],
+          ["Status", statusLabel(retreat.status)]
+        ];
+      } else if (retreat.source === "ice-bath-health") {
+        var ice = parseIceBathFreeNote(retreat.freeNote);
+        fields = [
+          ["Full Name", retreat.fullName],
+          ["Request Type", retreat.retreatType],
+          ["Phone", retreat.phone],
+          ["ID Number", ice.idNumber],
+          ["Birth Date", ice.birthDate],
+          ["Submitted At", retreat.date],
+          ["Emergency Contact Name", ice.emergencyName],
+          ["Emergency Contact Phone", ice.emergencyPhone],
+          ["Emergency Relationship", ice.relation],
+          ["Heart / Blood Pressure Issues", ice.heartBp],
+          ["Circulation / Raynaud", ice.circulation],
+          ["Pregnancy", ice.pregnancy],
+          ["Epilepsy / Seizures", ice.epilepsy],
+          ["Breathing Issues", ice.breathing],
+          ["Allergy", ice.allergy],
+          ["Medications", ice.medications],
+          ["Other Conditions", ice.otherConditions !== "-" ? ice.otherConditions : (retreat.healthDetails || "-")],
+          ["Additional Notes", retreat.reason || "-"],
+          ["Signature Method", ice.signatureMode],
+          ["Typed Signature", ice.typedSignature],
           ["Status", statusLabel(retreat.status)]
         ];
       } else if (retreat.source === "zanzibar-retreat-reserve" || retreat.source === "dahab-retreat-reserve") {
