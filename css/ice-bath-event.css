@@ -444,6 +444,22 @@ html[dir="rtl"] .ib-page {
   border-color: var(--ib-deep);
 }
 
+.ib-intro__guide {
+  margin: 1.15rem 0 0;
+}
+
+.ib-intro__guide-link {
+  color: var(--ib-accent);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(61, 122, 136, 0.35);
+}
+
+.ib-intro__guide-link:hover {
+  border-bottom-color: var(--ib-accent);
+}
+
 /* ── Program timeline ── */
 .ib-program {
   background: color-mix(in srgb, var(--ib-frost) 72%, var(--bg-temp) 28%);

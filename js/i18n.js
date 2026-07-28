@@ -46,7 +46,7 @@
       dashboard_card1_title: 'Quick practice stats',
       dashboard_metric_1_value: '500+',
       dashboard_metric_1_label: 'Students',
-      dashboard_metric_2_value: '5+ years',
+      dashboard_metric_2_value: '7+ years',
       dashboard_metric_2_label: 'Teaching',
       dashboard_metric_3_value: '4 styles',
       dashboard_metric_3_label: 'Yoga methods',
@@ -69,7 +69,7 @@
       about_subtitle: 'A journey of awareness, breath and movement',
       about_name: 'Nawal Omar',
       about_cert: 'Certified yoga instructor • Vinyasa, Yin, Hatha, meditation',
-      about_bio: 'Certified yoga instructor with over five years of practice. Vinyasa, Yin, Hatha & meditation—for beginners and advanced. Reconnect with your body, breath, and inner calm in the studio or in nature.',
+      about_bio: 'Certified yoga instructor with over seven years of practice. Vinyasa, Yin, Hatha & meditation—for beginners and advanced. Reconnect with your body, breath, and inner calm in the studio or in nature.',
       about_point1: 'Certified (RYT 200+) — private & group sessions',
       about_point2: 'Day retreats and local programs in nature',
       stat_trainees: 'Trainees',
@@ -83,7 +83,7 @@
       video_live: 'Live audio',
       video_caption: 'Nawal Omar · Yoga & mindfulness',
       story_label: 'My story',
-      story_text1: "I'm a certified yoga instructor with over five years of practice and teaching. What started as my personal search for calm and flexibility became a path to share yoga with others—Vinyasa, Yin, Hatha, and guided meditation.",
+      story_text1: "I'm a certified yoga instructor with over seven years of practice and teaching. What started as my personal search for calm and flexibility became a path to share yoga with others—Vinyasa, Yin, Hatha, and guided meditation.",
       story_text2: 'Whether in the studio or in nature, I design every session to help you reconnect with your body, breath, and inner stillness. I believe yoga is for everyone: gentle movement, mindful breath, and moments of silence that bring you back to yourself.',
 
       moments_label: 'Images & moments',
@@ -111,12 +111,17 @@
       retreat_cta: 'Explore retreats',
       events_section_label: 'Events',
       events_section_title: 'Events',
-      events_section_intro: 'Special gatherings — sound healing, circles, and mindful experiences in Haifa.',
+      events_section_intro: 'Special gatherings — sound healing, ice bath, nature days, and mindful experiences.',
       events_card_tag: 'Event',
       events_card_cta: 'View event details',
+      events_home_card_title: 'All events',
+      events_home_card_desc:
+        'Ice bath, sound healing, nature & chocolate, and more — browse every upcoming gathering.',
+      events_home_card_cta: 'View all events',
+      events_home_card_img_alt: 'Upcoming events with Nawal Omar',
       events_page_label: 'Events',
       events_page_title: 'Events',
-      events_page_intro: 'Upcoming gatherings with Nawal Omar — sound, breath, and connection.',
+      events_page_intro: 'Upcoming gatherings with Nawal Omar — ice bath, sound, nature days, and connection.',
       events_upcoming_title: 'Upcoming events',
       events_view_details: 'View details',
       events_sh_title: 'Sound Healing',
@@ -431,6 +436,83 @@
       events_ib_submit: 'Submit',
       events_ib_success_title: 'Health form submitted',
       events_ib_success_text: 'Thank you. Your declaration has been saved and we will contact you if needed.',
+      ibx_meta_desc:
+        'How Nawal Omar — nurse and yoga teacher — holds breathwork and ice bath: presence over performance, clear science, and non-negotiable safety.',
+      ibx_hero_title: 'Breath, cold, and presence',
+      ibx_hero_lead:
+        'We don’t enter the water to become someone else. We enter to stay with ourselves when the body says: this is new, this is strong — pay attention.',
+      ibx_hero_cta: 'View the day retreat',
+      ibx_nawal_img_alt: 'Nawal Omar',
+      ibx_voice_kicker: 'With Nawal',
+      ibx_voice_title: 'Nurse. Yoga teacher. Guide for what the body can hold.',
+      ibx_voice_p1:
+        'Welcome. I’m Nawal — a nurse and yoga teacher. Today isn’t only about trying the cold or proving we are strong. It’s about understanding how the body works, hearing its limits, and staying present when fear rises — instead of fighting it or running from it.',
+      ibx_voice_p2:
+        'This is not a competition, and there is no time you must reach. Success is not minutes in the water. Success is staying connected to your body — saying yes when yes is true, and stopping when your body needs to stop.',
+      ibx_voice_p3:
+        'Before any practice, every participant is responsible for sharing health information. As a facilitator, I may pause the experience or ask for medical clearance when safety is unclear.',
+      ibx_stages_kicker: 'The path',
+      ibx_stages_title: 'Three stages — without a race',
+      ibx_stages_lead: 'A held arc: learn, enter, return. Always on land first. Always with choice.',
+      ibx_stage1_title: 'Breath & nervous system',
+      ibx_stage1_body:
+        'We learn about breath and the nervous system, then practice short, safe rounds on land — never in water, never near water.',
+      ibx_stage2_title: 'Preparing for cold',
+      ibx_stage2_body:
+        'We prepare the body and learn how to enter cold water without racing and without pressure — head and neck stay above water.',
+      ibx_stage3_title: 'Settle, share, integrate',
+      ibx_stage3_body:
+        'We give time to warm, settle, and share — understanding what we learned about ourselves, not how long we stayed.',
+      ibx_body_kicker: 'In the body',
+      ibx_body_title: 'What actually happens in the breath',
+      ibx_body_p1:
+        'During faster breathing, carbon dioxide drops and blood chemistry shifts for a short time. That can bring lightness, tingling, or dizziness — not because the brain is “super-oxygenated,” but because vessels and nerves respond to that change.',
+      ibx_body_p2:
+        'During a short breath hold after the exhale, the urge to breathe returns gradually. We never chase the longest hold or the strongest dizziness. The aim is a brief, conscious pressure — then a full return to balance.',
+      ibx_body_quote:
+        'Less blood flow to the brain is not the goal. The real training is a small, regulatable stress — then bringing the whole body back to safety.',
+      ibx_body_note_title: 'Possible benefits — said carefully',
+      ibx_body_b1: 'Temporary activation of the stress response, then recovery.',
+      ibx_body_b2: 'Practice noticing strong sensations without panic.',
+      ibx_body_b3: 'Learning the difference between discomfort and danger.',
+      ibx_body_b4: 'A clearer sense of choice: stay, soften, or leave.',
+      ibx_body_note_foot: 'This is not medical treatment, and it does not replace therapy or a doctor’s care.',
+      ibx_cold_kicker: 'In the water',
+      ibx_cold_title: 'What happens in the ice bath',
+      ibx_cold_lead:
+        'Cold shock is real. We meet it with longer exhales — never with breath holds in or near the water.',
+      ibx_cold1_title: 'First seconds',
+      ibx_cold1_body:
+        'A reflexive gasp, faster breath, higher pulse and pressure. This is often the most demanding moment — especially with heart or blood-pressure concerns.',
+      ibx_cold2_title: 'After ~30–120 seconds',
+      ibx_cold2_body:
+        'Breath may become more controllable. The body is still under stress. Numbness is not proof of “adaptation,” and we don’t extend time for bravado.',
+      ibx_cold3_title: 'After exit',
+      ibx_cold3_body:
+        'Core temperature can keep dropping for a while (afterdrop). We dry, warm gently, move lightly, and watch recovery — no sudden extremes.',
+      ibx_cold_rule:
+        'Non-negotiable: no Wim Hof-style breathing or breath holds in water, while swimming, in a bath, while driving, or anywhere loss of consciousness would be dangerous.',
+      ibx_honest_kicker: 'Honest language',
+      ibx_honest_title: 'What we can say — and what we don’t promise',
+      ibx_honest_p1:
+        'We may feel more alert energy, a stronger sense of agency, and a practical lesson in meeting pressure with breath. Research on inflammation and cold/breath protocols is promising but limited — small studies, mixed outcomes.',
+      ibx_honest_p2:
+        'We do not claim the method cures depression, prevents disease, treats autoimmune conditions, or gives full control of the nervous system. Cold can raise blood pressure and heart rate before any calm arrives.',
+      ibx_limits_title: 'Usually not without written medical clearance',
+      ibx_limits_1: 'Heart disease, arrhythmia, chest pain, prior clot, or recent heart surgery',
+      ibx_limits_2: 'Uncontrolled blood pressure or unexplained fainting',
+      ibx_limits_3: 'Pregnancy or possible pregnancy',
+      ibx_limits_4: 'Epilepsy or seizure history',
+      ibx_limits_5: 'Unstable lung disease or uncontrolled asthma',
+      ibx_limits_6: 'Severe Raynaud’s or serious circulation issues',
+      ibx_limits_7: 'Recent surgery, open wound, fever, or acute illness',
+      ibx_limits_8: 'Alcohol, sedatives, or any state that blocks clear consent',
+      ibx_limits_cta: 'Complete the health declaration →',
+      ibx_close_title: 'Closing in Nawal’s voice',
+      ibx_close_quote:
+        'Today we didn’t learn how to defeat the cold. We learned how to stay with ourselves while something strong moves through us. Strength is not finishing at any cost — strength is knowing when to breathe, when to soften, and when to leave. Take that with you: the feeling is strong, but it doesn’t decide for you. You can feel, breathe, then choose.',
+      ibx_close_cta_event: 'Day retreat details',
+      ibx_event_link: 'How we hold this experience',
       retreats_page_label: 'Retreat Collection',
       retreats_page_title: 'Retreats',
       retreats_page_intro: 'Choose your next wellness journey.',
@@ -1257,7 +1339,7 @@ This retreat is not only a trip to a beautiful place; it is a real invitation to
       dashboard_card1_title: 'إحصائيات سريعة',
       dashboard_metric_1_value: '+500',
       dashboard_metric_1_label: 'متدرّب/ة',
-      dashboard_metric_2_value: '+5 سنوات',
+      dashboard_metric_2_value: '+7 سنوات',
       dashboard_metric_2_label: 'خبرة تدريب',
       dashboard_metric_3_value: '4 أساليب',
       dashboard_metric_3_label: 'أنماط يوغا',
@@ -1280,7 +1362,7 @@ This retreat is not only a trip to a beautiful place; it is a real invitation to
       about_subtitle: 'رحلة وعي ونفس وحركة',
       about_name: 'نوال عمر',
       about_cert: 'مدربة يوغا معتمدة • فينيسا، يين، هاثا، تأمل',
-      about_bio: 'مدربة يوغا معتمدة مع أكثر من خمس سنوات من الممارسة والتعليم. فينيسا، يين، هاثا والتأمل—للمبتدئين والمتقدمين. إعادة الاتصال بجسدك ونفسك والهدوء الداخلي في الاستوديو أو في الطبيعة.',
+      about_bio: 'مدربة يوغا معتمدة مع أكثر من سبع سنوات من الممارسة والتعليم. فينيسا، يين، هاثا والتأمل—للمبتدئين والمتقدمين. إعادة الاتصال بجسدك ونفسك والهدوء الداخلي في الاستوديو أو في الطبيعة.',
       about_point1: 'معتمدة (RYT 200+) — جلسات خاصة وجماعية',
       about_point2: 'ريتريت يوم وبرامج داخل البلاد في الطبيعة',
       stat_trainees: 'متدرب',
@@ -1294,7 +1376,7 @@ This retreat is not only a trip to a beautiful place; it is a real invitation to
       video_live: 'صوت مباشر',
       video_caption: 'نوال عمر · يوغا ووعي',
       story_label: 'قصتي',
-      story_text1: 'أنا مدربة يوغا معتمدة مع أكثر من خمس سنوات من الممارسة والتعليم. ما بدأ كبحث شخصي عن الهدوء والمرونة أصبح طريقاً لمشاركة اليوغا مع الآخرين—فينيسا، يين، هاثا، وتأمل موجّه.',
+      story_text1: 'أنا مدربة يوغا معتمدة مع أكثر من سبع سنوات من الممارسة والتعليم. ما بدأ كبحث شخصي عن الهدوء والمرونة أصبح طريقاً لمشاركة اليوغا مع الآخرين—فينيسا، يين، هاثا، وتأمل موجّه.',
       story_text2: 'سواء في الاستوديو أو في الطبيعة، أصمم كل جلسة لمساعدتك على إعادة الاتصال بجسدك ونفسك وسكونك الداخلي. أؤمن أن اليوغا للجميع: حركة لطيفة، نفس واعٍ، ولحظات صمت تعيدك إلى ذاتك.',
 
       moments_label: 'صور ولحظات',
@@ -1322,12 +1404,17 @@ This retreat is not only a trip to a beautiful place; it is a real invitation to
       retreat_cta: 'استكشفي ريتريت',
       events_section_label: 'فعاليات',
       events_section_title: 'فعاليات',
-      events_section_intro: 'لقاءات خاصة — ساوند هيلينغ، دوائر، وتجارب واعية في حيفا.',
+      events_section_intro: 'لقاءات خاصة — ساوند هيلينغ، حمام ثلج، أيام في الطبيعة، وتجارب واعية.',
       events_card_tag: 'فعالية',
       events_card_cta: 'عرض تفاصيل الفعالية',
+      events_home_card_title: 'كل الفعاليات',
+      events_home_card_desc:
+        'حمام ثلج، ساوند هيلينغ، يوم بين الطبيعة والشوكولاته، والمزيد — تصفّحي كل اللقاءات القادمة.',
+      events_home_card_cta: 'تصفّحي كل الفعاليات',
+      events_home_card_img_alt: 'فعاليات قادمة مع نوال عمر',
       events_page_label: 'فعاليات',
       events_page_title: 'فعاليات',
-      events_page_intro: 'فعاليات قادمة مع نوال عمر — صوت، تنفّس، واتصال.',
+      events_page_intro: 'فعاليات قادمة مع نوال عمر — حمام ثلج، صوت، أيام طبيعة، واتصال.',
       events_upcoming_title: 'فعاليات قادمة',
       events_view_details: 'عرض التفاصيل',
       events_sh_title: 'Sound Healing',
@@ -1642,6 +1729,83 @@ This retreat is not only a trip to a beautiful place; it is a real invitation to
       events_ib_submit: 'إرسال',
       events_ib_success_title: 'تم إرسال الاستمارة الصحية',
       events_ib_success_text: 'شكرًا لك. تم حفظ إقرارك وسنتواصل معك عند الحاجة.',
+      ibx_meta_desc:
+        'كيف تمسك نوال عمر — ممرضة ومعلّمة يوغا — ورشة التنفّس وحمّام الثلج: حضور لا بطولة، علم واضح، وأمان غير قابل للنقاش.',
+      ibx_hero_title: 'تنفّس، برد، وحضور',
+      ibx_hero_lead:
+        'نحن لا ندخل الماء لنصبح شخصًا آخر. ندخله لنبقى مع أنفسنا عندما يقول الجسد: هذا جديد، هذا قوي — انتبهي.',
+      ibx_hero_cta: 'عرض ريتريت اليوم',
+      ibx_nawal_img_alt: 'نوال عمر',
+      ibx_voice_kicker: 'مع نوال',
+      ibx_voice_title: 'ممرضة. معلّمة يوغا. مرشدة لما يستطيع الجسد أن يحمله.',
+      ibx_voice_p1:
+        'أهلًا وسهلًا فيكن. أنا نوال، ممرضة ومعلّمة يوغا، وبهمّني اليوم مش بس نجرّب البرد أو نثبت إننا قويات. بهمّني نفهم كيف جسمنا يشتغل، كيف نسمع حدوده، وكيف نبقى حاضرات عندما يطلع الخوف بدل ما نحاربه أو نهرب منه.',
+      ibx_voice_p2:
+        'هذه ليست مسابقة، ولا يوجد وقت يجب أن تصلي إليه. النجاح اليوم ليس عدد الدقائق في الماء؛ النجاح هو أن تبقي متصلة بجسمك، أن تقولي نعم عندما تكون نعم حقيقية، وأن تقولي توقّفي عندما يحتاج جسمك إلى التوقف.',
+      ibx_voice_p3:
+        'قبل أي تمرين، كل مشاركة مسؤولة أن تخبرني عن أي حالة صحية. ومن حقي كمدرّبة أن أوقف التجربة أو أطلب موافقة طبية عندما أشعر أن السلامة غير واضحة.',
+      ibx_stages_kicker: 'المسار',
+      ibx_stages_title: 'ثلاث مراحل — بلا سباق',
+      ibx_stages_lead: 'قوس مُرافَق: نتعلّم، ندخل، نعود. دائمًا على اليابسة أولًا. دائمًا مع اختيار.',
+      ibx_stage1_title: 'التنفّس والجهاز العصبي',
+      ibx_stage1_body:
+        'نتعلّم عن التنفّس والجهاز العصبي، ثم نجرّب جولات قصيرة وآمنة على اليابسة — لا داخل الماء ولا بقربه.',
+      ibx_stage2_title: 'التهيئة للبرد',
+      ibx_stage2_body:
+        'نهيّئ الجسم ونتعلّم كيف ندخل الماء البارد بدون سباق وبدون ضغط — ويبقى الرأس والرقبة خارج الماء.',
+      ibx_stage3_title: 'تهدئة، مشاركة، دمج',
+      ibx_stage3_body:
+        'نعطي وقتًا للتدفئة والتهدئة والمشاركة — لنفهم ما تعلّمناه عن أنفسنا، لا كم بقينا.',
+      ibx_body_kicker: 'في الجسد',
+      ibx_body_title: 'ماذا يحدث فعلًا في التنفّس',
+      ibx_body_p1:
+        'خلال التنفّس الأسرع ينخفض ثاني أكسيد الكربون وتتغير كيمياء الدم مؤقتًا. قد تظهر خفّة أو وخز أو دوخة — ليس لأن الدماغ «ممتلئ أكسجينًا»، بل لأن الأوعية والأعصاب تستجيب لهذا التغيّر.',
+      ibx_body_p2:
+        'خلال حبس قصير بعد الزفير يعود الدافع للتنفّس تدريجيًا. لا نطارد أطول حبس ولا أقوى دوخة. الهدف ضغط قصير واعٍ — ثم عودة كاملة إلى التوازن.',
+      ibx_body_quote:
+        'قلّة تدفّق الدم إلى الدماغ ليست الهدف. التدريب الحقيقي هو أن نصنع ضغطًا صغيرًا يمكن تنظيمه، ثم نعيد الجسم كاملًا إلى الأمان.',
+      ibx_body_note_title: 'فوائد محتملة — بصياغة دقيقة',
+      ibx_body_b1: 'تنشيط مؤقت لاستجابة الضغط، ثم التعافي.',
+      ibx_body_b2: 'تمرين ملاحظة الإحساس القوي دون ذعر.',
+      ibx_body_b3: 'التمييز بين الانزعاج والخطر.',
+      ibx_body_b4: 'إحساس أوضح بالاختيار: البقاء، اللين، أو الخروج.',
+      ibx_body_note_foot: 'هذه ليست علاجًا طبيًا، ولا تغني عن المتابعة النفسية أو الطبية.',
+      ibx_cold_kicker: 'في الماء',
+      ibx_cold_title: 'ماذا يحدث في حمّام الثلج',
+      ibx_cold_lead:
+        'صدمة البرد حقيقية. نواجهها بزفير أطول — لا بحبس نفس داخل الماء أو بقربه.',
+      ibx_cold1_title: 'الثواني الأولى',
+      ibx_cold1_body:
+        'شهيق انعكاسي، تنفّس أسرع، ارتفاع النبض والضغط. هذه غالبًا المرحلة الأثقل — خصوصًا مع مشاكل القلب أو الضغط.',
+      ibx_cold2_title: 'بعد نحو 30–120 ثانية',
+      ibx_cold2_body:
+        'قد يصبح التنفّس أكثر قابلية للسيطرة. الجسم ما زال تحت ضغط. الخدر ليس دليل «تأقلم»، ولا نطيل الوقت بهدف البطولة.',
+      ibx_cold3_title: 'بعد الخروج',
+      ibx_cold3_body:
+        'قد تستمر حرارة الجسم الداخلية بالانخفاض لبعض الوقت. نجفّف، نتدفأ بلطف، نتحرك بهدوء، ونراقب التعافي — بلا تطرف مفاجئ.',
+      ibx_cold_rule:
+        'قاعدة غير قابلة للنقاش: لا يُمارس تنفّس ويم هوف أو حبس النفس داخل الماء، أثناء السباحة، في الحمام، أثناء القيادة، أو في أي وضع يصبح فيه فقدان الوعي خطيرًا.',
+      ibx_honest_kicker: 'لغة صادقة',
+      ibx_honest_title: 'ما نستطيع قوله — وما لا نعد به',
+      ibx_honest_p1:
+        'قد نشعر بطاقة أوضح، وإحساس أقوى بالقدرة الذاتية، ودرس عملي في مواجهة الضغط بالتنفّس. الأبحاث حول الالتهاب وبروتوكولات البرد والتنفّس واعدة لكنها محدودة — دراسات صغيرة ونتائج متفاوتة.',
+      ibx_honest_p2:
+        'لا ندّعي أن الطريقة تشفي الاكتئاب، أو تمنع الأمراض، أو تعالج المناعة الذاتية، أو تمنح سيطرة كاملة على الجهاز العصبي. البرد قد يرفع الضغط والنبض قبل أن يظهر أي هدوء.',
+      ibx_limits_title: 'عادةً لا نشارك دون موافقة طبية مكتوبة',
+      ibx_limits_1: 'أمراض القلب، اضطراب نظم، ألم صدر، جلطة سابقة أو جراحة قلب حديثة',
+      ibx_limits_2: 'ضغط دم غير مضبوط أو إغماء غير مفسَّر',
+      ibx_limits_3: 'الحمل أو احتمال الحمل',
+      ibx_limits_4: 'الصرع أو تاريخ تشنجات',
+      ibx_limits_5: 'مرض رئوي غير مستقر أو ربو غير مضبوط',
+      ibx_limits_6: 'رينو الشديد أو اضطرابات خطيرة في الدورة الدموية',
+      ibx_limits_7: 'عملية حديثة، جرح مفتوح، حمى أو مرض حاد',
+      ibx_limits_8: 'كحول، مهدئات، أو أي حالة تمنع موافقة واعية',
+      ibx_limits_cta: 'عبّئي التصريح الصحي ←',
+      ibx_close_title: 'خاتمة بصوت نوال',
+      ibx_close_quote:
+        'اليوم ما تعلمنا كيف نهزم البرد. تعلمنا كيف نبقى معنا ونحن نمر بشيء قوي. القوة ليست أن نكمل بأي ثمن؛ القوة أن نعرف متى نتنفس، متى نلين، ومتى نخرج. خذي معك هذه المعرفة إلى الحياة: الشعور قوي، لكنه لا يقرر عنك. أنت تستطيعين أن تشعري، تتنفسي، ثم تختاري.',
+      ibx_close_cta_event: 'تفاصيل ريتريت اليوم',
+      ibx_event_link: 'كيف نمسك هذه التجربة',
       retreats_page_label: 'مجموعة الريتريت',
       retreats_page_title: 'الريتريتات',
       retreats_page_intro: 'اختاري رحلتك القادمة للهدوء والتجدد.',
