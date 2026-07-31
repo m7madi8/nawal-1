@@ -32,8 +32,8 @@
     },
     {
       id: "icebath",
-      label: "Ice Bath Health",
-      sources: ["ice-bath-health"],
+      label: "Ice Bath",
+      sources: ["ice-bath-health", "ice-bath-registration"],
       icon: "ice",
       inSidebar: true
     },
@@ -872,6 +872,15 @@
           ["Additional Notes", retreat.reason || "-"],
           ["Signature Method", extra.signatureMode],
           ["Typed Signature", extra.typedSignature],
+          ["Status", statusLabel(retreat.status)]
+        ];
+      } else if (retreat.source === "ice-bath-registration") {
+        fields = [
+          ["Full Name", retreat.fullName],
+          ["Request Type", retreat.retreatType || "Ice Bath Day Retreat"],
+          ["Phone", retreat.phone],
+          ["Notes", retreat.reason || "-"],
+          ["Submitted At", retreat.date],
           ["Status", statusLabel(retreat.status)]
         ];
       } else if (retreat.source === "ice-bath-health") {

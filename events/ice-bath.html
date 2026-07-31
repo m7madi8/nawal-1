@@ -118,9 +118,9 @@
           <p class="ib-hero__meta-row" data-i18n="events_ib_time">09:30 – 16:00</p>
           <p class="ib-hero__meta-row" data-i18n="events_ib_location">Hofit complex, Emek Hefer</p>
         </div>
-        <a href="https://wa.me/972522496366" target="_blank" rel="noopener noreferrer" class="ib-hero__cta ib-hero__fade ib-hero__fade--3" data-wa-msg="events_ib_wa_msg" data-i18n-attr="aria-label:events_ib_cta_aria">
+        <button type="button" class="ib-hero__cta ib-hero__fade ib-hero__fade--3" data-ib-register data-i18n-attr="aria-label:events_ib_cta_aria">
           <span data-i18n="events_ib_cta">Book your spot</span>
-        </a>
+        </button>
         <a href="../register/ice-bath.html" class="ib-hero__health ib-hero__fade ib-hero__fade--3" data-i18n-attr="aria-label:events_ib_health_cta_aria">
           <span data-i18n="events_ib_health_cta">Fill the health form</span>
         </a>
@@ -479,12 +479,12 @@ A warm women’s circle to meet, break the ice, and set the intention you’ll c
       </div>
       <div class="ib-cta__inner animate-content">
         <h2 id="ib-cta-title" class="ib-cta__title" data-i18n="events_ib_book_title">Booking</h2>
-        <p class="ib-cta__text" data-i18n="events_ib_book_body">To reserve your place, please contact us by phone or WhatsApp.</p>
-        <p class="ib-cta__note" data-i18n="events_ib_book_note">After confirmation, all details and day instructions will be sent to you.</p>
+        <p class="ib-cta__text" data-i18n="events_ib_book_body">Reserve your place through the registration form — your request will appear on the admin dashboard.</p>
+        <p class="ib-cta__note" data-i18n="events_ib_book_note">After we confirm your registration, all details and day instructions will be sent to you.</p>
         <div class="ib-cta__actions">
-          <a href="https://wa.me/972522496366" target="_blank" rel="noopener noreferrer" class="ib-cta__btn" data-wa-msg="events_ib_wa_msg" data-i18n-attr="aria-label:events_ib_cta_aria">
+          <button type="button" class="ib-cta__btn" data-ib-register data-i18n-attr="aria-label:events_ib_cta_aria">
             <span data-i18n="events_ib_cta">Book your spot</span>
-          </a>
+          </button>
           <a href="../register/ice-bath.html" class="ib-cta__btn ib-cta__btn--secondary" data-i18n-attr="aria-label:events_ib_health_cta_aria">
             <span data-i18n="events_ib_health_cta">Fill the health form</span>
           </a>
@@ -492,6 +492,31 @@ A warm women’s circle to meet, break the ice, and set the intention you’ll c
       </div>
     </section>
   </main>
+
+  <div id="ib-register-modal" class="ib-register-modal" hidden>
+    <div class="ib-register-card" role="dialog" aria-modal="true" aria-labelledby="ib-register-title">
+      <div class="ib-register-head">
+        <h3 id="ib-register-title" data-i18n="events_ib_register_title">Confirm your booking</h3>
+        <button type="button" id="ib-register-close" class="ib-register-close" data-i18n-attr="aria-label:menu_close" aria-label="Close">&times;</button>
+      </div>
+      <p class="ib-register-event" data-i18n="events_ib_register_event">Day Retreat | Between Calm & Strength · 29.08.2026</p>
+      <form id="ib-register-form" class="ib-register-form">
+        <label class="ib-register-label" for="ib-register-name" data-i18n="events_ib_register_name">Full name</label>
+        <input id="ib-register-name" name="fullName" class="ib-register-input" required autocomplete="name">
+        <label class="ib-register-label" for="ib-register-phone" data-i18n="events_ib_register_phone">Phone (WhatsApp preferred)</label>
+        <input id="ib-register-phone" name="phone" class="ib-register-input" type="tel" required autocomplete="tel">
+        <label class="ib-register-label" for="ib-register-notes" data-i18n="events_ib_register_notes">Notes (optional)</label>
+        <textarea id="ib-register-notes" name="notes" class="ib-register-input ib-register-textarea" rows="3"></textarea>
+        <button type="submit" id="ib-register-submit" class="ib-register-submit">
+          <span data-i18n="events_ib_register_confirm">Confirm registration</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div id="ib-register-success" class="ib-register-success" hidden data-i18n="events_ib_register_success">
+    Registration sent successfully. We will contact you shortly.
+  </div>
 
   <footer class="footer-isla animate-section border-t border-[var(--color-primary)]/25 bg-[#faf8f5]">
     <div class="mx-auto w-full max-w-6xl px-4 sm:px-6 md:px-8 lg:px-10 min-w-0">
@@ -510,6 +535,7 @@ A warm women’s circle to meet, break the ice, and set the intention you’ll c
   <script src="../js/i18n.js"></script>
   <script src="../js/app.js"></script>
   <script src="../js/reveal.js"></script>
+  <script src="../js/ice-bath-registration.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="../js/ice-bath-event.js"></script>

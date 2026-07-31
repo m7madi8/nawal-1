@@ -268,9 +268,13 @@ html[dir="rtl"] .ib-page {
   border: 1px solid rgba(232, 241, 243, 0.45);
   background: linear-gradient(180deg, #e8f1f3 0%, #c5dde3 100%);
   color: var(--ib-deep);
+  font: inherit;
   font-size: 0.95rem;
   font-weight: 600;
   text-decoration: none;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
   box-shadow:
     0 10px 28px rgba(0, 0, 0, 0.22),
     inset 0 1px 0 rgba(255, 255, 255, 0.5);
@@ -1129,12 +1133,17 @@ html[dir="rtl"] .ib-page {
   gap: 0.45rem;
   min-width: min(100%, 16rem);
   padding: 0.9rem 1.4rem;
+  border: 0;
   border-radius: 999px;
   background: #e8f1f3;
   color: var(--ib-deep);
+  font: inherit;
   font-size: 0.95rem;
   font-weight: 600;
   text-decoration: none;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
   transition: background 200ms ease, transform 200ms ease, box-shadow 280ms ease, border-color 200ms ease;
 }
@@ -1160,6 +1169,152 @@ html[dir="rtl"] .ib-page {
   color: #fff;
   border-color: rgba(232, 241, 243, 0.75);
   box-shadow: none;
+}
+
+/* Booking registration modal → admin dashboard */
+.ib-register-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(15, 30, 36, 0.55);
+  backdrop-filter: blur(3px);
+}
+
+.ib-register-modal[hidden] {
+  display: none !important;
+}
+
+.ib-register-card {
+  width: min(100%, 30rem);
+  background: #fffdf9;
+  border: 1px solid rgba(61, 122, 136, 0.28);
+  border-radius: 1rem;
+  box-shadow: 0 22px 48px rgba(15, 30, 36, 0.28);
+  padding: 1.15rem 1.15rem 1.25rem;
+}
+
+.ib-register-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.ib-register-head h3 {
+  margin: 0;
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 500;
+  font-size: 1.2rem;
+  color: #1e3a42;
+}
+
+[dir="rtl"] .ib-register-head h3 {
+  font-family: Amiri, Georgia, serif;
+}
+
+.ib-register-close {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(61, 122, 136, 0.3);
+  background: #e8f1f3;
+  color: #2a555f;
+  font-size: 1.1rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.ib-register-event {
+  margin: 0.75rem 0 0.95rem;
+  color: #5a737a;
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.ib-register-form {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.ib-register-label {
+  font-size: 0.82rem;
+  color: #3d555c;
+  font-weight: 600;
+}
+
+.ib-register-input {
+  border: 1px solid #d5e2e5;
+  border-radius: 0.65rem;
+  padding: 0.6rem 0.75rem;
+  font-size: 0.92rem;
+  color: #1e3a42;
+  font-family: inherit;
+  background: #fffdf9;
+}
+
+.ib-register-input:focus {
+  outline: none;
+  border-color: #3d7a88;
+  box-shadow: 0 0 0 3px rgba(61, 122, 136, 0.16);
+}
+
+.ib-register-textarea {
+  resize: vertical;
+  min-height: 4.5rem;
+}
+
+.ib-register-submit {
+  margin-top: 0.55rem;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.75rem 1.1rem;
+  background: #2a555f;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.93rem;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.ib-register-submit:hover {
+  background: #1e3a42;
+}
+
+.ib-register-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ib-register-success {
+  position: fixed;
+  inset-inline: 1rem;
+  bottom: 1rem;
+  z-index: 91;
+  margin-inline: auto;
+  max-width: 28rem;
+  border-radius: 0.8rem;
+  border: 1px solid rgba(61, 122, 136, 0.35);
+  background: #e8f1f3;
+  color: #1e3a42;
+  padding: 0.8rem 0.95rem;
+  text-align: center;
+  font-size: 0.9rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 180ms ease, transform 180ms ease;
+  pointer-events: none;
+}
+
+.ib-register-success[hidden] {
+  display: none !important;
+}
+
+.ib-register-success.is-show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Reveal helpers — fallback when GSAP is off; GSAP owns motion when .ib-page--motion */
