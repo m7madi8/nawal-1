@@ -1835,31 +1835,43 @@
       };
 
 
-      /*
-      =====================================================
-      BACKEND
+      const freeNoteText = [
+        `⭐ التقييم الإجمالي: ${feedback.overallRating ? feedback.overallRating + '/5' : 'لم يُحدد'}`,
+        `💖 المشاعر والأثر: ${feedback.feelings.join('، ') || 'لم تُحدد'}`,
+        `📍 التقييمات التفصيلية: الإرشاد (${feedback.ratings.guidance || 0}/5)، الأجواء (${feedback.ratings.vibes || 0}/5)، المكان (${feedback.ratings.venue || 0}/5)`,
+        `❄️ أثر تجربة الثلج والبريكثرو: ${feedback.moment || '-'}`,
+        `🔄 الرغبة بالتكرار: ${feedback.wouldReturn || '-'}`,
+        `💬 كلمة ختامية: ${feedback.lastThing || '-'}`
+      ].join('\n');
 
-      اربطي هون:
-      Formspree / FormSubmit / Supabase / API
+      const payload = {
+        source: "feedback-ice",
+        fullName: feedback.participantName || "مشاركة حمام الثلج",
+        phone: "-",
+        retreatType: "Ice Bath Experience Feedback",
+        freeNote: freeNoteText,
+        submittedAt: feedback.submittedAt,
+        status: "pending"
+      };
 
-      مثال:
+      try {
+        fetch("https://xzxyskufrqansbhsbdkt.supabase.co/rest/v1/retreat_requests", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "apikey": "sb_publishable_V9_4QWGDFv6Vm-4DQifYGA_1xdoKkph",
+            "Authorization": "Bearer sb_publishable_V9_4QWGDFv6Vm-4DQifYGA_1xdoKkph",
+            "Prefer": "return=minimal"
+          },
+          body: JSON.stringify(payload)
+        });
+      } catch(e) {}
 
-      fetch("YOUR_ENDPOINT", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(feedback)
-      });
-
-      =====================================================
-      */
-
-
-      console.log(
-        "Feedback submitted:",
-        feedback
-      );
+      try {
+        const saved = JSON.parse(localStorage.getItem('yogaFeedbackResponses') || '[]');
+        saved.unshift(payload);
+        localStorage.setItem('yogaFeedbackResponses', JSON.stringify(saved));
+      } catch(e) {}
 
 
       form.style.display = "none";

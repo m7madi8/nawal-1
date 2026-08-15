@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>صفحات التقييم والآراء | Nawal Omar</title>
+  <link rel="icon" type="image/png" href="../public/media/brand/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --accent: #825a3a;
+      --accent-dark: #6b4a32;
+      --accent-soft: rgba(130, 90, 58, 0.08);
+      --cream: #faf8f5;
+      --card-bg: #ffffff;
+      --text: rgba(62, 47, 43, 0.92);
+      --muted: rgba(62, 47, 43, 0.65);
+      --line: rgba(62, 47, 43, 0.12);
+      --font-ar: "Tajawal", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--cream);
+      color: var(--text);
+      font-family: var(--font-ar);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+
+    .top-header {
+      padding: 24px 5vw;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .brand img {
+      height: 36px;
+    }
+
+    .btn-admin {
+      background: var(--accent-soft);
+      color: var(--accent);
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .btn-admin:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .main-wrap {
+      width: min(1000px, calc(100% - 32px));
+      margin: 40px auto 80px;
+    }
+
+    .hero-sec {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .hero-subtitle {
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      margin-bottom: 8px;
+    }
+
+    .hero-title {
+      font-size: clamp(26px, 5vw, 38px);
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .hero-desc {
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--accent-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 20px;
+      margin-bottom: 44px;
+    }
+
+    .item-card {
+      background: var(--card-bg);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 24px;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .item-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(62, 47, 43, 0.08);
+      border-color: var(--accent);
+    }
+
+    .item-badge {
+      display: inline-block;
+      font-size: 11px;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      align-self: flex-start;
+    }
+
+    .item-name {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .item-desc {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-action {
+      flex: 1;
+      text-align: center;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+
+    .btn-open {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-open:hover {
+      background: var(--accent-dark);
+    }
+
+    .btn-copy {
+      background: #eee;
+      color: var(--text);
+    }
+
+    .btn-copy:hover {
+      background: #e0e0e0;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--accent-dark);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 500;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 999;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="top-header">
+    <a href="../index.html" class="brand">
+      <img src="../public/media/brand/logo.png" alt="Nawal Omar">
+      <span>Nawal Omar</span>
+    </a>
+    <a href="../admin/dashboard.html" class="btn-admin">لوحة التحكم (Dashboard) ↗</a>
+  </header>
+
+  <main class="main-wrap">
+    <section class="hero-sec">
+      <p class="hero-subtitle">Nawal Omar Experience Feedback Links</p>
+      <h1 class="hero-title">روابط صفحات التقييم بعد الفعاليات والريتريتات </h1>
+      <p class="hero-desc">
+        يمكنكِ استخدام هذه الصفحات لإرسالها للمشاركين بعد تجربة كل ريتريت أو فعالية لاستقبال آرائهم وتقييماتهم مباشرة في
+        لوحة التحكم.
+      </p>
+    </section>
+
+    <!-- SECTION: RETREATS -->
+    <h2 class="section-title"> ريتريتات (Retreats)</h2>
+    <div class="cards-grid">
+
+      <!-- Dahab -->
+      <article class="item-card">
+        <div>
+          <span class="item-badge">Retreat</span>
+          <h3 class="item-name">ريتريت دهب</h3>
+          <p class="item-desc">صفحة تقييم تجربة ريتريت دهب (الإقامة، اليوغا، الأجواء، الطعام والمشاعر).</p>
+        </div>
+        <div class="card-actions">
+          <a href="dahab.html" target="_blank" class="btn-action btn-open">معاينة الصفّحة </a>
+          <button type="button" class="btn-action btn-copy" onclick="copyLink('dahab.html')">نسخ الرابط </button>
+        </div>
+      </article>
+
+      <!-- Wadi Rum -->
+      <article class="item-card">
+        <div>
+          <span class="item-badge">Retreat</span>
+          <h3 class="item-name">ريتريت وادي رم</h3>
+          <p class="item-desc">صفحة تقييم تجربة ريتريت وادي رم الصحراوي (السكون، المخيم، اليوغا، والنجوم).</p>
+        </div>
+        <div class="card-actions">
+          <a href="wadi-rum.html" target="_blank" class="btn-action btn-open">معاينة الصفّحة </a>
+          <button type="button" class="btn-action btn-copy" onclick="copyLink('wadi-rum.html')">نسخ الرابط</button>
+        </div>
+      </article>
+
+      <!-- Zanzibar -->
+      <article class="item-card">
+        <div>
+          <span class="item-badge">Retreat</span>
+          <h3 class="item-name">ريتريت زنجبار</h3>
+          <p class="item-desc">صفحة تقييم تجربة ريتريت زنجبار الاستوائي (المحيط، المنتجع، التأمل والغروب).</p>
+        </div>
+        <div class="card-actions">
+          <a href="zanzibar.html" target="_blank" class="btn-action btn-open">معاينة الصفّحة </a>
+          <button type="button" class="btn-action btn-copy" onclick="copyLink('zanzibar.html')">نسخ الرابط </button>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- SECTION: EVENTS -->
+    <h2 class="section-title"> الفعاليات واللقاءات (Events)</h2>
+    <div class="cards-grid">
+
+      <!-- Sound Healing -->
+      <article class="item-card">
+        <div>
+          <span class="item-badge">Event</span>
+          <h3 class="item-name">جلسة Sound Healing</h3>
+          <p class="item-desc">صفحة تقييم جلسة الصوت العلاجي والأوعية الكريستالية والاسترخاء.</p>
+        </div>
+        <div class="card-actions">
+          <a href="sound-healing.html" target="_blank" class="btn-action btn-open">معاينة الصفّحة </a>
+          <button type="button" class="btn-action btn-copy" onclick="copyLink('sound-healing.html')">نسخ الرابط</button>
+        </div>
+      </article>
+
+      <!-- Nature & Chocolate -->
+      <article class="item-card">
+        <div>
+          <span class="item-badge">Event</span>
+          <h3 class="item-name">يوم الطبيعة والشوكولاتة</h3>
+          <p class="item-desc">صفحة تقييم يوم الطبيعة، اليوغا الهوائية، ورشة الشوكولاتة والوجبات.</p>
+        </div>
+        <div class="card-actions">
+          <a href="nature-chocolate.html" target="_blank" class="btn-action btn-open">معاينة الصفّحة </a>
+          <button type="button" class="btn-action btn-copy" onclick="copyLink('nature-chocolate.html')">نسخ الرابط
+          </button>
+        </div>
+      </article>
+
+      <!-- Ice Bath -->
+      <article class="item-card">
+        <div>
+          <span class="item-badge">Event</span>
+          <h3 class="item-name">تجربة حمام الثلج</h3>
+          <p class="item-desc">صفحة تقييم تجربة حمام الثلج والتنفس والبريكثرو وتجاوز التحدي.</p>
+        </div>
+        <div class="card-actions">
+          <a href="feedback-ice.html" target="_blank" class="btn-action btn-open">معاينة الصفّحة </a>
+          <button type="button" class="btn-action btn-copy" onclick="copyLink('feedback-ice.html')">نسخ الرابط </button>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <div class="toast" id="toast">تم نسخ رابط الصفحة بنجاح! </div>
+
+  <script>
+    function copyLink(filename) {
+      const fullUrl = new URL(filename, window.location.href).href;
+      navigator.clipboard.writeText(fullUrl).then(() => {
+        const toast = document.getElementById('toast');
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2500);
+      });
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#faf8f5">
+  <title>تقييم ريتريت دهب | Nawal Omar</title>
+
+  <link rel="icon" type="image/png" href="../public/media/brand/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --accent: #825a3a;
+      --accent-dark: #6b4a32;
+      --accent-soft: rgba(130, 90, 58, 0.08);
+      --cream: #faf8f5;
+      --warm-card: #ffffff;
+      --muted: rgba(62, 47, 43, 0.65);
+      --text: rgba(62, 47, 43, 0.92);
+      --line: rgba(62, 47, 43, 0.12);
+      --star-active: #e5a43b;
+      --font-ar: "Tajawal", sans-serif;
+      --font-heading: "Playfair Display", serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      min-height: 100vh;
+      background: var(--cream);
+      color: var(--text);
+      font-family: var(--font-ar);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+
+    .header-bar {
+      padding: 24px 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .brand-logo img { height: 38px; width: auto; }
+    .brand-text { font-size: 13px; font-weight: 600; }
+    .header-badge {
+      font-size: 12px;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    .container {
+      width: min(680px, calc(100% - 32px));
+      margin: 40px auto 80px;
+    }
+
+    .intro-hero {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .intro-kicker {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .05em;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+    .intro-title {
+      font-size: clamp(26px, 5vw, 38px);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .intro-desc {
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* Progress Track */
+    .progress-box {
+      margin-bottom: 35px;
+    }
+    .progress-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    .progress-track {
+      height: 4px;
+      background: var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      width: 20%;
+      background: var(--accent);
+      transition: width 0.35s ease;
+    }
+
+    /* Form Steps */
+    .card-shell {
+      background: var(--warm-card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 32px 28px;
+      box-shadow: 0 10px 30px rgba(62, 47, 43, 0.04);
+    }
+
+    .step-item {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    .step-item.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .step-tag {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .step-heading {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    .step-subtext {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    /* Form Fields */
+    .field-group {
+      margin-bottom: 24px;
+    }
+    .field-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .text-input, .textarea-input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fdfdfd;
+      font-family: inherit;
+      font-size: 15px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .text-input:focus, .textarea-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-soft);
+      background: #ffffff;
+    }
+    .textarea-input { min-height: 110px; resize: vertical; }
+
+    /* Star Ratings */
+    .star-rating-box {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+      gap: 8px;
+      margin: 12px 0 20px;
+    }
+    .star-btn {
+      background: none;
+      border: none;
+      font-size: 32px;
+      color: #ddd;
+      cursor: pointer;
+      transition: color 0.15s, transform 0.15s;
+      line-height: 1;
+    }
+    .star-btn:hover,
+    .star-btn:hover ~ .star-btn,
+    .star-btn.active,
+    .star-btn.active ~ .star-btn {
+      color: var(--star-active);
+    }
+    .star-btn:active { transform: scale(1.2); }
+
+    /* Multi-rating Grid */
+    .rating-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px dashed var(--line);
+    }
+    .rating-row:last-child { border-bottom: none; }
+    .rating-row-title { font-size: 14px; font-weight: 500; }
+
+    /* Tag Chips / Choice Pills */
+    .chips-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .chip-item {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 18px;
+      border-radius: 25px;
+      border: 1px solid var(--line);
+      background: #fafafa;
+      font-size: 14px;
+      color: var(--text);
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.2s ease;
+    }
+    .chip-item input { display: none; }
+    .chip-item:hover { border-color: var(--accent); background: var(--accent-soft); }
+    .chip-item.selected {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* Buttons */
+    .actions-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+    .btn-prev {
+      background: none;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-prev:hover { background: #eee; }
+    .btn-next, .btn-submit {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 13px 32px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 4px 14px rgba(130, 90, 58, 0.25);
+    }
+    .btn-next:hover, .btn-submit:hover {
+      background: var(--accent-dark);
+      transform: translateY(-1px);
+    }
+    .btn-next:disabled, .btn-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Success State */
+    .success-box {
+      display: none;
+      text-align: center;
+      padding: 50px 20px;
+    }
+    .success-box.active { display: block; }
+    .success-icon {
+      width: 72px;
+      height: 72px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 36px;
+    }
+    .success-title { font-size: 26px; font-weight: 700; margin-bottom: 12px; }
+    .success-desc { color: var(--muted); font-size: 15px; max-width: 440px; margin: 0 auto 28px; line-height: 1.8; }
+    .btn-home {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 28px;
+      border-radius: 12px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header-bar">
+    <a href="../index.html" class="brand-logo">
+      <img src="../public/media/brand/logo.png" alt="Nawal Omar Yoga">
+      <span class="brand-text">Nawal Omar</span>
+    </a>
+    <span class="header-badge">تقييم ريتريت دهب</span>
+  </header>
+
+  <main class="container">
+    <section class="intro-hero">
+      <p class="intro-kicker">Dahab Retreat Feedback</p>
+
+      <h1 class="intro-title">كيف كانت تجربتك في ريتريت دهب؟ ✨</h1>
+      <p class="intro-desc">
+        يسعدنا جداً مشاركتك انطباعك الصادق بكل إخلاص. إجاباتك تساعدنا على الاستمرار في تطوير تجاربنا ورعايتها بحب 🤍
+      </p>
+    </section>
+
+    <div class="progress-box" id="progressBox">
+      <div class="progress-info">
+        <span id="stepProgressLabel">الخطوة 1 من 4</span>
+        <span id="stepPercent">25%</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+
+    <div class="card-shell" id="formShell">
+      <form id="feedbackForm" onsubmit="event.preventDefault();">
+
+        <!-- STEP 1: General Rating & Participant Info -->
+        <div class="step-item active" data-step="1">
+          <p class="step-tag">الخطوة الأولى</p>
+          <h2 class="step-heading">التقييم العام والاسم</h2>
+          <p class="step-subtext">كيف تصفين تجربتك الإجمالية في ريتريت دهب؟</p>
+
+          <div class="field-group">
+            <label class="field-label">اسمكِ الكريم (أو يمكنكِ إبقاؤه اختيارياً)</label>
+            <input type="text" id="participantName" class="text-input" placeholder="اكتبي اسمك هنا...">
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">رقم الهاتف (اختياري للاتصال)</label>
+            <input type="tel" id="participantPhone" class="text-input" placeholder="05X-XXXXXXX">
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">تقييمكِ الإجمالي للريتريت ⭐</label>
+            <div class="star-rating-box" id="overallStarBox">
+              <button type="button" class="star-btn" data-val="5">★</button>
+              <button type="button" class="star-btn" data-val="4">★</button>
+              <button type="button" class="star-btn" data-val="3">★</button>
+              <button type="button" class="star-btn" data-val="2">★</button>
+              <button type="button" class="star-btn" data-val="1">★</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2: Feelings & Emotion -->
+        <div class="step-item" data-step="2">
+          <p class="step-tag">الخطوة الثانية</p>
+          <h2 class="step-heading">المشاعر والأثر الداخلي</h2>
+          <p class="step-subtext">ما المشاعر التي خرجتِ بها من هذه الرحلة؟ (يمكنكِ اختيار أكثر من خيار)</p>
+
+          <div class="chips-grid" id="feelingsGrid">
+            <label class="chip-item"><input type="checkbox" value="هدوء وسكون داخلي"> 🕊️ هدوء وسكون داخلي</label>
+            <label class="chip-item"><input type="checkbox" value="تجديد وحيوية"> ⚡ تجديد وحيوية</label>
+            <label class="chip-item"><input type="checkbox" value="اتصال مع الطبيعة والمحيط"> 🌊 اتصال مع الطبيعة والمحيط</label>
+            <label class="chip-item"><input type="checkbox" value="طاقة إيجابية"> ✨ طاقة إيجابية</label>
+            <label class="chip-item"><input type="checkbox" value="تفكر ووعي أعمق"> 🧘‍♀️ تفكر ووعي أعمق</label>
+            <label class="chip-item"><input type="checkbox" value="راحة جسدية"> 🌿 راحة جسدية</label>
+            <label class="chip-item"><input type="checkbox" value="دعم ومحبة المجموعة"> ❤️ دعم ومحبة المجموعة</label>
+          </div>
+        </div>
+
+        <!-- STEP 3: Detailed Ratings -->
+        <div class="step-item" data-step="3">
+          <p class="step-tag">الخطوة الثالثة</p>
+
+          <h2 class="step-heading">تفاصيل عناصر الريتريت</h2>
+          <p class="step-subtext">قيّمي الجوانب المختلفة للرحلة لتساعدنا على التطور:</p>
+
+          <div class="rating-row">
+            <span class="rating-row-title">المكان والإقامة في دهب</span>
+            <div class="star-rating-box sub-stars" data-category="venue">
+              <button type="button" class="star-btn" data-val="5">★</button>
+
+              <button type="button" class="star-btn" data-val="4">★</button>
+              <button type="button" class="star-btn" data-val="3">★</button>
+              <button type="button" class="star-btn" data-val="2">★</button>
+              <button type="button" class="star-btn" data-val="1">★</button>
+            </div>
+          </div>
+
+          <div class="rating-row">
+            <span class="rating-row-title">حصص اليوغا والتأمل</span>
+
+            <div class="star-rating-box sub-stars" data-category="yoga">
+              <button type="button" class="star-btn" data-val="5">★</button>
+              <button type="button" class="star-btn" data-val="4">★</button>
+              <button type="button" class="star-btn" data-val="3">★</button>
+              <button type="button" class="star-btn" data-val="2">★</button>
+              <button type="button" class="star-btn" data-val="1">★</button>
+            </div>
+          </div>
+
+          <div class="rating-row">
+            <span class="rating-row-title">التنظيم والتسهيل والتنقلات</span>
+
+            <div class="star-rating-box sub-stars" data-category="org">
+              <button type="button" class="star-btn" data-val="5">★</button>
+              <button type="button" class="star-btn" data-val="4">★</button>
+              <button type="button" class="star-btn" data-val="3">★</button>
+              <button type="button" class="star-btn" data-val="2">★</button>
+
+              <button type="button" class="star-btn" data-val="1">★</button>
+            </div>
+          </div>
+
+          <div class="rating-row">
+            <span class="rating-row-title">الطعام والوجبات والضيافة</span>
+            <div class="star-rating-box sub-stars" data-category="food">
+              <button type="button" class="star-btn" data-val="5">★</button>
+              <button type="button" class="star-btn" data-val="4">★</button>
+              <button type="button" class="star-btn" data-val="3">★</button>
+              <button type="button" class="star-btn" data-val="2">★</button>
+              <button type="button" class="star-btn" data-val="1">★</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 4: Memories & Feedback -->
+        <div class="step-item" data-step="4">
+          <p class="step-tag">الخطوة الرابعة والأخيرة</p>
+
+          <h2 class="step-heading">ذكريات وملاحظات ختامية</h2>
+          <p class="step-subtext">شاركينا أفكاركِ الجميلة واقتراحاتكِ بكل حريّة 💭</p>
+
+          <div class="field-group">
+            <label class="field-label">ما هي أجمل لحظة أو لحظات تركت أثراً في قلبكِ في دهب؟</label>
+
+            <textarea id="bestMoment" class="textarea-input" placeholder="لحظة الغروب، جلسة البحر، الضحك، التأمل..."></textarea>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">هل ترغبين بالانضمام إلينا في ريتريتات وفعاليات قادمة؟</label>
+
+            <div class="chips-grid" id="againChoiceGrid">
+              <label class="chip-item"><input type="radio" name="againChoice" value="نعم بكل تأكيد! 😍"> نعم بكل تأكيد! 😍</label>
+              <label class="chip-item"><input type="radio" name="againChoice" value="حسب التوقيت والوجهة ✈️"> حسب التوقيت والوجهة ✈️</label>
+
+              <label class="chip-item"><input type="radio" name="againChoice" value="ربما في المستقبل"> ربما في المستقبل</label>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">رسالة أو كلمة ختامية لنوال والمجموعة ❤️</label>
+
+            <textarea id="finalNotes" class="textarea-input" placeholder="كلمة من القلب، اقتراح لتطوير، أو ملاحظة..."></textarea>
+          </div>
+        </div>
+
+        <div class="actions-bar">
+          <button type="button" id="prevBtn" class="btn-prev" onclick="changeStep(-1)">السابق</button>
+
+          <button type="button" id="nextBtn" class="btn-next" onclick="changeStep(1)">التالي</button>
+          <button type="button" id="submitBtn" class="btn-submit" style="display: none;" onclick="submitFeedback()">إرسال التقييم 🤍</button>
+        </div>
+
+      </form>
+    </div>
+
+    <div class="card-shell success-box" id="successBox">
+      <div class="success-icon">🤍</div>
+
+      <h2 class="success-title">شكراً لكِ من القلب!</h2>
+      <p class="success-desc">
+        تم استلام تقييمكِ بنجاح. وجودكِ معنا في ريتريت دهب أضاف روحاً جميلة، وكلماتكِ تمنحنا طاقة للاستمرار دائماً. ✨
+      </p>
+
+      <a href="../index.html" class="btn-home">العودة للموقع الرئيسي</a>
+    </div>
+
+  </main>
+
+  <script>
+    const SOURCE_KEY = "feedback-dahab";
+    const RETREAT_TITLE = "Dahab Retreat Feedback";
+    const TOTAL_STEPS = 4;
+    let currentStep = 1;
+
+    let overallRating = 0;
+    const subRatings = { venue: 0, yoga: 0, org: 0, food: 0 };
+
+    // Star rating interactions
+    function setupStarRating(boxId, onSelect) {
+      const box = document.getElementById(boxId);
+      if (!box) return;
+      const btns = box.querySelectorAll('.star-btn');
+      btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const val = parseInt(btn.dataset.val);
+          onSelect(val);
+          btns.forEach(b => {
+            b.classList.toggle('active', parseInt(b.dataset.val) <= val);
+          });
+        });
+      });
+    }
+
+    setupStarRating('overallStarBox', (val) => { overallRating = val; });
+
+    document.querySelectorAll('.sub-stars').forEach(box => {
+      const cat = box.dataset.category;
+      const btns = box.querySelectorAll('.star-btn');
+      btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const val = parseInt(btn.dataset.val);
+          subRatings[cat] = val;
+          btns.forEach(b => {
+            b.classList.toggle('active', parseInt(b.dataset.val) <= val);
+          });
+        });
+      });
+    });
+
+    // Chip selection styles
+    document.querySelectorAll('.chip-item').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const input = chip.querySelector('input');
+        if (input.type === 'radio') {
+          const groupName = input.name;
+          document.querySelectorAll(`input[name="${groupName}"]`).forEach(r => {
+            r.closest('.chip-item').classList.remove('selected');
+          });
+          chip.classList.add('selected');
+        } else {
+          setTimeout(() => {
+            chip.classList.toggle('selected', input.checked);
+          }, 10);
+        }
+      });
+    });
+
+    function updateProgress() {
+      const pct = Math.round((currentStep / TOTAL_STEPS) * 100);
+      document.getElementById('stepProgressLabel').textContent = `الخطوة ${currentStep} من ${TOTAL_STEPS}`;
+      document.getElementById('stepPercent').textContent = `${pct}%`;
+      document.getElementById('progressFill').style.width = `${pct}%`;
+
+      document.getElementById('prevBtn').style.visibility = currentStep === 1 ? 'hidden' : 'visible';
+      if (currentStep === TOTAL_STEPS) {
+        document.getElementById('nextBtn').style.display = 'none';
+        document.getElementById('submitBtn').style.display = 'inline-block';
+      } else {
+        document.getElementById('nextBtn').style.display = 'inline-block';
+        document.getElementById('submitBtn').style.display = 'none';
+      }
+    }
+
+    function changeStep(delta) {
+      const next = currentStep + delta;
+      if (next < 1 || next > TOTAL_STEPS) return;
+
+      document.querySelector(`.step-item[data-step="${currentStep}"]`).classList.remove('active');
+      currentStep = next;
+      document.querySelector(`.step-item[data-step="${currentStep}"]`).classList.add('active');
+
+      updateProgress();
+      window.scrollTo({ top: 120, behavior: 'smooth' });
+    }
+
+    async function submitFeedback() {
+      const name = document.getElementById('participantName').value.trim() || 'مشاركة ريتريت دهب';
+      const phone = document.getElementById('participantPhone').value.trim() || '-';
+
+      const selectedFeelings = [...document.querySelectorAll('#feelingsGrid input:checked')].map(i => i.value);
+      const bestMoment = document.getElementById('bestMoment').value.trim();
+      const againChoice = document.querySelector('input[name="againChoice"]:checked')?.value || '-';
+      const finalNotes = document.getElementById('finalNotes').value.trim();
+
+      const freeNoteText = [
+        `⭐ التقييم الإجمالي: ${overallRating ? overallRating + '/5' : 'لم يُحدد'}`,
+        `💖 المشاعر والأثر: ${selectedFeelings.join('، ') || 'لم تُحدد'}`,
+        `📍 التقييمات التفصيلية: الإقامة (${subRatings.venue}/5)، اليوغا (${subRatings.yoga}/5)، التنظيم (${subRatings.org}/5)، الطعام (${subRatings.food}/5)`,
+        `🌅 أجمل لحظة: ${bestMoment || '-'}`,
+        `✈️ الرغبة بالانضمام مجدداً: ${againChoice}`,
+        `💬 رسالة ختامية: ${finalNotes || '-'}`
+      ].join('\n');
+
+      const payload = {
+        source: SOURCE_KEY,
+        fullName: name,
+        phone: phone,
+        retreatType: RETREAT_TITLE,
+        freeNote: freeNoteText,
+        submittedAt: new Date().toISOString(),
+        status: "pending"
+      };
+
+      // Disable button during submission
+      const subBtn = document.getElementById('submitBtn');
+      subBtn.disabled = true;
+      subBtn.textContent = 'جاري الإرسال...';
+
+      // Submit to Supabase REST
+      try {
+        await fetch("https://xzxyskufrqansbhsbdkt.supabase.co/rest/v1/retreat_requests", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "apikey": "sb_publishable_V9_4QWGDFv6Vm-4DQifYGA_1xdoKkph",
+            "Authorization": "Bearer sb_publishable_V9_4QWGDFv6Vm-4DQifYGA_1xdoKkph",
+            "Prefer": "return=minimal"
+          },
+          body: JSON.stringify(payload)
+        });
+      } catch(err) {
+        console.error("Supabase submit err", err);
+      }
+
+      // Backup to localStorage
+      try {
+        const saved = JSON.parse(localStorage.getItem('yogaFeedbackResponses') || '[]');
+        saved.unshift(payload);
+        localStorage.setItem('yogaFeedbackResponses', JSON.stringify(saved));
+      } catch(e){}
+
+      // Hide form & show success
+      document.getElementById('progressBox').style.display = 'none';
+      document.getElementById('formShell').style.display = 'none';
+      document.getElementById('successBox').classList.add('active');
+
+      window.scrollTo({ top: 80, behavior: 'smooth' });
+    }
+
+    updateProgress();
+  </script>
+</body>
+</html>

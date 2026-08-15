@@ -51,6 +51,21 @@
       icon: "yoga",
       inSidebar: true,
       legacyKey: LEGACY_CLASS_KEY
+    },
+    {
+      id: "feedback",
+      label: "Feedback & Experience Reviews",
+      sources: [
+        "feedback-ice",
+        "feedback-dahab",
+        "feedback-wadi-rum",
+        "feedback-zanzibar",
+        "feedback-sound-healing",
+        "feedback-nature-chocolate"
+      ],
+      icon: "feedback",
+      inSidebar: true,
+      legacyKey: "yogaFeedbackResponses"
     }
   ];
 
@@ -69,7 +84,9 @@
     calendar:
       '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/>',
     yoga:
-      '<circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><path d="m8 21 4-6 4 6"/><path d="m6 11 6 2 6-2"/>'
+      '<circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><path d="m8 21 4-6 4 6"/><path d="m6 11 6 2 6-2"/>',
+    feedback:
+      '<path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/><path d="M12 7v5l3 3"/>'
   };
 
   function getPage() {
@@ -928,6 +945,15 @@
           ["Notes", retreat.reason || retreat.freeNote || "-"],
           ["Submitted At", retreat.date],
           ["Status", statusLabel(retreat.status)]
+        ];
+      } else if (String(retreat.source || "").startsWith("feedback-") || sectionSources("feedback").indexOf(String(retreat.source || "")) !== -1) {
+        fields = [
+          ["اسم المشاركة / Full Name", retreat.fullName],
+          ["نوع الفعالية أو الريتريت", retreat.retreatType || "Feedback Response"],
+          ["رقم الهاتف", retreat.phone || "-"],
+          ["تاريخ الإرسال", formatDisplayDate(retreat.date)],
+          ["تفاصيل التقييم والإجابات", retreat.freeNote || "-"],
+          ["الحالة", statusLabel(retreat.status)]
         ];
       } else if (sectionSources("yoga").indexOf(String(retreat.source || "")) !== -1) {
         fields = [
