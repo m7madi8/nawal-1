@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-charcoal/10;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  #mat,
+  #block,
+  #departments,
+  #materials,
+  #faq,
+  #collection {
+    scroll-margin-top: 6rem;
+  }
+
+  body {
+    @apply bg-cream text-charcoal antialiased;
+  }
+
+  /* Visible, deliberate focus ring — never remove focus outlines outright */
+  :focus-visible {
+    outline: 2px solid theme("colors.soft-brown");
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background-color: theme("colors.muted-pink");
+    color: theme("colors.charcoal");
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

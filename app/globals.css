@@ -1,0 +1,247 @@
+:root {
+  --ny-scroll-line: rgba(37, 34, 31, 0.14);
+  --ny-scroll-fill: #8b6b52;
+  --ny-scroll-soft: #c9b8a7;
+  --ny-scroll-glow: rgba(139, 107, 82, 0.32);
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media (min-width: 981px) and (hover: hover) {
+  html.ny-has-scroll-rail {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  html.ny-has-scroll-rail::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+}
+
+body.ny-scroll-dragging {
+  user-select: none;
+  cursor: grabbing;
+}
+
+.ny-scroll-rail {
+  position: fixed;
+  top: calc(var(--header-h, 84px) + 2.25rem);
+  right: clamp(14px, 1.6vw, 28px);
+  bottom: 2.25rem;
+  z-index: 40;
+  display: flex;
+  align-items: stretch;
+  gap: 0.7rem;
+  width: auto;
+  pointer-events: none;
+  opacity: 0.38;
+  transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ny-scroll-rail.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.ny-scroll-rail.is-awake,
+.ny-scroll-rail:hover {
+  opacity: 1;
+}
+
+.ny-scroll-rail__index {
+  align-self: flex-start;
+  margin-top: -0.15rem;
+  font-family: 'Playfair Display', 'Amiri', Georgia, serif;
+  font-size: 0.68rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.16em;
+  color: #8b6b52;
+  opacity: 0;
+  transform: translateX(6px);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ny-scroll-rail.is-awake .ny-scroll-rail__index,
+.ny-scroll-rail:hover .ny-scroll-rail__index {
+  opacity: 0.78;
+  transform: none;
+}
+
+.ny-scroll-rail__column {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 22px;
+}
+
+.ny-scroll-rail__tick {
+  width: 9px;
+  height: 1px;
+  background: #8b6b52;
+  opacity: 0.45;
+  flex: none;
+}
+
+.ny-scroll-rail__track {
+  position: relative;
+  flex: 1;
+  width: 22px;
+  margin: 0.45rem 0;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.ny-scroll-rail__stem {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  margin-left: -0.5px;
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    var(--ny-scroll-line) 10%,
+    var(--ny-scroll-line) 90%,
+    transparent
+  );
+}
+
+.ny-scroll-rail__fill {
+  width: 100%;
+  height: 0;
+  background: linear-gradient(180deg, var(--ny-scroll-soft), var(--ny-scroll-fill));
+  box-shadow: 0 0 10px var(--ny-scroll-glow);
+}
+
+.ny-scroll-rail__jewel {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  display: grid;
+  place-items: center;
+  transform: translate3d(-50%, 0, 0);
+  pointer-events: auto;
+  cursor: grab;
+  will-change: transform;
+}
+
+.ny-scroll-rail__diamond {
+  width: 7px;
+  height: 7px;
+  background: linear-gradient(145deg, #f3e6d6 0%, #c9b8a7 28%, #8b6b52 68%, #5c4636 100%);
+  box-shadow:
+    0 0 0 1px rgba(250, 248, 244, 0.55),
+    0 4px 12px var(--ny-scroll-glow);
+  transform: rotate(45deg);
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease,
+    width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ny-scroll-rail:hover .ny-scroll-rail__diamond,
+.ny-scroll-rail__jewel.is-dragging .ny-scroll-rail__diamond {
+  width: 8px;
+  height: 8px;
+  box-shadow:
+    0 0 0 1px rgba(250, 248, 244, 0.7),
+    0 6px 16px rgba(139, 107, 82, 0.4);
+}
+
+.ny-scroll-rail__jewel.is-dragging {
+  cursor: grabbing;
+}
+
+.ny-scroll-rail__jewel.is-dragging .ny-scroll-rail__diamond {
+  transform: rotate(45deg) scale(1.08);
+}
+
+body.nav-open .ny-scroll-rail,
+html.ny-is-leaving .ny-scroll-rail,
+html.ny-transit-pending .ny-scroll-rail {
+  opacity: 0;
+  visibility: hidden;
+}
+
+html[dir='rtl'] .ny-scroll-rail {
+  right: auto;
+  left: clamp(14px, 1.6vw, 28px);
+  flex-direction: row-reverse;
+}
+
+html[dir='rtl'] .ny-scroll-rail__index {
+  transform: translateX(-6px);
+}
+
+html[dir='rtl'] .ny-scroll-rail.is-awake .ny-scroll-rail__index,
+html[dir='rtl'] .ny-scroll-rail:hover .ny-scroll-rail__index {
+  transform: none;
+}
+
+@media (max-width: 980px), (hover: none) {
+  .ny-scroll-rail {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ny-scroll-rail,
+  .ny-scroll-rail__index,
+  .ny-scroll-rail__diamond {
+    transition: none;
+  }
+}
+
+html.ny-is-leaving .ny-inner,
+html.ny-is-leaving .site-footer,
+html.ny-transit-pending .ny-inner,
+html.ny-transit-pending .site-footer {
+  opacity: 0;
+}
+
+html.ny-is-leaving .ny-inner,
+html.ny-is-leaving .site-footer {
+  transition: opacity 280ms ease;
+}
+
+html.ny-page-enter .ny-inner,
+html.ny-page-enter .site-footer {
+  animation: ny-fade-in 560ms ease both;
+}
+
+@keyframes ny-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.ny-is-leaving .ny-inner,
+  html.ny-is-leaving .site-footer,
+  html.ny-page-enter .ny-inner,
+  html.ny-page-enter .site-footer {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1;
+  }
+}

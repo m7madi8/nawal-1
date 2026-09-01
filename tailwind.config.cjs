@@ -1,11 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './index.html',
-    './Zanzibar.html',
-    './zanzibar-retreat-review-nw2606.html',
-    './workshops/*.html',
-    './js/*.js'
+    './app/**/*.{js,jsx}',
+    './components/**/*.{js,jsx}',
+    './lib/**/*.{js,jsx}',
+    './public/legacy/js/*.js'
   ],
   theme: {
     extend: {

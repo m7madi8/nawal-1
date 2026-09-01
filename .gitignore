@@ -1,1 +1,7 @@
 .vercel
+node_modules/
+.next/
+.idea/
+.env
+.env.local
+.env*.local

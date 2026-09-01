@@ -620,6 +620,7 @@
       ].join('\n');
 
       const payload = {
+        id: "fb-" + Date.now() + "-" + Math.random().toString(36).slice(2, 7),
         source: SOURCE_KEY,
         fullName: name,
         phone: phone,
