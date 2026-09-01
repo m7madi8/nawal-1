@@ -29,7 +29,12 @@ export default function Page() {
         <input id="username" name="username" type="text" autocomplete="off" placeholder="Enter username" required>
 
         <label for="password">Password</label>
-        <input id="password" name="password" type="password" autocomplete="new-password" placeholder="Enter password" required>
+        <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Enter password" required>
+
+        <label class="login-remember">
+          <input id="rememberMe" name="rememberMe" type="checkbox" checked>
+          <span>Keep me signed in on this device</span>
+        </label>
 
         <p id="loginError" class="form-error" aria-live="polite"></p>
         <button type="submit" class="btn btn-primary">Sign in</button>

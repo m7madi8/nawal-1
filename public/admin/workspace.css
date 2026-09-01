@@ -164,6 +164,22 @@ svg { display: block; }
   outline: none;
 }
 
+.login-remember {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: var(--admin-muted);
+  cursor: pointer;
+  user-select: none;
+}
+
+.login-remember input {
+  width: auto;
+  margin: 0;
+  accent-color: var(--admin-sage-dark);
+}
+
 .form-error {
   min-height: 18px;
   color: var(--admin-rust);

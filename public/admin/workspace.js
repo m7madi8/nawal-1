@@ -1,6 +1,7 @@
 /* Nawal Yoga Admin Workspace */
 (function () {
   var AUTH_KEY = 'yogaAdminSession';
+  var SESSION_REVISION = 2;
   var STAFF_KEY = 'nawalAdminStaff';
   var COSTS_KEY = 'nawalShopCosts';
   var LEGACY_CLASS_KEY = 'yogaClassRequests';
@@ -278,18 +279,33 @@
 
   function getSession() {
     try {
-      return JSON.parse(localStorage.getItem(AUTH_KEY) || 'null');
+      var raw = localStorage.getItem(AUTH_KEY) || sessionStorage.getItem(AUTH_KEY);
+      var session = raw ? JSON.parse(raw) : null;
+      if (!session || !session.isLoggedIn) return null;
+      if (Number(session.authRevision) !== SESSION_REVISION) {
+        clearSession();
+        return null;
+      }
+      return session;
     } catch (_) {
       return null;
     }
   }
 
-  function setSession(payload) {
-    localStorage.setItem(AUTH_KEY, JSON.stringify(payload));
+  function setSession(payload, remember) {
+    var data = JSON.stringify(Object.assign({}, payload, {
+      authRevision: SESSION_REVISION,
+      savedAt: Date.now(),
+      remember: remember !== false,
+    }));
+    clearSession();
+    if (remember !== false) localStorage.setItem(AUTH_KEY, data);
+    else sessionStorage.setItem(AUTH_KEY, data);
   }
 
   function clearSession() {
     localStorage.removeItem(AUTH_KEY);
+    sessionStorage.removeItem(AUTH_KEY);
   }
 
   function normalizeSession(session) {
@@ -2145,13 +2161,14 @@
       var error = document.getElementById('loginError');
       var username = String(form.username.value || '').trim();
       var password = String(form.password.value || '').trim();
+      var remember = !(form.rememberMe && !form.rememberMe.checked);
       if (username.toLowerCase() === USERNAME && password === PASSWORD) {
         setSession({
           isLoggedIn: true,
           username: USERNAME,
           name: OWNER_NAME,
           role: 'owner',
-        });
+        }, remember);
         window.location.href = '/admin/overview';
         return;
       }
@@ -2161,7 +2178,7 @@
           username: DEVELOPER_USERNAME,
           name: DEVELOPER_NAME,
           role: 'developer',
-        });
+        }, remember);
         window.location.href = '/admin/overview';
         return;
       }
@@ -2174,7 +2191,7 @@
           role: 'staff',
           staffId: staff.id,
           permissions: staff.permissions || [],
-        });
+        }, remember);
         window.location.href = firstAllowedPath(currentSession());
         return;
       }
