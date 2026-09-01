@@ -59,6 +59,21 @@ html, body.admin-body {
 
 body.admin-nav-open {
   overflow: hidden;
+  position: fixed;
+  width: 100%;
+  inset-inline: 0;
+}
+
+.admin-app.admin-nav-open .admin-main {
+  overflow: hidden;
+  touch-action: none;
+  overscroll-behavior: none;
+  pointer-events: none;
+}
+
+.admin-app.admin-nav-open .admin-sidebar,
+.admin-app.admin-nav-open .admin-overlay {
+  pointer-events: auto;
 }
 
 h1, h2, h3, p { margin: 0; }
@@ -234,9 +249,39 @@ svg { display: block; }
 
 .admin-sidebar__brand {
   display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 6px 8px 18px;
+}
+
+.admin-sidebar__brand-main {
+  display: flex;
   align-items: center;
   gap: 11px;
-  padding: 6px 8px 18px;
+  min-width: 0;
+}
+
+.admin-sidebar__close {
+  display: none;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--admin-line);
+  border-radius: 11px;
+  background: var(--admin-surface);
+  color: var(--admin-brown);
+  font-size: 1.45rem;
+  line-height: 1;
+  cursor: pointer;
+  touch-action: manipulation;
+  place-items: center;
+  transition: background 0.15s var(--ease), color 0.15s var(--ease);
+}
+
+.admin-sidebar__close:hover {
+  background: var(--admin-surface-2);
+  color: var(--admin-brown-dark);
 }
 
 .admin-sidebar__mark {
@@ -1665,6 +1710,10 @@ svg { display: block; }
   .admin-overlay { z-index: 35; }
 
   #adminMenuToggle { display: inline-grid; }
+
+  .admin-sidebar__close {
+    display: inline-grid;
+  }
 
   .admin-main {
     width: 100%;

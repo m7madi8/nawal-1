@@ -2201,25 +2201,34 @@
   }
 
   var shellEventsBound = false;
+  var adminScrollLockY = 0;
 
   function closeAdminMenu() {
     var sidebar = document.getElementById('adminSidebar');
     var overlay = document.getElementById('adminOverlay');
     var menuToggle = document.getElementById('adminMenuToggle');
+    var app = document.querySelector('.admin-app');
     if (sidebar) sidebar.classList.remove('is-open');
     if (overlay) overlay.hidden = true;
     if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
     document.body.classList.remove('admin-nav-open');
+    document.body.style.top = '';
+    if (app) app.classList.remove('admin-nav-open');
+    window.scrollTo(0, adminScrollLockY);
   }
 
   function openAdminMenu() {
     var sidebar = document.getElementById('adminSidebar');
     var overlay = document.getElementById('adminOverlay');
     var menuToggle = document.getElementById('adminMenuToggle');
+    var app = document.querySelector('.admin-app');
+    adminScrollLockY = window.scrollY || window.pageYOffset || 0;
+    document.body.classList.add('admin-nav-open');
+    document.body.style.top = '-' + adminScrollLockY + 'px';
+    if (app) app.classList.add('admin-nav-open');
     if (sidebar) sidebar.classList.add('is-open');
     if (overlay) overlay.hidden = false;
     if (menuToggle) menuToggle.setAttribute('aria-expanded', 'true');
-    document.body.classList.add('admin-nav-open');
   }
 
   function bindAdminShellEvents() {
@@ -2235,6 +2244,11 @@
         return;
       }
       if (event.target.closest('#adminOverlay')) {
+        closeAdminMenu();
+        return;
+      }
+      if (event.target.closest('#adminSidebarClose')) {
+        event.preventDefault();
         closeAdminMenu();
         return;
       }
@@ -2272,6 +2286,12 @@
         closeAdminMenu();
       }
     });
+
+    document.addEventListener('touchmove', function (event) {
+      if (!document.body.classList.contains('admin-nav-open')) return;
+      if (event.target.closest('.admin-sidebar')) return;
+      event.preventDefault();
+    }, { passive: false });
   }
 
   function initWorkspace() {
