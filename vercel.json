@@ -1,4 +1,6 @@
 {
+  "buildCommand": "npm run build",
+  "installCommand": "npm install",
   "redirects": [
     { "source": "/retreat-dahab.html", "destination": "/retreats/dahab", "permanent": true },
     { "source": "/zanzibar-retreat-review-nw2606.html", "destination": "/retreats/zanzibar", "permanent": true },

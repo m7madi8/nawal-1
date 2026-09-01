@@ -1,6 +1,9 @@
 {
   "name": "nawal-aom-site",
   "private": true,
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
