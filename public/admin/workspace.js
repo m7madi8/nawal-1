@@ -9,7 +9,7 @@
   var SUPABASE_ANON_KEY = String(CONFIG.supabaseAnonKey || '').trim();
   var SUPABASE_TABLE = String(CONFIG.supabaseTable || 'retreat_requests').trim();
   var USERNAME = 'nawal';
-  var PASSWORD = 'nawalll';
+  var PASSWORD = 'Areen12@n';
   var OWNER_NAME = 'Nawal Omar';
   var DEVELOPER_USERNAME = 'mohammad';
   var DEVELOPER_PASSWORD = 'mohammadd';
@@ -159,10 +159,10 @@
       name: 'Sound Healing',
       source: 'sound-healing-registration',
       image: '/media/events/sound-healing-01.jpg',
-      dates: '5 Sep 2026',
+      dates: '4 Sep 2026',
       location: 'Haifa, Atlit',
-      startDate: '2026-09-05',
-      endDate: '2026-09-05',
+      startDate: '2026-09-04',
+      endDate: '2026-09-04',
     },
     {
       id: 'nature-chocolate',

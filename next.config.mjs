@@ -144,8 +144,18 @@ const nextConfig = {
   },
   {
     "source": "/shop.html",
-    "destination": "/shop",
+    "destination": "/",
     "permanent": true
+  },
+  {
+    "source": "/shop",
+    "destination": "/",
+    "permanent": false
+  },
+  {
+    "source": "/shop/thanks",
+    "destination": "/",
+    "permanent": false
   },
   {
     "source": "/feedback/index.html",

@@ -12,7 +12,7 @@
       var error = document.getElementById("loginError");
       var username = String(form.username.value || "").trim();
       var password = String(form.password.value || "").trim();
-      if (username === "nawal" && password === "nawalll") {
+      if (username === "nawal" && password === "Areen12@n") {
         localStorage.setItem(AUTH_KEY, JSON.stringify({ isLoggedIn: true, username: username }));
         location.href = "/admin/dashboard";
       } else if (error) error.textContent = "Invalid username or password.";

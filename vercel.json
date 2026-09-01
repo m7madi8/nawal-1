@@ -14,6 +14,8 @@
     { "source": "/admin.html", "destination": "/admin", "permanent": true },
     { "source": "/dashboard.html", "destination": "/admin/dashboard", "permanent": true },
     { "source": "/workshops/jiva.html", "destination": "/workshops/haifa", "permanent": true },
-    { "source": "/shop.html", "destination": "/shop", "permanent": true }
+    { "source": "/shop.html", "destination": "/", "permanent": true },
+    { "source": "/shop", "destination": "/", "permanent": false },
+    { "source": "/shop/thanks", "destination": "/", "permanent": false }
   ]
 }

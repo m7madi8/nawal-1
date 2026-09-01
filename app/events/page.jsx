@@ -32,7 +32,7 @@ const html = `
           <div class="ny-door__copy">
             <span class="eyebrow" data-en="Event" data-ar="فعالية">Event</span>
             <h2 class="ny-door__title" data-en="Sound Healing" data-ar="العلاج بالصوت">Sound Healing</h2>
-            <p class="ny-door__text" data-en="Friday 5 September · 18:30 · Haifa, Atlit beach — open to everyone." data-ar="الجمعة 5.9 · 18:30 · حيفا، شط عتليت — مناسبة للجميع.">Friday 5 September · 18:30 · Haifa, Atlit beach — open to everyone.</p>
+            <p class="ny-door__text" data-en="Friday 4 September · 18:30 · Haifa, Atlit beach — open to everyone." data-ar="الجمعة 4.9 · 18:30 · حيفا، شط عتليت — مناسبة للجميع.">Friday 4 September · 18:30 · Haifa, Atlit beach — open to everyone.</p>
             <span class="ny-door__cta" data-en="View details" data-ar="عرض التفاصيل">View details</span>
           </div>
         </a>
