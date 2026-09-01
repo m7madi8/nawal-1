@@ -571,6 +571,49 @@ html[dir="rtl"] .ny-door__num {
   text-transform: uppercase;
 }
 
+.ny-door--soon {
+  cursor: default;
+}
+
+.ny-door--soon:hover .ny-door__media img {
+  transform: none;
+}
+
+.ny-door__status {
+  position: absolute;
+  top: 1rem;
+  left: 1.1rem;
+  z-index: 3;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 999px;
+  background: rgba(18, 16, 14, 0.42);
+  backdrop-filter: blur(4px);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+html[dir="rtl"] .ny-door__status {
+  left: auto;
+  right: 1.1rem;
+}
+
+.ny-door__cta--soon {
+  border-color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.72);
+  cursor: default;
+}
+
+.ny-door--soon:hover .ny-door__cta,
+.ny-door--soon:hover .ny-door__cta--soon {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.72);
+}
+
 .ny-door:hover .ny-door__cta {
   background: rgba(255, 255, 255, 0.14);
   border-color: #fff;

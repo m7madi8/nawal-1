@@ -2,14 +2,14 @@ import LegacyPage from '@/components/LegacyPage';
 
 export const metadata = {
   title: 'Retreats',
-  description: 'The next Nawal Yoga retreat is being prepared — the place, the days, and the quiet in between.',
+  description: 'Upcoming Nawal Yoga retreats — Wadi Rum and more.',
 };
 
 const html = `
-<main class="ny-inner ny-world">
+<main class="ny-inner ny-world retreats-hub">
   <section class="ny-world-hero" aria-labelledby="retreats-title">
     <div class="ny-world-hero__media" aria-hidden="true">
-      <img src="/media/1.jpg" alt="" width="1600" height="1200" decoding="async">
+      <img src="/media/wadi-rum/cover.jpg" alt="" width="1600" height="1200" decoding="async">
     </div>
     <div class="ny-world-hero__scrim" aria-hidden="true"></div>
     <div class="ny-world-hero__inner container">
@@ -20,21 +20,26 @@ const html = `
     </div>
   </section>
 
-  <section class="ny-empty" aria-labelledby="retreats-soon-title">
-    <div class="ny-empty__inner">
-      <span class="ny-empty__rule" aria-hidden="true"></span>
-      <span class="eyebrow" data-en="In preparation" data-ar="قيد التحضير">In preparation</span>
-      <h2 id="retreats-soon-title" class="ny-empty__title">
-        <span data-en="The next retreat" data-ar="الرحلة القادمة">The next retreat</span>
-        <span class="italic" data-en="is being prepared." data-ar="تُحضَّر الآن.">is being prepared.</span>
-      </h2>
-      <p class="ny-empty__text" data-en="The place, the days, and the quiet in between are still being woven. Details will arrive when they are ready." data-ar="المكان، والأيام، والهدوء بينهما ما زالت تُنسَج. التفاصيل تصل حين تكون جاهزة.">The place, the days, and the quiet in between are still being woven. Details will arrive when they are ready.</p>
-      <span class="ny-empty__mark" data-en="Soon" data-ar="قريباً">Soon</span>
+  <section class="ny-section ny-world-list">
+    <div class="container">
+      <p class="retreats-hub-intro" data-en="Desert journeys for rest, release, and return to yourself." data-ar="رحلات صحراوية للراحة والتحرر والعودة إلى الذات.">Desert journeys for rest, release, and return to yourself.</p>
+      <div class="ny-door-grid">
+        <a href="/retreats/wadi-rum" class="ny-door reveal" aria-labelledby="retreats-wadi-rum-title">
+          <div class="ny-door__media" aria-hidden="true">
+            <img src="/media/wadi-rum/cover.jpg" alt="" width="1600" height="1200" loading="lazy" decoding="async">
+          </div>
+          <div class="ny-door__scrim" aria-hidden="true"></div>
+          <span class="ny-door__status" data-en="Soon" data-ar="قريباً">Soon</span>
+          <span class="ny-door__num" aria-hidden="true">01</span>
+          <div class="ny-door__copy">
+            <span class="eyebrow" data-en="Retreat" data-ar="ريتريت">Retreat</span>
+            <h2 id="retreats-wadi-rum-title" class="ny-door__title" data-en="Wadi Rum" data-ar="وادي رم">Wadi Rum</h2>
+            <p class="ny-door__text" data-en="Friday 19 September · desert yoga, sound healing & women circle in Wadi Rum." data-ar="الجمعة 19.9 · يوغا الصحراء، ساوند هيلينغ ودائرة نسائية في وادي رم.">Friday 19 September · desert yoga, sound healing & women circle in Wadi Rum.</p>
+            <span class="ny-door__cta" data-en="View details" data-ar="عرض التفاصيل">View details</span>
+          </div>
+        </a>
+      </div>
     </div>
-
-    <article class="ny-door" hidden data-retreat-listing-hidden="zanzibar"></article>
-    <article class="ny-door" hidden data-retreat-listing-hidden="dahab"></article>
-    <article class="ny-door" hidden data-retreat-listing-hidden="wadi-rum"></article>
   </section>
 </main>
 `;
@@ -45,7 +50,7 @@ export default function Page() {
       lang="en"
       dir="rtl"
       bodyClassName=""
-      styles={[]}
+      styles={["/legacy/css/retreats-hub.css"]}
       scripts={[]}
       inlineScripts={[]}
       html={html}

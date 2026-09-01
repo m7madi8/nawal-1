@@ -1,0 +1,39 @@
+/* Retreats listing hub */
+
+.retreats-hub {
+  background: #faf6f0;
+}
+
+.retreats-hub .ny-world-hero__scrim {
+  background: linear-gradient(
+    180deg,
+    rgba(38, 24, 16, 0.35) 0%,
+    rgba(38, 24, 16, 0.62) 55%,
+    rgba(38, 24, 16, 0.82) 100%
+  );
+}
+
+.retreats-hub .ny-world-list {
+  background: linear-gradient(180deg, #faf6f0 0%, #f3ebe0 100%);
+  padding-block: clamp(2.25rem, 5vw, 4rem);
+}
+
+.retreats-hub .ny-door-grid {
+  max-width: 52rem;
+  margin-inline: auto;
+}
+
+.retreats-hub .ny-door__status {
+  border-color: rgba(255, 220, 180, 0.55);
+  background: rgba(58, 36, 22, 0.55);
+  color: #fff8f0;
+}
+
+.retreats-hub-intro {
+  max-width: 42rem;
+  margin: 0 auto 1.35rem;
+  text-align: center;
+  color: rgba(62, 47, 43, 0.72);
+  font-size: 1rem;
+  line-height: 1.7;
+}
