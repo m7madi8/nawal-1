@@ -238,6 +238,7 @@ svg { display: block; }
   position: sticky;
   top: 0;
   height: 100vh;
+  height: 100dvh;
   padding: 20px 14px 16px;
   background: rgba(255, 255, 255, 0.96);
   border-inline-end: 1px solid var(--admin-line);
@@ -245,6 +246,7 @@ svg { display: block; }
   flex-direction: column;
   gap: 6px;
   z-index: 30;
+  overflow: hidden;
 }
 
 .admin-sidebar__brand {
@@ -253,6 +255,7 @@ svg { display: block; }
   justify-content: space-between;
   gap: 10px;
   padding: 6px 8px 18px;
+  flex-shrink: 0;
 }
 
 .admin-sidebar__brand-main {
@@ -322,7 +325,9 @@ svg { display: block; }
   gap: 14px;
   overflow: auto;
   flex: 1;
+  min-height: 0;
   padding-bottom: 8px;
+  -webkit-overflow-scrolling: touch;
 }
 
 .admin-nav-group__label {
@@ -416,13 +421,15 @@ svg { display: block; }
 
 .admin-sidebar__foot {
   padding-top: 12px;
-  margin-top: 4px;
+  margin-top: auto;
   border-top: 1px solid var(--admin-line-soft);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
   padding-inline: 8px;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.96);
 }
 
 .admin-sidebar__session {
@@ -1692,11 +1699,13 @@ svg { display: block; }
     inset: 0 auto 0 0;
     width: min(86vw, 300px);
     max-width: 100%;
+    height: 100dvh;
+    max-height: 100dvh;
     transform: translateX(-100%);
     transition: transform 0.28s var(--ease);
     box-shadow: var(--admin-shadow-lg);
     z-index: 40;
-    -webkit-overflow-scrolling: touch;
+    overflow: hidden;
   }
 
   html.admin-route[dir="rtl"] .admin-sidebar,
@@ -1713,6 +1722,22 @@ svg { display: block; }
 
   .admin-sidebar__close {
     display: inline-grid;
+  }
+
+  .admin-sidebar__foot {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding-bottom: max(16px, env(safe-area-inset-bottom));
+  }
+
+  .admin-sidebar__logout {
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 12px;
+    text-align: center;
+    background: var(--admin-rust-tint);
+    border: 1px solid rgba(176, 96, 79, 0.18);
   }
 
   .admin-main {
