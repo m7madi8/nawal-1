@@ -66,6 +66,34 @@ export default function LegacyPage({
     };
   }, [bodyClassName, useShell]);
 
+  useEffect(() => {
+    if (!isAdmin) return undefined;
+
+    const root = document.documentElement;
+    const previousLang = root.lang;
+    const previousDir = root.dir;
+    const hadAdminRoute = root.classList.contains('admin-route');
+
+    root.lang = lang || 'en';
+    root.dir = dir || 'ltr';
+    root.classList.add('admin-route');
+
+    const frameId = window.requestAnimationFrame(() => {
+      if (typeof window.nawalAdminBoot === 'function') {
+        window.nawalAdminBoot();
+      } else {
+        document.dispatchEvent(new CustomEvent('nawal:admin-mount'));
+      }
+    });
+
+    return () => {
+      window.cancelAnimationFrame(frameId);
+      root.lang = previousLang;
+      root.dir = previousDir;
+      if (!hadAdminRoute) root.classList.remove('admin-route');
+    };
+  }, [isAdmin, lang, dir, pathname]);
+
   return (
     <>
       {renderedStyles.map((href) => (

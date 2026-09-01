@@ -2155,7 +2155,8 @@
     }
     if (session) clearSession();
     var form = document.getElementById('loginForm');
-    if (!form) return;
+    if (!form || form.dataset.adminBound === '1') return;
+    form.dataset.adminBound = '1';
     form.addEventListener('submit', function (event) {
       event.preventDefault();
       var error = document.getElementById('loginError');
@@ -2199,7 +2200,84 @@
     });
   }
 
+  var shellEventsBound = false;
+
+  function closeAdminMenu() {
+    var sidebar = document.getElementById('adminSidebar');
+    var overlay = document.getElementById('adminOverlay');
+    var menuToggle = document.getElementById('adminMenuToggle');
+    if (sidebar) sidebar.classList.remove('is-open');
+    if (overlay) overlay.hidden = true;
+    if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('admin-nav-open');
+  }
+
+  function openAdminMenu() {
+    var sidebar = document.getElementById('adminSidebar');
+    var overlay = document.getElementById('adminOverlay');
+    var menuToggle = document.getElementById('adminMenuToggle');
+    if (sidebar) sidebar.classList.add('is-open');
+    if (overlay) overlay.hidden = false;
+    if (menuToggle) menuToggle.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('admin-nav-open');
+  }
+
+  function bindAdminShellEvents() {
+    if (shellEventsBound) return;
+    shellEventsBound = true;
+
+    document.addEventListener('click', function (event) {
+      if (event.target.closest('#adminMenuToggle')) {
+        event.preventDefault();
+        var sidebar = document.getElementById('adminSidebar');
+        if (sidebar && sidebar.classList.contains('is-open')) closeAdminMenu();
+        else openAdminMenu();
+        return;
+      }
+      if (event.target.closest('#adminOverlay')) {
+        closeAdminMenu();
+        return;
+      }
+      if (event.target.closest('.admin-nav-link')) {
+        closeAdminMenu();
+        return;
+      }
+      if (event.target.closest('#adminLogoutBtn')) {
+        clearSession();
+        window.location.href = '/admin';
+        return;
+      }
+      if (event.target.closest('#adminModalClose')) {
+        closeModal();
+        return;
+      }
+      var modal = document.getElementById('adminModal');
+      if (modal && event.target === modal) {
+        closeModal();
+      }
+      var refreshBtn = event.target.closest('#adminRefreshBtn');
+      if (refreshBtn) {
+        event.preventDefault();
+        if (refreshBtn.classList.contains('is-busy')) return;
+        refreshBtn.classList.add('is-busy');
+        renderWorkspace(true).finally(function () {
+          refreshBtn.classList.remove('is-busy');
+        });
+      }
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        closeModal();
+        closeAdminMenu();
+      }
+    });
+  }
+
   function initWorkspace() {
+    bindAdminShellEvents();
+    closeAdminMenu();
+
     var session = currentSession();
     if (!session) {
       window.location.href = '/admin';
@@ -2216,68 +2294,11 @@
     }
     applySessionChrome(session);
 
-    var logoutBtn = document.getElementById('adminLogoutBtn');
     var refreshBtn = document.getElementById('adminRefreshBtn');
     var menuToggle = document.getElementById('adminMenuToggle');
-    var sidebar = document.getElementById('adminSidebar');
-    var overlay = document.getElementById('adminOverlay');
-    var modalClose = document.getElementById('adminModalClose');
-    var modal = document.getElementById('adminModal');
 
     if (refreshBtn) refreshBtn.innerHTML = ICONS.refresh;
     if (menuToggle) menuToggle.innerHTML = ICONS.menu;
-
-    function closeMenu() {
-      if (sidebar) sidebar.classList.remove('is-open');
-      if (overlay) overlay.hidden = true;
-      if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
-    }
-
-    function openMenu() {
-      if (sidebar) sidebar.classList.add('is-open');
-      if (overlay) overlay.hidden = false;
-      if (menuToggle) menuToggle.setAttribute('aria-expanded', 'true');
-    }
-
-    if (logoutBtn) {
-      logoutBtn.addEventListener('click', function () {
-        clearSession();
-        window.location.href = '/admin';
-      });
-    }
-
-    if (refreshBtn) {
-      refreshBtn.addEventListener('click', async function () {
-        refreshBtn.classList.add('is-busy');
-        try {
-          await renderWorkspace(true);
-        } finally {
-          refreshBtn.classList.remove('is-busy');
-        }
-      });
-    }
-
-    if (menuToggle) {
-      menuToggle.addEventListener('click', function () {
-        if (sidebar && sidebar.classList.contains('is-open')) closeMenu();
-        else openMenu();
-      });
-    }
-
-    if (overlay) overlay.addEventListener('click', closeMenu);
-    if (modalClose) modalClose.addEventListener('click', closeModal);
-    if (modal) {
-      modal.addEventListener('click', function (e) {
-        if (e.target === modal) closeModal();
-      });
-    }
-
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') {
-        closeModal();
-        closeMenu();
-      }
-    });
 
     renderWorkspace(true);
   }
@@ -2286,6 +2307,9 @@
     if (isLoginPage()) initLogin();
     else if (isWorkspacePage()) initWorkspace();
   }
+
+  window.nawalAdminBoot = boot;
+  document.addEventListener('nawal:admin-mount', boot);
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();

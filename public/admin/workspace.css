@@ -46,6 +46,8 @@
 html, body.admin-body {
   margin: 0;
   min-height: 100%;
+  min-height: 100dvh;
+  overflow-x: clip;
   color: var(--admin-text);
   font-family: var(--font-ui);
   background: var(--admin-bg);
@@ -53,6 +55,10 @@ html, body.admin-body {
     radial-gradient(circle at 12% 0%, rgba(255, 255, 255, 0.95), transparent 46%),
     radial-gradient(circle at 88% 100%, rgba(139, 107, 82, 0.08), transparent 48%);
   -webkit-font-smoothing: antialiased;
+}
+
+body.admin-nav-open {
+  overflow: hidden;
 }
 
 h1, h2, h3, p { margin: 0; }
@@ -459,6 +465,8 @@ svg { display: block; }
 .admin-icon-btn {
   width: 38px;
   height: 38px;
+  min-width: 44px;
+  min-height: 44px;
   display: inline-grid;
   place-items: center;
   border: 1px solid var(--admin-line);
@@ -466,6 +474,7 @@ svg { display: block; }
   background: var(--admin-surface);
   color: var(--admin-brown);
   cursor: pointer;
+  touch-action: manipulation;
   transition: background 0.15s var(--ease), box-shadow 0.15s var(--ease);
 }
 
@@ -1637,26 +1646,60 @@ svg { display: block; }
     position: fixed;
     inset: 0 auto 0 0;
     width: min(86vw, 300px);
+    max-width: 100%;
     transform: translateX(-100%);
     transition: transform 0.28s var(--ease);
     box-shadow: var(--admin-shadow-lg);
+    z-index: 40;
+    -webkit-overflow-scrolling: touch;
   }
 
-  [dir="rtl"] .admin-sidebar,
-  html[lang="ar"] .admin-sidebar {
+  html.admin-route[dir="rtl"] .admin-sidebar,
+  html.admin-route[lang="ar"] .admin-sidebar {
     inset: 0 0 0 auto;
     transform: translateX(100%);
   }
 
   .admin-sidebar.is-open { transform: translateX(0); }
 
+  .admin-overlay { z-index: 35; }
+
   #adminMenuToggle { display: inline-grid; }
+
+  .admin-main {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: clip;
+  }
 
   .admin-topbar { padding: 8px 14px; }
 
-  .admin-table-wrap { overflow-x: auto; }
+  .admin-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 
-  .admin-table { min-width: 720px; }
+  .admin-table { min-width: 640px; }
+
+  .admin-page-head {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .admin-page-actions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .admin-page-actions .admin-btn {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+
+  .admin-modal__card {
+    width: min(100vw - 20px, 560px);
+    max-height: min(88dvh, 720px);
+  }
 }
 
 @media (max-width: 640px) {
