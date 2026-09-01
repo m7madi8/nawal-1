@@ -1,5 +1,6 @@
 /* ── Ice Bath Day Retreat — cool teal / slate ── */
 
+.ib-main,
 .ib-page {
   --ib-deep: #132a32;
   --ib-ink: #1a3640;
@@ -21,6 +22,7 @@
   transition: background-color 0.45s ease;
 }
 
+html[dir="rtl"] .ib-main,
 html[dir="rtl"] .ib-page {
   --ib-enter-x: -1.4rem;
 }

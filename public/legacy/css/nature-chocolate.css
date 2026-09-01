@@ -1,5 +1,6 @@
 /* ── Day Between Nature & Chocolate — luxury experience ── */
 
+.nc-main,
 .nc-page {
   --nc-accent: var(--color-accent, #a67c52);
   --nc-accent-dark: #825a3a;
@@ -973,8 +974,8 @@ button.nc-cta__btn:disabled {
   min-width: min(100%, 16rem);
   padding: 0.9rem 1.4rem;
   border-radius: 999px;
-  background: var(--nc-primary);
-  color: var(--nc-ink);
+  background: var(--nc-primary, #d6bfa9);
+  color: var(--nc-ink, #5a4632);
   font-size: 0.95rem;
   font-weight: 600;
   text-decoration: none;
@@ -1183,8 +1184,8 @@ html[dir="rtl"] .nc-hero__back svg {
   border: 0;
   border-radius: 999px;
   padding: 0.75rem 1.1rem;
-  background: var(--nc-primary);
-  color: var(--nc-ink);
+  background: var(--nc-primary, #d6bfa9);
+  color: var(--nc-ink, #5a4632);
   font-weight: 700;
   font-family: inherit;
   cursor: pointer;

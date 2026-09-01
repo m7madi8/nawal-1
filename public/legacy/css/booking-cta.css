@@ -163,6 +163,20 @@ button.nc-cta__btn.ny-book-btn-primary {
   box-shadow: 0 8px 22px rgba(130, 90, 58, 0.22);
 }
 
+.event-sh-main .event-sh-btn--primary.ny-book-btn-primary,
+.event-sh-main .sh-register-submit.ny-book-submit {
+  background: var(--esh-accent, #825a3a);
+  border: 1px solid var(--esh-accent, #825a3a);
+  color: #fffdf9;
+}
+
+.event-sh-main .event-sh-btn--primary.ny-book-btn-primary:hover,
+.event-sh-main .sh-register-submit.ny-book-submit:hover:not(:disabled) {
+  background: var(--esh-accent-dark, #6b4a32);
+  border-color: var(--esh-accent-dark, #6b4a32);
+  color: #fffdf9;
+}
+
 .event-sh-btn.ny-book-btn-primary {
   min-height: 3.25rem;
   font-size: 1rem;

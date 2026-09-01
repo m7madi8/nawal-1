@@ -1,5 +1,6 @@
 /* ── Sound Healing premium page ── */
 
+.event-sh-main,
 .event-sh-page {
   --esh-accent: #825a3a;
   --esh-accent-dark: #6b4a32;
@@ -588,15 +589,15 @@
 }
 
 .event-sh-btn--primary {
-  background: var(--esh-accent);
-  border: 1px solid var(--esh-accent);
+  background: var(--esh-accent, #825a3a);
+  border: 1px solid var(--esh-accent, #825a3a);
   color: #fffdf9;
   box-shadow: 0 6px 18px rgba(130, 90, 58, 0.18);
 }
 
 .event-sh-btn--primary:hover {
-  background: var(--esh-accent-dark);
-  border-color: var(--esh-accent-dark);
+  background: var(--esh-accent-dark, #6b4a32);
+  border-color: var(--esh-accent-dark, #6b4a32);
   transform: translateY(-1px);
 }
 
@@ -733,7 +734,7 @@
   border: 0;
   border-radius: 999px;
   padding: 0.75rem 1.1rem;
-  background: var(--esh-accent);
+  background: var(--esh-accent, #825a3a);
   color: #fffdf9;
   font-weight: 700;
   font-size: 0.93rem;
@@ -742,7 +743,7 @@
 }
 
 .sh-register-submit:hover {
-  background: var(--esh-accent-dark);
+  background: var(--esh-accent-dark, #6b4a32);
 }
 
 .sh-register-submit:disabled {
@@ -818,11 +819,12 @@
 }
 
 /* RTL */
+html[dir="rtl"] .event-sh-main,
 html[dir="rtl"] .event-sh-page {
   font-family: 'Tajawal', sans-serif;
 }
 
-html[dir="rtl"] .event-sh-page :is(
+html[dir="rtl"] .event-sh-main :is(
   .event-sh-title,
   .event-sh-section-title,
   .event-sh-content-title,
@@ -833,7 +835,7 @@ html[dir="rtl"] .event-sh-page :is(
   font-weight: 700;
 }
 
-html[dir="rtl"] .event-sh-page :is(
+html[dir="rtl"] .event-sh-main :is(
   .event-sh-badge,
   .event-sh-kicker,
   .event-sh-meta-label
@@ -842,7 +844,7 @@ html[dir="rtl"] .event-sh-page :is(
   text-transform: none;
 }
 
-html[dir="rtl"] .event-sh-page :is(
+html[dir="rtl"] .event-sh-main :is(
   .event-sh-tagline,
   .event-sh-greeting,
   .event-sh-intro p,
