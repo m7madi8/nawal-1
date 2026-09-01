@@ -1,0 +1,174 @@
+/* Shared booking CTA — prominent primary register + subtle WhatsApp secondary */
+
+.ny-book-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.65rem;
+}
+
+.ny-book-btn-primary,
+button.ny-book-btn-primary {
+  width: 100%;
+  min-height: 3.25rem;
+  padding: 0.85rem 1.35rem;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(130, 90, 58, 0.22);
+  transition: background 200ms ease, border-color 200ms ease, color 200ms ease,
+    transform 200ms ease, box-shadow 200ms ease;
+}
+
+.ny-book-btn-primary:hover,
+button.ny-book-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(130, 90, 58, 0.28);
+}
+
+.ny-book-btn-primary:focus-visible,
+button.ny-book-btn-primary:focus-visible {
+  outline: 2px solid rgba(185, 137, 95, 0.65);
+  outline-offset: 2px;
+}
+
+.ny-book-alt {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.15rem;
+}
+
+.ny-book-wa-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  width: auto;
+  min-height: unset;
+  padding: 0.2rem 0.1rem;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-accent, #b9895f);
+  text-decoration: none;
+  box-shadow: none;
+  transition: color 160ms ease, opacity 160ms ease;
+}
+
+.ny-book-wa-link:hover {
+  color: var(--color-secondary, #6b4f3a);
+  opacity: 0.92;
+  text-decoration: underline;
+  transform: none;
+  box-shadow: none;
+}
+
+.ny-book-wa-link svg {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+}
+
+.ny-book-submit,
+button.ny-book-submit {
+  width: 100%;
+  min-height: 3rem;
+  margin-top: 0.65rem;
+  padding: 0.85rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(130, 90, 58, 0.2);
+  transition: background 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+}
+
+.ny-book-submit:hover:not(:disabled),
+button.ny-book-submit:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(130, 90, 58, 0.26);
+}
+
+.ny-book-submit:disabled,
+button.ny-book-submit:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Page-specific accent fallbacks */
+.event-sh-main .ny-book-wa-link {
+  color: var(--esh-accent, #b9895f);
+}
+
+.event-sh-main .ny-book-wa-link:hover {
+  color: var(--esh-text, #3e2f2b);
+}
+
+.ib-main .ny-book-wa-link {
+  color: var(--ib-accent, #9a7352);
+}
+
+.nc-main .ny-book-wa-link {
+  color: var(--nc-accent, #a67c52);
+}
+
+.dahab-page .ny-book-wa-link {
+  color: var(--dahab-accent-dark, #8a6240);
+}
+
+.dahab-page .dahab-cv-final-wa.ny-book-wa-link {
+  margin-top: 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.dahab-page .dahab-cv-final-wa.ny-book-wa-link svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.dahab-page .dahab-cv-btn.ny-book-btn-primary,
+.dahab-page a.dahab-cv-btn.ny-book-btn-primary {
+  min-height: 3.25rem;
+  font-size: 1rem;
+  font-weight: 700;
+  box-shadow: 0 8px 22px rgba(130, 90, 58, 0.22);
+}
+
+.dahab-includes-cta.ny-book-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  width: 100%;
+  min-height: 3.25rem;
+  padding: 0.85rem 1.35rem;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 8px 22px rgba(130, 90, 58, 0.22);
+}
+
+.ib-cta__btn.ny-book-btn-primary,
+button.nc-hero__cta.ny-book-btn-primary,
+button.nc-cta__btn.ny-book-btn-primary {
+  min-height: 3.25rem;
+  font-size: 1rem;
+  font-weight: 700;
+  box-shadow: 0 8px 22px rgba(130, 90, 58, 0.22);
+}
+
+.event-sh-btn.ny-book-btn-primary {
+  min-height: 3.25rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+[dir="rtl"] .ny-book-wa-link {
+  font-family: "Scheherazade New", Georgia, serif;
+}
