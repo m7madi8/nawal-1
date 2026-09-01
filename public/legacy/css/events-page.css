@@ -600,21 +600,183 @@
   transform: translateY(-1px);
 }
 
-.event-sh-btn--waze {
+.event-sh-btn--wa-secondary {
   background: transparent;
-  border: 1px solid var(--esh-text);
-  color: var(--esh-text);
+  border: 1px solid rgba(185, 137, 95, 0.45);
+  color: var(--esh-accent-dark);
 }
 
-.event-sh-btn--waze:hover {
+.event-sh-btn--wa-secondary:hover {
   background: var(--esh-accent-soft);
   border-color: var(--esh-accent);
   color: var(--esh-accent-dark);
 }
 
-.event-sh-waze-icon {
-  flex: 0 0 auto;
-  display: block;
+.event-sh-waze-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--esh-accent);
+  text-decoration: none;
+  transition: color 160ms ease, opacity 160ms ease;
+}
+
+.event-sh-waze-link:hover {
+  color: var(--esh-text);
+  opacity: 0.9;
+}
+
+.event-sh-waze-link svg {
+  flex-shrink: 0;
+}
+
+/* Sound Healing registration modal */
+.sh-register-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(24, 18, 13, 0.52);
+  backdrop-filter: blur(3px);
+}
+
+.sh-register-modal[hidden] {
+  display: none !important;
+}
+
+.sh-register-card {
+  width: min(100%, 30rem);
+  background: #fffdf9;
+  border: 1px solid rgba(185, 137, 95, 0.28);
+  border-radius: 1rem;
+  box-shadow: 0 22px 48px rgba(24, 18, 13, 0.22);
+  padding: 1.15rem 1.15rem 1.25rem;
+}
+
+.sh-register-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.sh-register-head h3 {
+  margin: 0;
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 500;
+  font-size: 1.2rem;
+  color: var(--esh-text);
+}
+
+[dir="rtl"] .sh-register-head h3 {
+  font-family: Amiri, Georgia, serif;
+}
+
+.sh-register-close {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(185, 137, 95, 0.3);
+  background: var(--esh-accent-soft);
+  color: var(--esh-accent-dark);
+  font-size: 1.1rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.sh-register-event {
+  margin: 0.75rem 0 0.95rem;
+  color: var(--esh-accent-dark);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.sh-register-form {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.sh-register-label {
+  font-size: 0.82rem;
+  color: var(--esh-text);
+  font-weight: 600;
+}
+
+.sh-register-input {
+  border: 1px solid rgba(185, 137, 95, 0.35);
+  border-radius: 0.65rem;
+  padding: 0.6rem 0.75rem;
+  font-size: 0.92rem;
+  color: var(--esh-text);
+  font-family: inherit;
+  background: #fffdf9;
+}
+
+.sh-register-input:focus {
+  outline: none;
+  border-color: var(--esh-accent);
+  box-shadow: 0 0 0 3px rgba(185, 137, 95, 0.16);
+}
+
+.sh-register-textarea {
+  resize: vertical;
+  min-height: 4.5rem;
+}
+
+.sh-register-submit {
+  margin-top: 0.55rem;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.75rem 1.1rem;
+  background: var(--esh-accent);
+  color: #fffdf9;
+  font-weight: 700;
+  font-size: 0.93rem;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.sh-register-submit:hover {
+  background: var(--esh-accent-dark);
+}
+
+.sh-register-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.sh-register-success {
+  position: fixed;
+  inset-inline: 1rem;
+  bottom: 1rem;
+  z-index: 91;
+  margin-inline: auto;
+  max-width: 28rem;
+  border-radius: 0.8rem;
+  border: 1px solid rgba(185, 137, 95, 0.35);
+  background: var(--esh-accent-soft);
+  color: var(--esh-accent-dark);
+  padding: 0.85rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(0.5rem);
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.sh-register-success.is-show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sh-register-success[hidden] {
+  display: none !important;
 }
 
 /* Lightbox */

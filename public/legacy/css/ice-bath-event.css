@@ -1185,6 +1185,20 @@ html[dir="rtl"] .ib-page {
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.34);
 }
 
+.ib-cta__btn--wa-secondary {
+  background: transparent;
+  border-color: rgba(247, 251, 252, 0.65);
+  color: #f7fbfc;
+  min-width: min(100%, 15.5rem);
+}
+
+.ib-cta__btn--wa-secondary:hover {
+  background: rgba(247, 251, 252, 0.12);
+  border-color: #f7fbfc;
+  color: #fff;
+  box-shadow: none;
+}
+
 /* Booking registration modal → admin dashboard */
 .ib-register-modal {
   position: fixed;
