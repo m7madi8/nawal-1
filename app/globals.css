@@ -1,8 +1,8 @@
 :root {
-  --ny-scroll-line: rgba(37, 34, 31, 0.14);
-  --ny-scroll-fill: #8b6b52;
+  --ny-scroll-line: var(--border, #e8e2dd);
+  --ny-scroll-fill: var(--accent, #6f523e);
   --ny-scroll-soft: #c9b8a7;
-  --ny-scroll-glow: rgba(139, 107, 82, 0.32);
+  --ny-scroll-glow: rgba(111, 82, 62, 0.32);
 }
 
 html,
@@ -64,7 +64,7 @@ body.ny-scroll-dragging {
   font-size: 0.68rem;
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.16em;
-  color: #8b6b52;
+  color: var(--accent, #6f523e);
   opacity: 0;
   transform: translateX(6px);
   transition:
@@ -89,7 +89,7 @@ body.ny-scroll-dragging {
 .ny-scroll-rail__tick {
   width: 9px;
   height: 1px;
-  background: #8b6b52;
+  background: var(--accent, #6f523e);
   opacity: 0.45;
   flex: none;
 }
@@ -144,7 +144,7 @@ body.ny-scroll-dragging {
 .ny-scroll-rail__diamond {
   width: 7px;
   height: 7px;
-  background: linear-gradient(145deg, #f3e6d6 0%, #c9b8a7 28%, #8b6b52 68%, #5c4636 100%);
+  background: linear-gradient(145deg, #f3e6d6 0%, #c9b8a7 28%, #6f523e 68%, #4b382c 100%);
   box-shadow:
     0 0 0 1px rgba(250, 248, 244, 0.55),
     0 4px 12px var(--ny-scroll-glow);

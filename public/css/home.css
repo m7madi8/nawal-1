@@ -1,24 +1,34 @@
 :root {
+  /* Background */
+  --bg-primary: #ffffff;
+  --bg-secondary: #ffffff;
+  --surface: #ffffff;
+
+  /* Typography */
+  --text-primary: #3f3027;
+  --text-secondary: #6b5a4e;
+  --text-muted: #9a8b80;
+
   /* Brand */
-  --white: #ffffff;
-  --bone: #faf8f4;
-  --accent: #8b6b52;
-  --brown-deep: #6f523e;
+  --accent: #6f523e;
+  --accent-dark: #4b382c;
+
+  /* UI */
+  --border: #e8e2dd;
+
+  /* Legacy aliases */
+  --white: var(--bg-primary);
+  --bone: var(--bg-secondary);
+  --ink: var(--text-primary);
+  --brown-deep: var(--accent);
   --taupe: #c9b8a7;
-  --beige: #e8ded3;
-  --ink: #25221f;
+  --beige: var(--border);
 
-  /* Semantic */
-  --bg-primary: var(--white);
-  --bg-secondary: var(--bone);
-  --bg-contrast: var(--brown-deep);
-
-  --text-primary: var(--ink);
-  --text-on-dark: var(--white);
-  --text-muted: #857c72;
+  --bg-contrast: var(--accent-dark);
+  --text-on-dark: #ffffff;
   --text-muted-dark: rgba(255, 255, 255, 0.7);
 
-  --line: rgba(37, 34, 31, 0.12);
+  --line: var(--border);
   --line-dark: rgba(255, 255, 255, 0.18);
 
   /* Typography */
