@@ -1,0 +1,349 @@
+.baqa-main {
+  --baqa-accent: #8b5e3c;
+  --baqa-sand: #faf6f1;
+  --baqa-ink: var(--ink, #25221f);
+  --baqa-muted: var(--text-muted, #857c72);
+}
+
+.baqa-hero {
+  border-bottom: 1px solid color-mix(in srgb, var(--color-primary) 25%, transparent);
+  background: var(--baqa-sand);
+  padding: 3.5rem 0 4rem;
+}
+
+@media (min-width: 640px) {
+  .baqa-hero {
+    padding: 5rem 0 5.5rem;
+  }
+}
+
+.baqa-shell {
+  width: min(100%, 72rem);
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+@media (min-width: 640px) {
+  .baqa-shell {
+    padding-inline: 1.5rem;
+  }
+}
+
+.baqa-hero__intro {
+  max-width: 42rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.baqa-kicker {
+  margin: 0 0 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--baqa-accent);
+}
+
+.baqa-title {
+  margin: 0;
+  font-family: var(--font-serif, Georgia, serif);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 300;
+  color: var(--baqa-ink);
+}
+
+.baqa-lead {
+  margin: 1.5rem 0 0;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--baqa-muted);
+}
+
+.baqa-body {
+  padding: 3rem 0 4.5rem;
+}
+
+.baqa-grid {
+  display: grid;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (min-width: 992px) {
+  .baqa-grid {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 2.5rem;
+  }
+}
+
+.baqa-visual {
+  overflow: hidden;
+  border-radius: 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 22%, transparent);
+  background: var(--color-gray, #f0ebe4);
+}
+
+.baqa-photo-panel {
+  position: relative;
+  isolation: isolate;
+  min-height: 18rem;
+  aspect-ratio: 2 / 3;
+  box-shadow:
+    0 20px 48px rgba(130, 90, 58, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+
+.baqa-reveal {
+  opacity: 0;
+  transform: translateY(1.35rem);
+  animation: baqa-fade-in 1.05s cubic-bezier(0.22, 1, 0.36, 1) 0.12s forwards;
+}
+
+@keyframes baqa-fade-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.baqa-photo-panel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: inherit;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(42, 38, 34, 0.14) 0%,
+      rgba(42, 38, 34, 0) 38%,
+      rgba(42, 38, 34, 0.1) 72%,
+      rgba(42, 38, 34, 0.32) 100%
+    );
+  opacity: 0.88;
+  transition: opacity 0.45s ease;
+}
+
+.baqa-photo-panel:hover::after {
+  opacity: 1;
+}
+
+.baqa-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 18rem;
+  object-fit: cover;
+  object-position: center 30%;
+  transform-origin: center center;
+  animation: baqa-ken-burns 22s ease-in-out infinite alternate;
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.baqa-photo-panel:hover .baqa-photo {
+  animation-play-state: paused;
+  transform: scale(1.06);
+}
+
+@keyframes baqa-ken-burns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .baqa-reveal {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .baqa-studio__logo {
+    opacity: 1;
+    animation: none;
+  }
+
+  .baqa-photo {
+    animation: none;
+  }
+
+  .baqa-photo-panel:hover .baqa-photo {
+    transform: none;
+  }
+}
+
+.baqa-studio {
+  margin-bottom: 1.25rem;
+  padding: 1rem 1.15rem;
+  border-radius: 0.85rem;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 16%, transparent);
+  background: var(--baqa-sand);
+  text-align: center;
+}
+
+.baqa-studio__logo {
+  display: block;
+  width: min(100%, 11rem);
+  height: auto;
+  margin-inline: auto;
+  object-fit: contain;
+  opacity: 0;
+  animation: baqa-fade-in 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.38s forwards;
+}
+
+.baqa-card {
+  border-radius: 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 22%, transparent);
+  background: #fff;
+  padding: 1.75rem;
+}
+
+@media (min-width: 640px) {
+  .baqa-card {
+    padding: 2rem;
+  }
+}
+
+.baqa-class-day {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--baqa-accent);
+}
+
+.baqa-class-name {
+  margin: 0;
+  font-family: var(--font-serif, Georgia, serif);
+  font-size: 1.75rem;
+  color: var(--baqa-ink);
+}
+
+.baqa-class-desc {
+  margin: 1rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--baqa-muted);
+}
+
+.baqa-meta {
+  margin: 1.25rem 0 0;
+  padding: 1rem 1.1rem;
+  border-radius: 0.85rem;
+  background: var(--baqa-sand);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--baqa-ink);
+}
+
+.baqa-host {
+  margin-top: 1rem;
+  font-size: 0.88rem;
+  color: var(--baqa-muted);
+}
+
+.baqa-host strong {
+  color: var(--baqa-ink);
+  font-weight: 600;
+}
+
+.baqa-ig-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.85rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--baqa-accent);
+  text-decoration: none;
+}
+
+.baqa-ig-link:hover {
+  color: var(--baqa-ink);
+}
+
+.baqa-contact {
+  margin-top: 2.5rem;
+  border-radius: 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 22%, transparent);
+  background: var(--baqa-sand);
+  padding: 1.75rem;
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .baqa-contact {
+    padding: 2rem 2.25rem;
+  }
+}
+
+.baqa-contact__title {
+  margin: 0;
+  font-family: var(--font-serif, Georgia, serif);
+  font-size: 1.5rem;
+  color: var(--baqa-ink);
+}
+
+.baqa-contact__text {
+  margin: 0.85rem auto 0;
+  max-width: 34rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--baqa-muted);
+}
+
+.baqa-contact__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1.35rem;
+}
+
+.baqa-contact__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  margin-top: 0;
+  padding: 0.85rem 1.5rem;
+  border-radius: 999px;
+  background: #25d366;
+  color: #fff;
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.28);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.ny-site .baqa-main .baqa-contact__btn,
+.ny-site .baqa-main .baqa-contact__btn:hover,
+.ny-site .baqa-main .baqa-contact__btn:focus-visible {
+  color: #fff;
+}
+
+.baqa-contact__btn:hover {
+  background: #1ebe57;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.baqa-contact__btn--wa {
+  background: #25d366;
+}
+
+.baqa-contact__btn svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+}

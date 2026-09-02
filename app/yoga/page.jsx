@@ -2,7 +2,8 @@ import LegacyPage from '@/components/LegacyPage';
 
 export const metadata = {
   title: 'Yoga',
-  description: 'Yoga with Nawal in Haifa — Vinyasa, meditation and a supportive community by the sea.',
+  description:
+    'Yoga with Nawal — Haifa Vinyasa by the sea and Power Yoga in Baqa al-Gharbiyye every Wednesday at Reshape studio.',
 };
 
 const html = `
@@ -34,6 +35,19 @@ const html = `
             <h2 class="ny-door__title" data-en="Haifa Yoga" data-ar="يوغا حيفا">Haifa Yoga</h2>
             <p class="ny-door__text" data-en="Holistic Vinyasa, meditation and a supportive community by the sea." data-ar="فينياسا شمولية، تأمل، ومجتمع داعم بجانب البحر.">Holistic Vinyasa, meditation and a supportive community by the sea.</p>
             <span class="ny-door__cta" data-en="Explore Haifa" data-ar="اكتشفي حيفا">Explore Haifa</span>
+          </div>
+        </a>
+        <a href="/yoga/baqa" class="ny-door reveal">
+          <div class="ny-door__media" aria-hidden="true">
+            <img src="/media/baqa/1000245792.jpg" alt="" width="1080" height="1624" loading="lazy" decoding="async">
+          </div>
+          <div class="ny-door__scrim" aria-hidden="true"></div>
+          <span class="ny-door__num" aria-hidden="true">02</span>
+          <div class="ny-door__copy">
+            <span class="eyebrow" data-en="Baqa al-Gharbiyye" data-ar="باقة الغربية">Baqa al-Gharbiyye</span>
+            <h2 class="ny-door__title" data-en="Baqa al-Gharbiyye Yoga" data-ar="يوغا باقة الغربية">Baqa al-Gharbiyye Yoga</h2>
+            <p class="ny-door__text" data-en="Power Yoga every Wednesday at 7:20 PM — at Reshape studio, Baqa al-Gharbiyye." data-ar="Power Yoga كل أربعاء الساعة 7:20 مساءً — في Reshape studio، باقة الغربية.">Power Yoga every Wednesday at 7:20 PM — at Reshape studio, Baqa al-Gharbiyye.</p>
+            <span class="ny-door__cta" data-en="Explore Baqa al-Gharbiyye" data-ar="اكتشفي باقة الغربية">Explore Baqa al-Gharbiyye</span>
           </div>
         </a>
       </div>

@@ -1321,6 +1321,30 @@ This retreat is not only a trip to a beautiful place; it is a real invitation to
       haifa_pkg_private2: 'Private lesson - two girls (300 ILS)',
       haifa_pkg_gift: 'Gift card',
 
+      baqa_page_label: 'Baqa al-Gharbiyye',
+      baqa_page_title: 'Baqa al-Gharbiyye Yoga',
+      baqa_page_intro:
+        'Power Yoga with Nawal — a dynamic evening practice that builds strength, mobility, and presence.',
+      baqa_hero_img_alt: 'Power Yoga practice with Nawal',
+      baqa_logo_alt: 'Reshape Pilates & Yoga Studio',
+      baqa_class_day: 'Wednesday',
+      baqa_class_title: 'Power Yoga',
+      baqa_class_desc:
+        'An energizing evening practice that builds strength, mobility, and confidence — with clear guidance so every level can grow safely.',
+      baqa_class_meta: 'Wednesday · 19:20 · Reshape studio, Baqa al-Gharbiyye',
+      baqa_host_label: 'Hosted at',
+      baqa_host_name: 'Reshape studio',
+      baqa_ig_handle: '@reshape.pilates',
+      baqa_contact_title: 'Book or ask',
+      baqa_contact_text:
+        'Contact Reshape studio on WhatsApp — your message will mention you came through the Nawal Yoga website.',
+      baqa_contact_btn: 'Contact on WhatsApp',
+      baqa_wa_btn: 'Contact on WhatsApp',
+      baqa_wa_prefill:
+        "Hello, I'm contacting you through the Nawal Yoga website about Power Yoga with Nawal at Reshape studio (Wednesdays at 7:20 PM). I'd like to get more details.",
+      baqa_ig_aria: 'Contact Reshape studio on Instagram via Nawal Yoga',
+      baqa_wa_aria: 'Contact Reshape studio on WhatsApp via Nawal Yoga',
+
       nawal_loader: 'Breathe',
       nawal_tagline: 'A quiet space for your inner light',
       nawal_register: 'Register for Retreat',
@@ -2643,6 +2667,30 @@ This retreat is not only a trip to a beautiful place; it is a real invitation to
       haifa_pkg_private1: 'درس خصوصي - صبية واحدة (200 شيكل)',
       haifa_pkg_private2: 'درس خصوصي - صبيتين (300 شيكل)',
       haifa_pkg_gift: 'بطاقة هدية',
+
+      baqa_page_label: 'باقة الغربية',
+      baqa_page_title: 'يوغا باقة الغربية',
+      baqa_page_intro:
+        'Power Yoga مع نوال — ممارسة مسائية ديناميكية تقوّي الجسد والمرونة والحضور.',
+      baqa_hero_img_alt: 'ممارسة Power Yoga مع نوال',
+      baqa_logo_alt: 'Reshape Pilates & Yoga Studio',
+      baqa_class_day: 'الأربعاء',
+      baqa_class_title: 'Power Yoga',
+      baqa_class_desc:
+        'ممارسة مسائية نشطة تبني القوة والمرونة والثقة — مع توجيه واضح لكل المستويات.',
+      baqa_class_meta: 'الأربعاء · 19:20 · Reshape studio، باقة الغربية',
+      baqa_host_label: 'تُقام في',
+      baqa_host_name: 'Reshape studio',
+      baqa_ig_handle: '@reshape.pilates',
+      baqa_contact_title: 'للحجز أو الاستفسار',
+      baqa_contact_text:
+        'تواصلي مع Reshape studio على واتساب — الرسالة ستذكر أنكِ وصلتِ عبر موقع نوال يوغا.',
+      baqa_contact_btn: 'تواصلي عبر الواتساب',
+      baqa_wa_btn: 'تواصلي عبر الواتساب',
+      baqa_wa_prefill:
+        'مرحبا، وصلت عليكم من موقع نوال يوغا بخصوص حصة Power Yoga مع نوال في Reshape studio بباقة الغربية (كل أربعاء الساعة 7:20 مساء). بدي أعرف تفاصيل أكتر.',
+      baqa_ig_aria: 'تواصلي مع Reshape studio على إنستغرام من موقع نوال يوغا',
+      baqa_wa_aria: 'تواصلي مع Reshape studio عبر واتساب من موقع نوال يوغا',
 
       nawal_loader: 'تنفسي',
       nawal_tagline: 'مساحة هادئة لنورك الداخلي',
