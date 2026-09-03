@@ -37,20 +37,19 @@ const html = `
           </div>
         </a>
 
-        <article class="ny-door ny-door--soon reveal" aria-labelledby="events-ice-bath-title">
+        <a href="/events/ice-bath" class="ny-door reveal">
           <div class="ny-door__media" aria-hidden="true">
             <img src="/media/events/ice-bath/hero.jpg" alt="" width="1600" height="1067" loading="lazy" decoding="async">
           </div>
           <div class="ny-door__scrim" aria-hidden="true"></div>
-          <span class="ny-door__status" data-en="Soon" data-ar="قريباً">Soon</span>
           <span class="ny-door__num" aria-hidden="true">02</span>
           <div class="ny-door__copy">
             <span class="eyebrow" data-en="Event" data-ar="فعالية">Event</span>
-            <h2 id="events-ice-bath-title" class="ny-door__title" data-en="Ice Bath" data-ar="حمام الثلج">Ice Bath</h2>
-            <p class="ny-door__text" data-en="Day retreat — yoga, breathwork, ice bath & sauna in Hofit. Details coming soon." data-ar="ريتريت يوم — يوغا، تنفّس، حمام ثلج وساونا في حوفيت. التفاصيل قريباً.">Day retreat — yoga, breathwork, ice bath & sauna in Hofit. Details coming soon.</p>
-            <span class="ny-door__cta ny-door__cta--soon" data-en="Soon" data-ar="قريباً">Soon</span>
+            <h2 class="ny-door__title" data-en="Ice Bath" data-ar="حمام الثلج">Ice Bath</h2>
+            <p class="ny-door__text" data-en="Friday 19 September · Day retreat — yoga, breathwork, ice bath & sauna in Hofit." data-ar="الجمعة 19.9 · ريتريت يوم — يوغا، تنفّس، حمام ثلج وساونا في حوفيت.">Friday 19 September · Day retreat — yoga, breathwork, ice bath & sauna in Hofit.</p>
+            <span class="ny-door__cta" data-en="View details" data-ar="عرض التفاصيل">View details</span>
           </div>
-        </article>
+        </a>
 
         <article class="ny-door" hidden data-event-listing-hidden="nature-chocolate">
           <a href="/events/nature-chocolate">
