@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     images: [
       {
-        url: '/og.jpg',
+        url: '/media/home/portrait.jpg',
         width: 1200,
         height: 1200,
         alt: 'Nawal Omar — Nawal Yoga',
