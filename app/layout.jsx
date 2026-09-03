@@ -7,7 +7,7 @@ const SITE_URL = 'https://nawalyoga.com';
 const SITE_DESCRIPTION =
   'Nawal Yoga is a wellness experience brand — yoga, journeys and experiences for the moments when you need to slow down, breathe deeper and feel again.';
 const OG_IMAGE = {
-  url: '/media/home/portrait.jpg',
+  url: '/media/brand/Black White Minimalist Simple Logo.png',
   width: 1200,
   height: 1200,
   alt: 'Nawal Omar — Nawal Yoga',
