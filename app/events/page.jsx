@@ -46,7 +46,7 @@ const html = `
           <div class="ny-door__copy">
             <span class="eyebrow" data-en="Event" data-ar="فعالية">Event</span>
             <h2 class="ny-door__title" data-en="Ice Bath" data-ar="حمام الثلج">Ice Bath</h2>
-            <p class="ny-door__text" data-en="Friday 19 September · Day retreat — yoga, breathwork, ice bath & sauna in Hofit." data-ar="الجمعة 19.9 · ريتريت يوم — يوغا، تنفّس، حمام ثلج وساونا في حوفيت.">Friday 19 September · Day retreat — yoga, breathwork, ice bath & sauna in Hofit.</p>
+            <p class="ny-door__text" data-en="Saturday 19 September · Day retreat — yoga, breathwork, ice bath & sauna in Hofit." data-ar="السبت 19.9 · ريتريت يوم — يوغا، تنفّس، حمام ثلج وساونا في حوفيت.">Saturday 19 September · Day retreat — yoga, breathwork, ice bath & sauna in Hofit.</p>
             <span class="ny-door__cta" data-en="View details" data-ar="عرض التفاصيل">View details</span>
           </div>
         </a>
