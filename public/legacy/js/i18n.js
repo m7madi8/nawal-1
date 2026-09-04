@@ -257,8 +257,8 @@
       events_ib_title: 'Day Retreat | Between Calm & Strength',
       events_ib_kicker: 'Cold exposure',
       events_ib_meta_desc:
-        'Day Retreat | Between Calm & Strength — 29.08.2026 · Sat · 09:30–16:00 · Hofit. Yoga, breathwork, ice bath, sauna, lunch, and a flower crown workshop.',
-      events_ib_card_desc: '29.08.2026 · Sat · 09:30–16:00 · Hofit',
+        'Day Retreat | Between Calm & Strength — 19.9.2026 · Sat · 09:30–16:00 · Hofit. Yoga, breathwork, ice bath, sauna, lunch, and a flower crown workshop.',
+      events_ib_card_desc: '19.9.2026 · Sat · 09:30–16:00 · Hofit',
       events_ib_card_cta: 'View details',
       events_ib_card_img_alt:
         'Day Retreat Between Calm & Strength — outdoor ice baths and wooden sauna among olive trees',
@@ -268,7 +268,7 @@
       events_hf_card_cta: 'Open form',
       events_hf_card_img_alt:
         'Calm cold water and soft ice — cover for the Ice Bath health declaration form',
-      events_ib_date: '29.08.2026 | Saturday',
+      events_ib_date: '19.9.2026 | Saturday',
       events_ib_time: '09:30 – 16:00',
       events_ib_location: 'Hofit complex, Emek Hefer',
       events_ib_venue: 'Hofit complex, Emek Hefer · Hofitkin Pool',
@@ -384,7 +384,7 @@
       events_ib_cta: 'Book your spot',
       events_ib_cta_aria: 'Open registration form for Day Retreat Between Calm & Strength',
       events_ib_register_title: 'Confirm your booking',
-      events_ib_register_event: 'Day Retreat | Between Calm & Strength · 29.08.2026',
+      events_ib_register_event: 'Day Retreat | Between Calm & Strength · 19.9.2026',
       events_ib_register_name: 'Full name',
       events_ib_register_phone: 'Phone (WhatsApp preferred)',
       events_ib_register_notes: 'Notes (optional)',
@@ -392,7 +392,7 @@
       events_ib_register_success: 'Registration sent successfully. We will contact you shortly.',
       events_ib_register_error: 'Sorry, registration failed. Please try again.',
       events_ib_wa_msg:
-        'Hi Nawal! I\'d like to book a spot for Day Retreat «Between Calm & Strength» on 29.08.2026 (Sat) in Hofit, 09:30–16:00. Please confirm availability 🙏',
+        'Hi Nawal! I\'d like to book a spot for Day Retreat «Between Calm & Strength» on 19.9.2026 (Sat) in Hofit, 09:30–16:00. Please confirm availability 🙏',
       events_ib_hero_img_alt:
         'Outdoor wellness day at Hofit — ice baths, wooden sauna, and olive trees in soft afternoon light',
       events_ib_img_arrival_alt: 'Olive grove and outdoor wellness space at arrival',
@@ -1604,8 +1604,8 @@ This retreat is not only a trip to a beautiful place; it is a real invitation to
       events_ib_title: 'ريتريت يوم | بين الهدوء والقوة',
       events_ib_kicker: 'تعرّض للبرد',
       events_ib_meta_desc:
-        'ريتريت يوم | بين الهدوء والقوة — 29.08.2026 · السبت · 09:30–16:00 · حوفيت. يوغا، تنفّس، حمام ثلج، ساونا، غداء، وورشة طوق ورد.',
-      events_ib_card_desc: '29.08.2026 · السبت · 09:30–16:00 · حوفيت',
+        'ريتريت يوم | بين الهدوء والقوة — 19.9.2026 · السبت · 09:30–16:00 · حوفيت. يوغا، تنفّس، حمام ثلج، ساونا، غداء، وورشة طوق ورد.',
+      events_ib_card_desc: '19.9.2026 · السبت · 09:30–16:00 · حوفيت',
       events_ib_card_cta: 'عرض التفاصيل',
       events_ib_card_img_alt:
         'ريتريت يوم بين الهدوء والقوة — حمامات ثلج وساونا خشبية بين أشجار الزيتون',
@@ -1615,7 +1615,7 @@ This retreat is not only a trip to a beautiful place; it is a real invitation to
       events_hf_card_cta: 'افتحي الاستمارة',
       events_hf_card_img_alt:
         'ماء بارد هادئ وجليد ناعم — غلاف استمارة التصريح الصحي لحمام الثلج',
-      events_ib_date: '29.08.2026 | السبت',
+      events_ib_date: '19.9.2026 | السبت',
       events_ib_time: '09:30 – 16:00',
       events_ib_location: 'مجمع حوفيت، وادي حيفر',
       events_ib_venue: 'مجمع حوفيت، وادي حيفر · بركة حوفيتكين',
@@ -1731,7 +1731,7 @@ This retreat is not only a trip to a beautiful place; it is a real invitation to
       events_ib_cta: 'احجزي مكانك',
       events_ib_cta_aria: 'افتحي استمارة التسجيل لريتريت يوم بين الهدوء والقوة',
       events_ib_register_title: 'تأكيد الحجز',
-      events_ib_register_event: 'ريتريت يوم | بين الهدوء والقوة · 29.08.2026',
+      events_ib_register_event: 'ريتريت يوم | بين الهدوء والقوة · 19.9.2026',
       events_ib_register_name: 'الاسم الكامل',
       events_ib_register_phone: 'رقم الهاتف (يفضّل واتساب)',
       events_ib_register_notes: 'ملاحظات (اختياري)',
@@ -1739,7 +1739,7 @@ This retreat is not only a trip to a beautiful place; it is a real invitation to
       events_ib_register_success: 'تم إرسال التسجيل بنجاح. سنتواصل معك قريبًا.',
       events_ib_register_error: 'تعذّر إرسال التسجيل، حاولي مرة أخرى.',
       events_ib_wa_msg:
-        'مرحبا نوال! بدي أحجز مكان في ريتريت يوم «بين الهدوء والقوة» بتاريخ 29.08.2026 (السبت) في حوفيت، 09:30–16:00. ممكن تأكيد التوفّر؟ 🙏',
+        'مرحبا نوال! بدي أحجز مكان في ريتريت يوم «بين الهدوء والقوة» بتاريخ 19.9.2026 (السبت) في حوفيت، 09:30–16:00. ممكن تأكيد التوفّر؟ 🙏',
       events_ib_hero_img_alt:
         'يوم عافية في الهواء الطلق في حوفيت — حمامات ثلج وساونا خشبية وأشجار زيتون في ضوء بعد الظهيرة الناعم',
       events_ib_img_arrival_alt: 'بستان زيتون ومساحة عافية في الهواء الطلق عند الوصول',
