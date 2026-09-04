@@ -2722,7 +2722,7 @@ This retreat is not only a trip to a beautiful place; it is a real invitation to
   }
 
   function applyLanguage(lang) {
-    if (lang !== 'en' && lang !== 'ar') lang = 'en';
+    if (lang !== 'en' && lang !== 'ar') lang = 'ar';
     var root = document.documentElement;
     root.setAttribute('lang', lang);
     root.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');

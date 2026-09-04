@@ -28,7 +28,7 @@ export const metadata = {
   },
   openGraph: {
     type: 'website',
-    locale: 'en_US',
+    locale: 'ar_IL',
     url: SITE_URL,
     siteName: 'Nawal Yoga',
     title: 'Nawal Yoga',
@@ -50,11 +50,11 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" dir="ltr" suppressHydrationWarning>
+    <html lang="ar" dir="rtl" suppressHydrationWarning>
       <body>
         <Script id="ny-lang-boot" strategy="beforeInteractive">{`(function(){
   try {
-    var lang = localStorage.getItem("nawal-lang") || "en";
+    var lang = localStorage.getItem("nawal-lang") || "ar";
     var root = document.documentElement;
     root.lang = lang;
     root.dir = lang === "ar" ? "rtl" : "ltr";

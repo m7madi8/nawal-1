@@ -13,7 +13,7 @@
   };
 
   function t(key) {
-    var lang = (window.nawalI18n && window.nawalI18n.getLang && window.nawalI18n.getLang()) || "en";
+    var lang = (window.nawalI18n && window.nawalI18n.getLang && window.nawalI18n.getLang()) || "ar";
     if (window.nawalI18n && window.nawalI18n.t) return window.nawalI18n.t(lang, key);
     return key;
   }

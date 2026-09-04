@@ -20,7 +20,7 @@
   };
 
   function lang() {
-    return document.documentElement.getAttribute('lang') || 'en';
+    return document.documentElement.getAttribute('lang') || 'ar';
   }
 
   function isAr() {

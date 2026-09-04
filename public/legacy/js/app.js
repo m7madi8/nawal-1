@@ -304,7 +304,7 @@
     if (!window.nawalI18n || !window.nawalI18n.getLang || !window.nawalI18n.setLang) return;
 
     function update() {
-      var current = window.nawalI18n.getLang() || 'en';
+      var current = window.nawalI18n.getLang() || 'ar';
       var target = current === 'ar' ? 'en' : 'ar';
       btn.setAttribute('data-lang-set', target);
       // Icon-only toggle; we only update the target language.
